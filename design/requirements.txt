@@ -11,7 +11,7 @@ As a member I would like to add my listing so that I’m listed.
 As a member I would like to be able to edit my listing so that I can keep it current.
 As a member I would like to be able to delete my listing so that I can remove myself if I want to.
 As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these.
-As a member I would like the app to keep the information it got from Twitter up-to-date so that changes I make on Twitter get propagated to my listing.
+As a member I would like the app to keep the information it got from Twitter updated so that changes I make on Twitter get propagated to my listing.
 
 Browse listings
 
