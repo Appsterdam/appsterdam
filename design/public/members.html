@@ -12,47 +12,60 @@
   <a href="form.html">Join as a member</a>
   <a href="#">Log in</a>
   <a href="#">My favorites (1)</a>
-  <input type="search" placeholder="Search members"></text>
+  <input type="search" placeholder="Search members">
   </form>
 </div>
 
 <h1>Members</h1>
 
-<p>Showing
-<select>
-  <option>all members</option>
-  <option>companies</option>
-  <option>students</option>
-  <option>individuals</option>
-  <option>groups</option>
-</select>
+<div class="selection">Showing
+<span>
+<a href="#">all members</a>
+<ul>
+  <li class="current"><a href="#">all members</a></li>
+  <li><a href="#">companies</a></li>
+  <li><a href="#">students</a></li>
+  <li><a href="#">individuals</a></li>
+  <li><a href="#">groups</a></li>
+</ul>
+</span>
 who
-<select>
-  <option>are anywhere</option>
-  <option>are in Appsterdam</option>
-  <option>have recently arrived</option>
-  <option>are coming soon</option>
-  <option>aren’t in Appsterdam</option>
-</select>
+<span>
+<a href="#">are anywhere</a>
+<ul>
+  <li class="current"><a href="#">are anywhere</a></li>
+  <li><a href="#">are in Appsterdam</a></li>
+  <li><a href="#">have recently arrived</a></li>
+  <li><a href="#">are coming soon</a></li>
+  <li><a href="#">aren’t in Appsterdam</a></li>
+</ul>
+</span>
 doing
-<select>
-  <option>any work</option>
-  <option>design</option>
-  <option>development</option>
-  <option>marketing</option>
-  <option>TODO: More fields?</option>
-</select>
+<span>
+<a href="#">any work</a>
+<ul>
+  <li class="current"><a href="#">any work</a></li>
+  <li><a href="#">design</a></li>
+  <li><a href="#">development</a></li>
+  <li><a href="#">marketing</a></li>
+  <li><a href="#">TODO: More fields?</a></li>
+</ul>
+</span>
 for
-<select>
-  <option>any platform</option>
-  <option>the Web</option>
-  <option>iOS</option>
-  <option>Android</option>
-  <option>Windows Phone 7</option>
-  <option>WebOS</option>
-  <option>Mac OS X</option>
-  <option>Windows</option>
-</select>.</p>
+<span>
+<a href="#">iOS</a>.
+<ul>
+  <li><a href="#">any platform</a></li>
+  <li><a href="#">the Web</a></li>
+  <li class="current"><a href="#">iOS</a></li>
+  <li><a href="#">Android</a></li>
+  <li><a href="#">Windows Phone 7</a></li>
+  <li><a href="#">WebOS</a></li>
+  <li><a href="#">Mac OS X</a></li>
+  <li><a href="#">Windows</a></li>
+</ul>
+</span>
+</div>
 
 <div class="member company">
   <h2><a href="http://twitter.com/fngtps">
@@ -113,6 +126,32 @@ for
     <li><a href="#">Report as spam</a></li>
   </ul>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script>
+(function(){
+  function deactivate() {
+    $("div.selection span.active").removeClass('active');
+  }
+  $("body").click(function() {
+    deactivate();
+  });
+  $("body").keydown(function(event) {
+    if (event.keyCode == 27) {
+      deactivate();
+    }
+  });
+  $("div.selection").delegate("span > a", "click", function(event) {
+    event.stopPropagation()
+    var clicked = $(this).parent();
+    if (clicked.hasClass('active')) {
+      clicked = $();
+    }
+    deactivate();
+    clicked.addClass('active');
+  });
+})();
+</script>
 
 </body>
 </html>
