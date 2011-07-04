@@ -5,18 +5,18 @@
 <title>Members</title>
 <link rel="stylesheet" href="stylesheets/default.css">
 </head>
-<body>
+<body><div id="page">
 
 <div class="actions">
   <form>
-  <a href="form.html">Join as a member</a>
+  <a href="add_listing.html">Join as a member</a> <span>|</span>
+  <a href="#">My favorites (1)</a> <span>|</span>
   <a href="#">Log in</a>
-  <a href="#">My favorites (1)</a>
   <input type="search" placeholder="Search members">
   </form>
 </div>
 
-<h1>Members</h1>
+<h1>Members <a href="classifieds.html">Classifieds</a></h1>
 
 <div class="selection">Showing
 <span>
@@ -47,8 +47,8 @@ doing
   <li class="current"><a href="#">any work</a></li>
   <li><a href="#">design</a></li>
   <li><a href="#">development</a></li>
-  <li><a href="#">marketing</a></li>
-  <li><a href="#">TODO: More fields?</a></li>
+  <li><a href="#">Management / Executive</a></li>
+  <li><a href="#">Support / Customer service</a></li>
 </ul>
 </span>
 for
@@ -56,7 +56,7 @@ for
 <a href="#">iOS</a>.
 <ul>
   <li><a href="#">any platform</a></li>
-  <li><a href="#">the Web</a></li>
+  <li><a href="#">The Web</a></li>
   <li class="current"><a href="#">iOS</a></li>
   <li><a href="#">Android</a></li>
   <li><a href="#">Windows Phone 7</a></li>
@@ -83,8 +83,8 @@ for
   </ul>
   <div class="meta">A company in Appsterdam</div>
   <ul>
-    <li><a href="#">Add to my favorites</a></li>
-    <li><a href="#">Report as spam</a></li>
+    <li class="favourite"><a href="#">Add to my favorites</a></li>
+    <li class="report"><a href="#">Report as spam</a></li>
   </ul>
 </div>
 
@@ -99,10 +99,10 @@ for
     <li>Development</li>
     <li>iOS</li>
   </ul>
-  <div class="meta">Recently arrived</div>
+  <div class="meta">Recently arrived<br>Available for hire</div>
   <ul>
-    <li><a href="#">Add to my favorites</a></li>
-    <li><a href="#">Report as spam</a></li>
+    <li class="favourite"><a href="#">Add to my favorites</a></li>
+    <li class="report"><a href="#">Report as spam</a></li>
   </ul>
 </div>
 
@@ -120,10 +120,10 @@ for
     <li>Android</li>
     <li>Windows Phone 7</li>
   </ul>
-  <div class="meta">A company in Appsterdam <br><a href="http://www.moblio.nl/category/careers/">We’re hiring!</a></div>
+  <div class="meta">A company in Appsterdam<br><a href="http://www.moblio.nl/category/careers/">We’re hiring!</a></div>
   <ul>
-    <li><a href="#">Add to my favorites</a></li>
-    <li><a href="#">Report as spam</a></li>
+    <li class="favourite"><a href="#">Add to my favorites</a></li>
+    <li class="report"><a href="#">Report as spam</a></li>
   </ul>
 </div>
 
@@ -153,5 +153,5 @@ for
 })();
 </script>
 
-</body>
+</div></body>
 </html>

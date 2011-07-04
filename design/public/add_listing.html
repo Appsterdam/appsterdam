@@ -2,18 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Your listing</title>
+<title>Add your membership listing</title>
 <link rel="stylesheet" href="stylesheets/default.css">
 </head>
-<body>
+<body><div id="page">
 
-<div class="actions">
-  <a href="members.html">Members</a>
-  <a href="#">Log out</a>
-  <a href="#">My favorites (1)</a>
-</div>
-
-<h1>Your membership</h1>
+<h1>Add your membership listing</h1>
 
 <form action="members.html">
 
@@ -56,7 +50,7 @@
   </div>
   <div>
     Are you in Amsterdam?
-    <label><input type="radio" name="where" checked> Yes, I’m been here for a while</label>
+    <label><input type="radio" name="where"> Yes, I’m been here for a while</label>
     <label><input type="radio" name="where"> Yes, I’ve recently arrived to join Appsterdam</label>
     <label><input type="radio" name="where"> No, but I plan to come soon</label>
     <label><input type="radio" name="where"> No, I’m not there</label>
@@ -74,25 +68,26 @@
     <span class="when_type_is group">
       What subjects is your group concerned with?
     </span>
-    <label><input type="checkbox" checked> Design</label>
-    <label><input type="checkbox" checked> Development</label>
+    <label><input type="checkbox"> Design</label>
+    <label><input type="checkbox"> Development</label>
     <label><input type="checkbox"> Marketing</label>
     <label><input type="checkbox"> Management / Executive</label>
     <label><input type="checkbox"> Support / Customer service</label>
   </div>
   <div>
     For which platforms?
-    <label><input type="checkbox" checked> The Web</label>
-    <label><input type="checkbox" checked> iOS</label>
+    <label><input type="checkbox"> The Web</label>
+    <label><input type="checkbox"> iOS</label>
     <label><input type="checkbox"> Android</label>
     <label><input type="checkbox"> Windows Phone 7</label>
     <label><input type="checkbox"> WebOS</label>
-    <label><input type="checkbox" checked> Mac OS X</label>
+    <label><input type="checkbox"> Mac OS X</label>
     <label><input type="checkbox"> Windows</label>
   </div>
 </fieldset>
 
-<button>Save changes</button>
+<button>Add membership listing</button>
+<a href="members.html">Cancel and go back</a>
 
 </form>
 
@@ -113,5 +108,5 @@
 })();
 </script>
 
-</body>
+</div></body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Classifieds</title>
+<link rel="stylesheet" href="stylesheets/default.css">
+</head>
+<body><div id="page">
+
+<div class="actions">
+  <form>
+  <a href="post_classified.html">Post to classifieds</a> <span>|</span>
+  <a href="#">My favorites (1)</a>
+  <a href="#">Log out</a>
+  <input type="search" placeholder="Search members">
+  </form>
+</div>
+
+<h1>Classifieds <a href="members.html">Members</a></h1>
+
+<div class="selection">Showing
+<span>
+<a href="#">offered</a>
+<ul>
+  <li><a href="#">offered</a></li>
+  <li><a href="#">wanted</a></li>
+</ul>
+</span>
+in
+<span>
+<a href="#">any category</a>
+<ul>
+  <li><a href="#">any category</a></li>
+  <li><a href="#">housing</a></li>
+  <li><a href="#">desks and office space</a></li>
+  <li><a href="#">bikes</a></li>
+  <li><a href="#">other</a></li>
+</ul>.
+</span>
+</div>
+
+<p>TODO: Posts</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script>
+(function(){
+  function deactivate() {
+    $("div.selection span.active").removeClass('active');
+  }
+  $("body").click(function() {
+    deactivate();
+  });
+  $("body").keydown(function(event) {
+    if (event.keyCode == 27) {
+      deactivate();
+    }
+  });
+  $("div.selection").delegate("span > a", "click", function(event) {
+    event.stopPropagation()
+    var clicked = $(this).parent();
+    if (clicked.hasClass('active')) {
+      clicked = $();
+    }
+    deactivate();
+    clicked.addClass('active');
+  });
+})();
+</script>
+
+</div></body>
+</html>
