@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your listing</title>
+<link rel="stylesheet" href="stylesheets/default.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="actions">
+  <a href="members.html">Members</a>
+  <a href="#">Log out</a>
+  <a href="#">My favorites (1)</a>
+</div>
+
+<h1>Your membership</h1>
+
+<form action="members.html">
+
+<fieldset>
+  <legend>Profile</legend>
+  <dl>
+  <dt>Image:<dt>
+  <dd><img src="https://si0.twimg.com/profile_images/1375149601/avatar_normal.png"></dd>
+  <dt>Twitter username:</dt>
+  <dd>fngtps</dd>
+  <!-- NOTE: We should use the Twitter ID internally because the username can be changed. -->
+  <dt>Name:</dt>
+  <dd>Fingertips</dd>
+  <dt>Location:</dt>
+  <dd>Amsterdam, The Netherlands</dd>
+  <dt>Web:</dt>
+  <dd><a href="http://www.fngtps.com/">www.fngtps.com</a></dd>
+  <dt>Description:</dt>
+  <dd>We’re a design and development agency for web, iPhone, iPad and Mac apps.</dd>
+  </dl>
+  <p>Want to make changes? Update your profile information on Twitter, then return to this page.</p>
+</fieldset>
+
+<fieldset>
+  <legend>Listing</legend>
+  <div>
+    What are you?
+    <label><input type="radio" name="type" value="company"> Company</label>
+    <label><input type="radio" name="type" value="student"> Student</label>
+    <label><input type="radio" name="type" value="individual"> Individual</label>
+    <label><input type="radio" name="type" value="group"> Group (user group, non-profit collective, etc.)</label>
+  </div>
+  <div class="when_type_is company">
+    <label>Is your company currently hiring? Please enter the webpage with your job offer(s) below:</label>
+    <input type="text">
+  </div>
+  <div class="when_type_is student individual">
+    Are you currently available for hire?
+    <label><input type="checkbox"> Yes, I’m available for hire</label>
+  </div>
+  <div>
+    Are you in Amsterdam?
+    <label><input type="radio" name="where" checked> Yes, I’m been here for a while</label>
+    <label><input type="radio" name="where"> Yes, I’ve recently arrived to join Appsterdam</label>
+    <label><input type="radio" name="where"> No, but I plan to come soon</label>
+    <label><input type="radio" name="where"> No, I’m not there</label>
+  </div>
+  <div>
+    <span class="when_type_is company">
+      What kind of work does your company do?
+    </span>
+    <span class="when_type_is student">
+      What kind of subjects do you study?
+    </span>
+    <span class="when_type_is individual default">
+      What kind of work do you do?
+    </span>
+    <span class="when_type_is group">
+      What subjects is your group concerned with?
+    </span>
+    <label><input type="checkbox" checked> Design</label>
+    <label><input type="checkbox" checked> Development</label>
+    <label><input type="checkbox"> Marketing</label>
+    <label><input type="checkbox"> Management / Executive</label>
+    <label><input type="checkbox"> Support / Customer service</label>
+  </div>
+  <div>
+    For which platforms?
+    <label><input type="checkbox" checked> The Web</label>
+    <label><input type="checkbox" checked> iOS</label>
+    <label><input type="checkbox"> Android</label>
+    <label><input type="checkbox"> Windows Phone 7</label>
+    <label><input type="checkbox"> WebOS</label>
+    <label><input type="checkbox" checked> Mac OS X</label>
+    <label><input type="checkbox"> Windows</label>
+  </div>
+</fieldset>
+
+<button>Save changes</button>
+
+</form>
+
+<script>
+(function(){
+  $(".when_type_is:not(.default)").hide();
+  function update(field) {
+    $(".when_type_is:not(." + field.value + ")").hide();
+    $(".when_type_is." + field.value).show();
+  }
+  $("input[name=type]").click(function() {
+    update(this);
+  })
+  $("input[name=type][checked]").each(function() {
+    update(this);
+  });
+})();
+</script>
+
+</body>
+</html>

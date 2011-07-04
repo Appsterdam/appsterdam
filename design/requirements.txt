@@ -1,0 +1,38 @@
+Requirements Appsterdam Members Listing App
+
+- Thijs van der Vossen, thijs@fngtps.com
+
+USER STORIES
+
+Your listing
+
+As a member I would like to authenticate with my Twitter account so that I can manage my listing.
+As a member I would like to add my listing so that I’m listed.
+As a member I would like to be able to edit my listing so that I can keep it current.
+As a member I would like to be able to delete my listing so that I can remove myself whenever I want to.
+As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these again.
+
+Browse listings
+
+As a visitor I would like to see an overview of listings so that I can get an impression of what the movement is about.
+As a visitor I would like to limit the overview to specific attributes so that I only see what I’m interested in.
+As a visitor I would like to be able to search listings so that I can find a specific one.
+As a member I would like the default listing to be fully randomized on each page load so that nobody gets an unfair advantage.
+As a visitor I don’t want to have to click pagination links so that I don’t get annoyed.
+  Additional batches should load automatically when you scroll down.
+
+My favorites
+
+As a visitor I would like to save a listing to my favorites so that I can easily find it later.
+As a visitor I would like to view my favorites so that I can use them.
+As a visitor I would like to remove a listing from my favorites so that I can fix a mistake.
+
+Management
+
+As a visitor I would like to be able to report a listing as spam so that an administrator can remove it.
+As an administrator I would like to be able to see an overview of listings marked as spam so that I can remove these.
+As an administrator I would like to be able to “unmark” a listing marked as spam in case it’s a legitimate listing after all.
+
+Map (optional)
+
+As a visitor I would like to view listings on a map so that I can see where everyone is located.

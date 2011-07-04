@@ -1,0 +1,82 @@
+body,
+select
+{
+  font: 14px/1.5 sans-serif;
+}
+div.actions
+{
+  float: right;
+}
+ul
+{
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+li
+{
+  list-style-type: none;
+}
+h2
+{
+  margin: 0;
+}
+h2 a
+{
+  text-decoration: none;
+}
+div.member
+{
+  position: relative;
+  float: left;
+  width: 40%;
+  margin: 1em 1em 0 0;
+  padding: 1em;
+  border: 1px solid black;
+}
+div.member ul.tags
+{
+  padding: 0;
+}
+div.member ul.tags li
+{
+  display: inline;
+  margin: 0 4px 0 0;
+  padding: 2px 4px;
+  list-style-type: none;
+  background-color: #444;
+  color: #fff;
+}
+div.member div.meta
+{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  text-align: right;
+}
+label
+{
+  display: block;
+}
+fieldset
+{
+    border: 1px solid black;
+}
+fieldset,
+fieldset > div
+{
+  margin: 1em 0;
+}
+fieldset legend
+{
+  font-weight: bold;
+}
+fieldset p
+{
+  margin: 0;
+  color: #888;
+}
+dt
+{
+  float: left;
+  width: 10em;
+}
