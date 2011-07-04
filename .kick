@@ -1,0 +1,17 @@
+process do |files|
+  files.take_and_map do |file|
+    case file
+    when %r{^design/requirements.txt$}
+      source = File.expand_path("../design/requirements.txt", __FILE__)
+      target = File.expand_path("../design/requirements.html", __FILE__)
+      result = `saga convert #{source} > #{target}`
+      unless result.strip == ''
+        puts result
+      else
+        puts
+        system("saga planning #{source}")
+      end
+      files.delete(file)
+    end
+  end
+end

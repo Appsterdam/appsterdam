@@ -1,51 +1,52 @@
 Requirements Appsterdam Members Listing App
 
 - Thijs van der Vossen, thijs@fngtps.com
+- Manfred Stienstra, manfred@fngtps.com
 
 USER STORIES
 
 Your listing
 
-As a member I would like to authenticate with my Twitter account so that I can manage my listing.
-As a member I would like to add my listing so that I’m listed.
-As a member I would like to be able to edit my listing so that I can keep it current.
-As a member I would like to be able to delete my listing so that I can remove myself if I want to.
-As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these.
-As a member I would like the app to keep the information it got from Twitter updated so that changes I make on Twitter get propagated to my listing.
+As a member I would like to authenticate with my Twitter account so that I can manage my listing. - #1 3h todo i1
+As a member I would like to add my listing so that I’m listed. - #2 1h todo i1
+As a member I would like to be able to edit my listing so that I can keep it current. - #3 1h todo i2
+As a member I would like to be able to delete my listing so that I can remove myself if I want to. - #4 1h todo i2
+As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these. - #5 1h todo i1
+As a member I would like the app to keep the information it got from Twitter updated so that changes I make on Twitter get propagated to my listing. - #6 2h todo i2
 
 Browse listings
 
-As a visitor I would like to see an overview of membership listings so that I can get an impression of what the movement is about.
-As a visitor I would like to limit the listings overview to specific attributes so that I only see what I’m interested in.
-As a visitor I would like to be able to search membership listings so that I can find a specific one.
-As a member I would like the default listing to be fully randomized on each page load so that nobody gets an unfair advantage.
-As a visitor I don’t want to have to click pagination links so that I don’t get annoyed.
+As a visitor I would like to see an overview of membership listings so that I can get an impression of what the movement is about. - #7 1h todo i1
+As a visitor I would like to limit the listings overview to specific attributes so that I only see what I’m interested in. - #8 2h todo i2
+As a visitor I would like to be able to search membership listings so that I can find a specific one. - #9 2h todo i3
+As a member I would like the default listing to be fully randomized on each page load so that nobody gets an unfair advantage. - #10 1h todo i2
+As a visitor I don’t want to have to click pagination links so that I don’t get annoyed. - #11 1h todo i3
   Additional batches should load automatically when you scroll down.
 
 Classifieds
 
-As a vistor I would like to see an overview of classified ads so that I can get an idea of what’s being offered and what’s needed.
-As a member I would like to see which member posted a classified ad so that I can contact the member.
-As a visitor I would like to limit the classifieds overview to specific attributes so that I only see what I’m interested in.
-As a visitor I would like to be able to search classified ads so that I can find what I’m looking for.
-As a member I would like to post a classified ad so that I can offer or request help or services.
-As a member I would like to be able to edit a classified ad I posted so that I can fix mistakes.
-As a member I would like to be able to remove a classified ad I posted when it’s no longer relevant.
-As an administrator I would like classified ads to be removed automatically after 30 days so that only relevant ads are shown.
+As a vistor I would like to see an overview of classified ads so that I can get an idea of what’s being offered and what’s needed. - #12 1h todo
+As a member I would like to see which member posted a classified ad so that I can contact the member. - #13 1h todo
+As a visitor I would like to limit the classifieds overview to specific attributes so that I only see what I’m interested in. - #14 2h todo
+As a visitor I would like to be able to search classified ads so that I can find what I’m looking for. - #15 2h todo
+As a member I would like to post a classified ad so that I can offer or request help or services. - #16 2h todo
+As a member I would like to be able to edit a classified ad I posted so that I can fix mistakes. - #17 1h todo
+As a member I would like to be able to remove a classified ad I posted when it’s no longer relevant. - #18 1h todo
+As an administrator I would like classified ads to be removed automatically after 30 days so that only relevant ads are shown. - #19 1h todo
 
 Spam management
 
-As a visitor I would like to be able to report a membership listing or classified ad as spam so that an administrator can remove it.
-As an administrator I would like to see an overview of items marked as spam so that I can remove these.
-As an administrator I would like to be able to remove an items marked as spam so that I can keep the overviews free of spam.
-As an administrator I would like to be able to “unmark” an item marked as spam in case it’s legitimate after all.
+As a visitor I would like to be able to report a membership listing or classified ad as spam so that an administrator can remove it. - #20 1h todo i3
+As an administrator I would like to see an overview of items marked as spam so that I can remove these. - #21 1h todo i3
+As an administrator I would like to be able to remove an items marked as spam so that I can keep the overviews free of spam. - #22 1h todo i3
+As an administrator I would like to be able to “unmark” an item marked as spam in case it’s legitimate after all. - #23 1h todo i3
 
 My favorites (optional)
 
-As a visitor I would like to save a membership listing to my favorites so that I can easily find it later.
-As a visitor I would like to view my favorites so that I can use them.
-As a visitor I would like to remove a listing from my favorites so that I can fix a mistake.
+As a visitor I would like to save a membership listing to my favorites so that I can easily find it later. - #24 1h todo
+As a visitor I would like to view my favorites so that I can use them. - #25 1h todo
+As a visitor I would like to remove a listing from my favorites so that I can fix a mistake. - #26 1h todo
 
 Map (optional)
 
-As a visitor I would like to view listings on a map so that I can see where everyone is located.
+As a visitor I would like to view listings on a map so that I can see where everyone is located. - #27 6h todo
