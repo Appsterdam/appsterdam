@@ -54,6 +54,7 @@ describe "On the", SessionsController, "a visitor" do
       { :token => '10qt', :token_secret => 'sxji' }
     )
     should.redirect_to root_url
+    session[:twitter_id].should == 8273682734
   end
   
   it "forgets the request token and secret after completing the authorization step" do
@@ -63,6 +64,17 @@ describe "On the", SessionsController, "a visitor" do
     )
     session[:token].should.be.nil
     session[:token_secret].should.be.nil
+  end
+  
+  it "sees a page explaining something went wrong after declining authorization" do
+    controller.twitter_client.stubs(:authorize).raises(OAuth::Unauthorized.new)
+    get(:show,
+      { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
+      { :token => '10qt', :token_secret => 'sxji' }
+    )
+    status.should.be :ok
+    template.should.be 'sessions/show'
+    assert_select 'h1'
   end
   
   private

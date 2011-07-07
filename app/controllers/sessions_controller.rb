@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     end
     session[:token] = nil
     session[:token_secret] = nil
+  rescue OAuth::Unauthorized
   end
   
   private
