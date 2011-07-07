@@ -33,6 +33,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
+    json (1.5.2)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -40,6 +41,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mysql2 (0.2.11)
+    oauth (0.4.5)
     on-test-spec (0.3.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -67,6 +69,10 @@ GEM
     thor (0.14.6)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
+    twitter_oauth (0.4.3)
+      json (>= 1.1.9)
+      mime-types (>= 1.16)
+      oauth (>= 0.4.1)
     tzinfo (0.3.27)
 
 PLATFORMS
@@ -77,3 +83,4 @@ DEPENDENCIES
   on-test-spec
   rails (= 3.0.9)
   test-spec
+  twitter_oauth (~> 0.4.3)

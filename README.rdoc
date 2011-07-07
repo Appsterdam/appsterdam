@@ -1,0 +1,16 @@
+= Appsterdam Members Listing
+
+We're in full development mode. For background chatter about the development process, check: @appsterdamrs, @fngtps, @alloy, @thijs.
+
+If you want to know what we're building, you can read the {requirements}[https://raw.github.com/Fingertips/appsterdam/master/design/requirements.html].
+
+== Development
+
+First do the regular Rails 3 dance.
+
+    $ bundle install
+    $ rake db:setup
+    $ cp config/initializers/twitter.example.rb config/initializers/twitter.rb
+    $ open config/initializers/twitter.rb
+
+Fix the consumer credentials.

@@ -8,6 +8,12 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Appsterdam
   class Application < Rails::Application
+    class << self
+      # Stores an instance of the Twitter client with
+      # the correct consumer credentials set.
+      attr_accessor :twitter_client
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
