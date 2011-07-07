@@ -1,19 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  twitter_id: 1
-  name: MyString
-  username: MyString
-  picture: MyString
-  location: MyString
-  website: MyString
-  bio: MyString
-
-two:
-  twitter_id: 1
-  name: MyString
-  username: MyString
-  picture: MyString
-  location: MyString
-  website: MyString
-  bio: MyString
+developer:
+  twitter_id: 12345
+  name: Dévin the Dev
+  username: devin
+  picture:
+  location: North
+  website: blog.devin.local
+  bio: Besides being Dévin, I’m also an awesome developer. I love food, I love not making food myself. I play the air guitar and have the air pedals to match match it
