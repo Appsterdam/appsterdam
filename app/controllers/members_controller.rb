@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  allow_access(:authenticated, :only => :edit) { @authenticated.id == Integer(params[:id]) }
+  allow_access(:authenticated, :only => [:edit, :update]) { @authenticated.id == Integer(params[:id]) }
   allow_access :all, :only => [:index, :new, :create]
 
   include Twitter
@@ -25,6 +25,11 @@ class MembersController < ApplicationController
   end
   
   def edit
+  end
+
+  def update
+    @authenticated.update_attributes(params[:member])
+    redirect_to edit_member_url(@authenticated)
   end
 
   private

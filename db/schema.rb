@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707114730) do
+ActiveRecord::Schema.define(:version => 20110707165738) do
 
   create_table "members", :force => true do |t|
     t.string   "twitter_id"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20110707114730) do
     t.string   "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "entity"
+    t.string   "work_location"
   end
 
 end

@@ -57,6 +57,7 @@ describe "On the", MembersController, "a visitor" do
   end
 
   should.require_login.get :edit, :id => members(:developer).to_param
+  should.require_login.put :update, :id => members(:developer).to_param
 
   private
   
@@ -85,5 +86,13 @@ describe "On the", MembersController, "a member" do
     assigns(:authenticated).should == @authenticated
   end
 
+  it "can update her listing" do
+    put :update, :id => @authenticated.to_param, :member => { :entity => 'individual', :work_location => 'appsterdam' }
+    should.redirect_to edit_member_url(@authenticated)
+    @authenticated.reload.entity.should == 'individual'
+    @authenticated.work_location.should == 'appsterdam'
+  end
+
   should.disallow.get :edit, :id => members(:designer)
+  should.disallow.put :update, :id => members(:designer)
 end
