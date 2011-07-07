@@ -37,8 +37,11 @@ class FakeTwitter
 end
 
 describe "On the", SessionsController, "a visitor" do
-  it "is redirected to Twitter for authentication" do
+  before do
     controller.stubs(:twitter_client).returns(fake_twitter)
+  end
+  
+  it "is redirected to Twitter for authentication" do
     get :new
     should.redirect_to assigns(:request_token).authorize_url
     session[:token].should.not.be.blank
@@ -46,12 +49,20 @@ describe "On the", SessionsController, "a visitor" do
   end
   
   it "checks the authentication after returning from Twitter" do
-    controller.stubs(:twitter_client).returns(fake_twitter)
     get(:show,
-      {:oauth_token => 'bzLp', :oauth_verifier => 'uzpO'},
+      { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
       { :token => '10qt', :token_secret => 'sxji' }
     )
     should.redirect_to root_url
+  end
+  
+  it "forgets the request token and secret after completing the authorization step" do
+    get(:show,
+      { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
+      { :token => '10qt', :token_secret => 'sxji' }
+    )
+    session[:token].should.be.nil
+    session[:token_secret].should.be.nil
   end
   
   private

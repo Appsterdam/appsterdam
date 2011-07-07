@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
       login
       redirect_to root_url
     end
+    session[:token] = nil
+    session[:token_secret] = nil
   end
   
   private
