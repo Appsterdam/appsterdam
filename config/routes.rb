@@ -3,8 +3,8 @@ Appsterdam::Application.routes.draw do
   resources :members
   resource :session
   
-  root :to => "sessions#index"
-
+  root :to => "members#index"
+  
   if Rails.env.test?
     # It appears to be impossible to open up the routing after it was finalized without
     # it breaking very minor version of Rails, so we need to include the test routes here.
