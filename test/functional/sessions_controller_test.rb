@@ -77,6 +77,16 @@ describe "On the", SessionsController, "a visitor" do
     assert_select 'h1'
   end
   
+  it "forgets the request token and secret after failing the authorization step" do
+    controller.twitter_client.stubs(:authorize).raises(OAuth::Unauthorized.new)
+    get(:show,
+      { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
+      { :token => '10qt', :token_secret => 'sxji' }
+    )
+    session[:token].should.be.nil
+    session[:token_secret].should.be.nil
+  end
+  
   private
   
   def fake_twitter

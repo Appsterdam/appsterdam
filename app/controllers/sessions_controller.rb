@@ -16,9 +16,10 @@ class SessionsController < ApplicationController
       login
       redirect_to root_url
     end
+  rescue OAuth::Unauthorized
+  ensure
     session[:token] = nil
     session[:token_secret] = nil
-  rescue OAuth::Unauthorized
   end
   
   private
