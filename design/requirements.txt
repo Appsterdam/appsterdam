@@ -17,7 +17,7 @@ As a member I would like the app to keep the information it got from Twitter upd
 
 Browse listings
 
-As a visitor I would like to see an overview of membership listings so that I can get an impression of what the movement is about. - #7 1h todo i1
+As a visitor I would like to see an overview of membership listings so that I can get an impression of what the movement is about. - #7 1h done i1
 As a visitor I would like to limit the listings overview to specific attributes so that I only see what I’m interested in. - #8 2h todo i2
 As a visitor I would like to be able to search membership listings so that I can find a specific one. - #9 2h todo i3
 As a member I would like the default listing to be fully randomized on each page load so that nobody gets an unfair advantage. - #10 1h todo i2
