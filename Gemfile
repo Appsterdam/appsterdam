@@ -6,6 +6,6 @@ gem 'mysql2',        '~> 0.2.6'
 gem 'twitter_oauth', '~> 0.4.3'
 
 group :test do
-  gem 'test-spec'
-  gem 'on-test-spec'
+  gem 'test-spec',    :require => 'test/spec'
+  gem 'on-test-spec', :require => 'test/spec/rails'
 end
