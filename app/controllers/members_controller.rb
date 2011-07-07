@@ -1,5 +1,9 @@
 class MembersController < ApplicationController
-  include Concerns::Twitter
+  include Twitter
+  
+  def index
+    @members = Member.all
+  end
   
   def new
     start_token_request(:oauth_callback => members_url)
