@@ -26,4 +26,8 @@ class MembersController < ApplicationController
   def user_attributes
     twitter_client.info
   end
+
+  def edit
+    @authenticated = Member.find_by_twitter_id(session[:twitter_id])
+  end
 end

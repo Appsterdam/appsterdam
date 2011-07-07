@@ -63,3 +63,16 @@ describe "On the", MembersController, "a visitor" do
     }
   end
 end
+
+describe "On the", MembersController, "a member" do
+  before do
+    login(members(:developer))
+  end
+
+  it "sees a form so she can update her listing" do
+    get :edit, :id => @authenticated.to_param
+    status.should.be :ok
+    template.should.be 'members/edit'
+    assigns(:authenticated).should == @authenticated
+  end
+end
