@@ -1,4 +1,7 @@
 class MembersController < ApplicationController
+  allow_access(:authenticated, :only => :edit) { @authenticated.id == Integer(params[:id]) }
+  allow_access :all, :only => [:index, :new, :create]
+
   include Twitter
   
   def index
@@ -21,13 +24,12 @@ class MembersController < ApplicationController
     end
   end
   
+  def edit
+  end
+
   private
   
   def user_attributes
     twitter_client.info
-  end
-
-  def edit
-    @authenticated = Member.find_by_twitter_id(session[:twitter_id])
   end
 end

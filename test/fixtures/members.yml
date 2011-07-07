@@ -1,8 +1,16 @@
 developer:
-  twitter_id: 12345
+  twitter_id: 1234
   name: Dévin the Dev
   username: devin
   picture:
-  location: North
+  location: North-pole
   website: blog.devin.local
   bio: Besides being Dévin, I’m also an awesome developer. I love food, I love not making food myself. I play the air guitar and have the air pedals to match match it
+designer:
+  twitter_id: 5678
+  name: Desiree the Designer
+  username: desiree
+  picture:
+  location: Southe-pole
+  website: blog.desiree.local
+  bio: I keep it short.

@@ -55,7 +55,9 @@ describe "On the", MembersController, "a visitor" do
     template.should.be 'members/unauthorized'
     assert_select 'h1'
   end
-  
+
+  should.require_login.get :edit, :id => members(:developer).to_param
+
   private
   
   def user_attributes
@@ -82,4 +84,6 @@ describe "On the", MembersController, "a member" do
     template.should.be 'members/edit'
     assigns(:authenticated).should == @authenticated
   end
+
+  should.disallow.get :edit, :id => members(:designer)
 end
