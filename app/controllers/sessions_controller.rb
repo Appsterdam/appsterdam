@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     redirect_to @request_token.authorize_url
   end
   
-  def show
+  def create
     twitter_client.authorize(
       session[:token],
       session[:token_secret],
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     end
   rescue OAuth::Unauthorized
+    render :unauthorized
   ensure
     session[:token] = nil
     session[:token_secret] = nil

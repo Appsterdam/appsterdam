@@ -1,4 +1,3 @@
 Manfred
 
-- Figure out why the OAuth authorization with Twitter isn't temporary
 - Refactor the OAuth code in the members and sessions controller

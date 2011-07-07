@@ -13,7 +13,7 @@ describe "On the", SessionsController, "a visitor" do
   end
   
   it "checks the authentication after returning from Twitter" do
-    get(:show,
+    get(:create,
       { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
       { :token => '10qt', :token_secret => 'sxji' }
     )
@@ -22,7 +22,7 @@ describe "On the", SessionsController, "a visitor" do
   end
   
   it "forgets the request token and secret after completing the authorization step" do
-    get(:show,
+    get(:create,
       { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
       { :token => '10qt', :token_secret => 'sxji' }
     )
@@ -32,18 +32,18 @@ describe "On the", SessionsController, "a visitor" do
   
   it "sees a page explaining something went wrong after declining authorization" do
     controller.twitter_client.stubs(:authorize).raises(OAuth::Unauthorized.new)
-    get(:show,
+    get(:create,
       { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
       { :token => '10qt', :token_secret => 'sxji' }
     )
     status.should.be :ok
-    template.should.be 'sessions/show'
+    template.should.be 'sessions/unauthorized'
     assert_select 'h1'
   end
   
   it "forgets the request token and secret after failing the authorization step" do
     controller.twitter_client.stubs(:authorize).raises(OAuth::Unauthorized.new)
-    get(:show,
+    get(:create,
       { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
       { :token => '10qt', :token_secret => 'sxji' }
     )
