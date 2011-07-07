@@ -11,7 +11,7 @@ As a member I would like to authenticate with my Twitter account so that I can m
 As a member I would like to add my listing so that I’m listed. - #2 1h todo i1
 As a member I would like to be able to edit my listing so that I can keep it current. - #3 1h todo i2
 As a member I would like to be able to delete my listing so that I can remove myself if I want to. - #4 1h todo i2
-As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these. - #5 1h todo i1
+As a member I would like the app to get my Twitter ID, name, username, picture, location, website url, and bio so that I don’t have to enter these. - #5 1h done i1
   See http://dev.twitter.com/doc/get/users/show
 As a member I would like the app to keep the information it got from Twitter updated so that changes I make on Twitter get propagated to my listing. - #6 2h todo i2
 
