@@ -1,6 +1,5 @@
 Appsterdam::Application.routes.draw do
-  match '/members' => 'members#create'
-  match '/session' => 'session#create'
+  match '/members/create' => 'members#create', :as => :create_members
   resources :members
   resource :session
   

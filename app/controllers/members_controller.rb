@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   end
   
   def new
-    start_token_request(:oauth_callback => members_url)
+    start_token_request(:oauth_callback => create_members_url)
   end
   
   def create
