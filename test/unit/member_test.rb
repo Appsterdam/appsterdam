@@ -18,20 +18,22 @@ describe Member, "concerning validation" do
 end
 
 describe Member do
-  xit "creates a new record with the JSON data returned by twitter.com" do
-    expected = members(:developer); expected.delete
-    created = Member.create_with_profile_data(File.read(fixture('TwitterAPI/users-show.json')))
-    created.should == expected
-  end
-end
-
-describe "A", Member do
-  before do
-    @member = members(:developer)
-  end
-
-  xit "updates its profile data from twitter.com" do
-    @member = Member.new
-    @member.fetch_profile_data!
+  it "creates a new member with user data from the Twitter client" do
+    attributes = {
+      'id' => 6922782,
+      'name' => 'Helen Old',
+      'screen_name' => 'helenold',
+      'profile_image_url' => 'http://a2.twimg.com/profile_images/1381947723234/image.png',
+      'location' => 'Amsterdam, the Netherlands',
+      'url' => 'http://helenold.blogger.com',
+      'description' => 'I like nitting'
+    }
+    user = stub(attributes)
+    member = nil
+    lambda {
+      member = Member.create_with_twitter_user(user)
+    }.should.differ('Member.count', +1)
+    member.twitter_id.should == user.id
+    member.username.should == user.screen_name
   end
 end
