@@ -1,0 +1,192 @@
+body,
+html
+{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#page
+{
+  padding: 1em;
+}
+body,
+select,
+textarea
+{
+  font: 14px/1.5 sans-serif;
+}
+a
+{
+  color: #00f;
+}
+h1
+{
+  font-size: 200%;
+}
+h1 a
+{
+  font-weight: normal;
+  font-size: 50%;
+}
+h2
+{
+  margin: 0;
+}
+h2 a
+{
+  text-decoration: none;
+}
+ul
+{
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+li
+{
+  list-style-type: none;
+}
+div.actions
+{
+  float: right;
+}
+div.actions span
+{
+  color: #aaa;
+}
+div.selection
+{
+  font-size: 150%;
+}
+div.selection span
+{
+  position: relative;
+  padding: 8px;
+  margin: -8px;
+}
+div.selection span a
+{
+  text-decoration: none;
+}
+div.selection span > a
+{
+  border-bottom: 2px solid #00f;
+  cursor: pointer;
+}
+div.selection span li a
+{
+  display: block;
+  padding: 2px 8px;
+}
+div.selection span li a:hover
+{
+  background-color: #00f;
+  color: #fff;
+}
+div.selection span li a:active
+{
+  background-color: #00c;
+}
+div.selection ul
+{
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #888;
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+div.selection .active ul
+{
+  display: block;
+}
+div.selection li
+{
+  white-space: nowrap;
+}
+div.member
+{
+  position: relative;
+  float: left;
+  width: 40%;
+  margin: 1em 1em 0 0;
+  padding: 1em;
+  border: 1px solid black;
+}
+div.member img
+{
+  width: 48px;
+  height: 48px;
+}
+div.member ul.tags
+{
+  padding: 0;
+  font-size: 80%;
+}
+div.member ul.tags li
+{
+  display: inline-block;
+  margin: 4px 4px 0 0;
+  padding: 2px 4px 0px 4px;
+  list-style-type: none;
+  background-color: #444;
+  color: #fff;
+}
+div.member div.meta
+{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  text-align: right;
+}
+div.member li.report
+{
+  display: none;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+div.member:hover li.report
+{
+  display: block;
+}
+label
+{
+  display: block;
+}
+fieldset
+{
+    border: 1px solid black;
+}
+fieldset,
+fieldset > div
+{
+  margin: 1em 0;
+}
+fieldset legend
+{
+  font-weight: bold;
+}
+fieldset p
+{
+  margin: 0;
+  color: #888;
+}
+input[type=text],
+textarea
+{
+  width: 50%;
+}
+textarea
+{
+  height: 7em;
+}
+dt
+{
+  float: left;
+  width: 10em;
+}
+
