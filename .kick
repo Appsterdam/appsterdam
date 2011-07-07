@@ -1,3 +1,7 @@
+recipe :ignore
+ignore /^\.git\//
+ignore /\.swp$/
+
 process do |files|
   files.take_and_map do |file|
     case file
