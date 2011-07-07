@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  include Concerns::Twitter
+  include Twitter
   
   def new
     start_token_request(:oauth_callback => session_url)
