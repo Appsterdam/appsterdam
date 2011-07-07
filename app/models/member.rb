@@ -2,15 +2,15 @@ class Member < ActiveRecord::Base
   validates_presence_of :twitter_id
   validates_uniqueness_of :twitter_id
   
-  def self.create_with_twitter_user(user)
+  def self.create_with_twitter_user(attributes)
     create(
-      :twitter_id => user.id,
-      :name => user.name,
-      :username => user.screen_name,
-      :picture => user.profile_image_url,
-      :location => user.location,
-      :website => user.url,
-      :bio => user.description
+      :twitter_id => attributes['id'],
+      :name => attributes['name'],
+      :username => attributes['screen_name'],
+      :picture => attributes['profile_image_url'],
+      :location => attributes['location'],
+      :website => attributes['url'],
+      :bio => attributes['description']
     )
   end
 end

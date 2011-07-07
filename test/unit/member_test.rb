@@ -28,12 +28,11 @@ describe Member do
       'url' => 'http://helenold.blogger.com',
       'description' => 'I like nitting'
     }
-    user = stub(attributes)
     member = nil
     lambda {
-      member = Member.create_with_twitter_user(user)
+      member = Member.create_with_twitter_user(attributes)
     }.should.differ('Member.count', +1)
-    member.twitter_id.should == user.id
-    member.username.should == user.screen_name
+    member.twitter_id.should == attributes['id']
+    member.username.should == attributes['screen_name']
   end
 end
