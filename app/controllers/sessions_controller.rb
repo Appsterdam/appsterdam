@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   private
   
   def twitter_client
-    @twitter_client ||= Appsterdam::Application.twitter_client
+    @twitter_client ||= TwitterOAuth::Client.new(Appsterdam::Application.twitter_options)
   end
   
   def login

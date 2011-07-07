@@ -1,4 +1,4 @@
-Appsterdam::Application.twitter_client = TwitterOAuth::Client.new(
+Appsterdam::Application.twitter_options = {
   :consumer_key    => 'consumer_key',
   :consumer_secret => 'consumer_secret'
-)
+}
