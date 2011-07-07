@@ -1,0 +1,11 @@
+<div class="<%= member_classes(member) %>">
+  <h2>
+    <%= link_to(member.website) do %>
+      <img src="<%= member.picture %>">
+      <%= member.name %>
+    <% end %>
+  </h2>
+  <p><%= link_to member_domain(member.website), member.website %></p>
+  <p><%= member.bio %></p>
+  <%# TODO: tags, meta, controls %>
+</div>

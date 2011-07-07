@@ -5,6 +5,13 @@ describe "On the", MembersController, "a visitor" do
     controller.stubs(:twitter_client).returns(fake_twitter)
   end
   
+  it "sees a list of members" do
+    get :index
+    status.should.be :ok
+    template.should.be 'members/index'
+    assert_select 'h1'
+  end
+  
   it "starts the process to add herself to the listing" do
     get :new
     should.redirect_to assigns(:request_token).authorize_url
