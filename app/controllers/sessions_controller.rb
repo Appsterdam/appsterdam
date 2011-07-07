@@ -21,14 +21,4 @@ class SessionsController < ApplicationController
     session[:token] = nil
     session[:token_secret] = nil
   end
-  
-  private
-  
-  def twitter_client
-    @twitter_client ||= TwitterOAuth::Client.new(Appsterdam::Application.twitter_options)
-  end
-  
-  def login
-    session[:twitter_id] = twitter_client.user.id
-  end
 end
