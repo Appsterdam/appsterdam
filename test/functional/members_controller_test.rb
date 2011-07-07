@@ -23,6 +23,32 @@ describe "On the", MembersController, "a visitor" do
     should.redirect_to edit_member_url(assigns(:member))
   end
   
+  it "does not create a new member when it already exists" do
+    attributes = user_attributes
+    attributes['id'] = members(:developer).twitter_id
+    controller.twitter_client.stubs(:user).returns([{'user' => attributes}])
+    lambda {
+      get(:create,
+        { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
+        { :token => '10qt', :token_secret => 'sxji' }
+      )
+    }.should.not.differ('Member.count')
+    status.should.be :ok
+    template.should.be 'members/exists'
+    assert_select 'h1'
+  end
+  
+  it "sees a failure message when authorization failed" do
+    controller.twitter_client.stubs(:authorize).raises(OAuth::Unauthorized.new)
+    get(:create,
+      { :oauth_token => 'bzLp', :oauth_verifier => 'uzpO' },
+      { :token => '10qt', :token_secret => 'sxji' }
+    )
+    status.should.be :ok
+    template.should.be 'members/unauthorized'
+    assert_select 'h1'
+  end
+  
   private
   
   def user_attributes

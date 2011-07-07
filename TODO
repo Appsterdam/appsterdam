@@ -2,3 +2,5 @@ Manfred
 
 - Figure out why the OAuth authorization with Twitter isn't temporary
 - Refactor the OAuth code in the members and sessions controller
+- Figure out what the best way is to get the user attributes from the OAuth lib
+- Fix the twitter_id in the application controller

@@ -14,12 +14,24 @@ class MembersController < ApplicationController
     )
     if twitter_client.authorized?
       login
-      @member = Member.create_with_twitter_user(twitter_client.user.first['user'])
-      redirect_to edit_member_url(@member)
+      @member = Member.create_with_twitter_user(user_attributes)
+      if @member.errors.empty?
+        redirect_to edit_member_url(@member)
+      else
+        @member = Member.find_by_twitter_id(user_attributes['id'])
+        render :exists
+      end
     end
   rescue OAuth::Unauthorized
+    render :unauthorized
   ensure
     session[:token] = nil
     session[:token_secret] = nil
+  end
+  
+  private
+  
+  def user_attributes
+    twitter_client.user.first['user']
   end
 end
