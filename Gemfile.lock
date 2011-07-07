@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.9)
     activesupport (3.0.9)
     arel (2.0.10)
+    authorization-san (2.0.1)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -80,6 +81,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authorization-san (~> 2.0.1)
   mocha
   mysql2 (~> 0.2.6)
   on-test-spec
