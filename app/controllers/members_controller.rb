@@ -32,6 +32,6 @@ class MembersController < ApplicationController
   private
   
   def user_attributes
-    twitter_client.user.first['user']
+    twitter_client.info
   end
 end

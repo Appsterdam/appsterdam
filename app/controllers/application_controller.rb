@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
   
   def login
-    session[:twitter_id] = twitter_client.user.id
+    session[:twitter_id] = twitter_client.info['id']
   end
 end

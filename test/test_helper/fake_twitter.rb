@@ -25,11 +25,7 @@ class FakeTwitter
     @authorized
   end
   
-  def user
-    if @authorized
-      user = FakeUser.new
-      user.id = 8273682734
-      user
-    end
+  def info
+    { 'id' => 8273682734 }
   end
 end
