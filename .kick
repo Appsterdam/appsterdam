@@ -15,3 +15,11 @@ process do |files|
     end
   end
 end
+
+process do |files|
+  if gemfile = files.delete('Gemfile')
+    execute "bundle install"
+  end
+end
+
+recipe :rails
