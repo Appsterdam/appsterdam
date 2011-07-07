@@ -1,26 +1,57 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class FakeTwitter
+  attr_accessor :authorized
+  
   class FakeRequestToken
     attr_accessor :authorize_url, :token, :secret
+  end
+  
+  class FakeUser
+    attr_accessor :id
   end
   
   def authentication_request_token(options={})
     request_token = FakeRequestToken.new
     request_token.authorize_url = 'http://fake.twitter.com/as32df76'
-    request_token.token = 'iu87er56'
-    request_token.secret = 'hj76df87'
+    request_token.token = '10qt'
+    request_token.secret = 'sxji'
     request_token
+  end
+  
+  def authorize(token, secret, options={})
+    @authorized = (options[:oauth_verifier] == 'uzpO')
+  end
+  
+  def authorized?
+    @authorized
+  end
+  
+  def user
+    if @authorized
+      user = FakeUser.new
+      user.id = 8273682734
+      user
+    end
   end
 end
 
 describe "On the", SessionsController, "a visitor" do
-  it "is redirected to twitter for authentication" do
+  it "is redirected to Twitter for authentication" do
     controller.stubs(:twitter_client).returns(fake_twitter)
     get :new
     should.redirect_to assigns(:request_token).authorize_url
     session[:token].should.not.be.blank
     session[:token_secret].should.not.be.blank
+  end
+  
+  it "checks the authentication after returning from Twitter" do
+    controller.stubs(:twitter_client).returns(fake_twitter)
+    get(:show,
+      {:oauth_token => 'bzLp', :oauth_verifier => 'uzpO'},
+      { :token => '10qt', :token_secret => 'sxji' }
+    )
+    should.redirect_to root_url
   end
   
   private

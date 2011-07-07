@@ -6,9 +6,25 @@ class SessionsController < ApplicationController
     redirect_to @request_token.authorize_url
   end
   
+  def show
+    twitter_client.authorize(
+      session[:token],
+      session[:token_secret],
+      :oauth_verifier => params[:oauth_verifier]
+    )
+    if twitter_client.authorized?
+      login
+      redirect_to root_url
+    end
+  end
+  
   private
   
   def twitter_client
-    Appsterdam::Application.twitter_client
+    @twitter_client ||= Appsterdam::Application.twitter_client
+  end
+  
+  def login
+    session[:twitter_id] = twitter_client.user.id
   end
 end
