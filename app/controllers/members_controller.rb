@@ -23,9 +23,6 @@ class MembersController < ApplicationController
       end
     end
   end
-  
-  def edit
-  end
 
   def update
     @authenticated.update_attributes(params[:member])

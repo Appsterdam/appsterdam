@@ -1,1 +1,99 @@
-Pretty much empty for now.
+<h1>Add your membership listing</h1>
+
+<%= form_for @authenticated do |f| %>
+
+<fieldset>
+  <legend>Profile</legend>
+  <dl>
+  <dt>Image:<dt>
+  <dd><%= image_tag @authenticated.picture %></dd>
+  <dt>Twitter username:</dt>
+  <dd><%=h @authenticated.username %></dd>
+  <!-- NOTE: We should use the Twitter ID internally because the username can be changed. -->
+  <dt>Name:</dt>
+  <dd><%=h @authenticated.name %></dd>
+  <dt>Location:</dt>
+  <dd><%=h @authenticated.location %></dd>
+  <dt>Web:</dt>
+  <dd><%= link_to @authenticated.website, @authenticated.website %></dd>
+  <dt>Description:</dt>
+  <dd><%=h @authenticated.bio %></dd>
+  </dl>
+  <p>Want to make changes? Update your profile information on Twitter, then return to this page.</p>
+</fieldset>
+
+<fieldset>
+  <legend>Listing</legend>
+  <div>
+    What are you?
+    <label><%= f.radio_button :entity, "company" %> Company</label>
+    <label><%= f.radio_button :entity, "student" %> Student</label>
+    <label><%= f.radio_button :entity, "individual" %> Individual</label>
+    <label><%= f.radio_button :entity, "group" %> Group (user group, non-profit collective, etc.)</label>
+  </div>
+  <div class="when_type_is company">
+    <label>Is your company currently hiring? Please enter the webpage with your job offer(s) below:</label>
+    <input type="text">
+  </div>
+  <div class="when_type_is student individual">
+    Are you currently available for hire?
+    <label><input type="checkbox"> Yes, I’m available for hire</label>
+  </div>
+  <div>
+    Where do you work?
+    <label><%= f.radio_button :work_location, "appsterdam" %> I work in or nearby Amsterdam (you’re an Appsterdammer)</label>
+    <label><%= f.radio_button :work_location, "applander" %> I work somewhere else, but close enough to participate in events (you’re an Applander)</label>
+    <label><%= f.radio_button :work_location, "appbroader" %> I work elsewhere in the world (you’re an Appbroader)</label>
+  </div>
+  <div>
+    <span class="when_type_is company">
+      What kind of work does your company do?
+    </span>
+    <span class="when_type_is student">
+      What kind of subjects do you study?
+    </span>
+    <span class="when_type_is individual default">
+      What kind of work do you do?
+    </span>
+    <span class="when_type_is group">
+      What subjects is your group concerned with?
+    </span>
+    <label><input type="checkbox"> Design</label>
+    <label><input type="checkbox"> Development</label>
+    <label><input type="checkbox"> Marketing</label>
+    <label><input type="checkbox"> Management / Executive</label>
+    <label><input type="checkbox"> Support / Customer service</label>
+  </div>
+  <div>
+    For which platforms?
+    <label><input type="checkbox"> The Web</label>
+    <label><input type="checkbox"> iOS</label>
+    <label><input type="checkbox"> Android</label>
+    <label><input type="checkbox"> Windows Phone 7</label>
+    <label><input type="checkbox"> WebOS</label>
+    <label><input type="checkbox"> Mac OS X</label>
+    <label><input type="checkbox"> Windows</label>
+  </div>
+</fieldset>
+
+<button>Add membership listing</button>
+<a href="members.html">Cancel and go back</a>
+
+<% end %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script>
+(function(){
+  $(".when_type_is:not(.default)").hide();
+  function update(field) {
+    $(".when_type_is:not(." + field.value + ")").hide();
+    $(".when_type_is." + field.value).show();
+  }
+  $("input[name=type]").click(function() {
+    update(this);
+  })
+  $("input[name=type][checked]").each(function() {
+    update(this);
+  });
+})();
+</script>

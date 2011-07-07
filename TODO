@@ -1,3 +1,6 @@
-- Think of better way to express Member#work_location
+- Use form helpers in members/edit.
+- Think of better way to express Member#work_location, the design html uses `where'.
+- Do we need a helper that formats the user's web site url properly?
+- Autolink @handle in member bio?
 - Create actual 401/403 html pages
 - Figure out the proper way to add routes in tests
