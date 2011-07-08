@@ -6,6 +6,7 @@ class MembersController < ApplicationController
   
   def index
     @members = Member.randomized
+    @selection = Selection.new(params)
   end
   
   def new

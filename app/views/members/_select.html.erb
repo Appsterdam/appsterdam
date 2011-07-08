@@ -1,13 +1,12 @@
 <div class="selection">Showing
 <span>
-<a href="#">all members</a>
-<ul>
-  <li class="current"><a href="#">all members</a></li>
-  <li><a href="#">companies</a></li>
-  <li><a href="#">students</a></li>
-  <li><a href="#">individuals</a></li>
-  <li><a href="#">groups</a></li>
-</ul>
+<%== member_facet_links(@selection, :entity, ActiveSupport::OrderedHash[[
+  ['all',        'all members'],
+  ['company',    'companies'],
+  ['student',    'students'],
+  ['individual', 'individuals', ],
+  ['group',      'groups']
+]]) %>
 </span>
 who
 <span>

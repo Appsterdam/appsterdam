@@ -55,4 +55,22 @@ describe MemberHelper do
       member_meta(stub(:entity => nil, :available_for_hire? => false, :work_location => nil, :job_offers_url => offer_url)).should.be.nil
     end
   end
+  
+  it "formats facet links for the current selection" do
+    member_facet_links(Selection.new, :entity, ActiveSupport::OrderedHash[[
+      ['all',        'all members'],
+      ['company',    'companies'],
+      ['student',    'students'],
+      ['individual', 'individuals', ],
+      ['group',      'groups']
+    ]]).should == "<a href=\"#\">all members</a><ul><li><a href=\"/members?entity=all\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
+    
+    member_facet_links(Selection.new(:entity => 'student'), :entity, ActiveSupport::OrderedHash[[
+      ['all',        'all members'],
+      ['company',    'companies'],
+      ['student',    'students'],
+      ['individual', 'individuals', ],
+      ['group',      'groups']
+    ]]).should == "<a href=\"#\">students</a><ul><li><a href=\"/members?entity=all\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
+  end
 end
