@@ -10,10 +10,13 @@ module MemberHelper
     website.split('://', 2).last
   end
   
-  def member_platforms(platforms)
+  def member_tags(work_types, platforms)
     out = ''
-    unless platforms.blank?
+    unless work_types.blank? and platforms.blank?
       out << '<ul class="tags">'
+      for work_type in work_types
+        out << "<li>#{Member::WORK_TYPES[work_type]}</li>"
+      end
       for platform in platforms
         out << "<li>#{Member::PLATFORMS[platform]}</li>"
       end

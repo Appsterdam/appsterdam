@@ -7,6 +7,6 @@
   </h2>
   <p><%= link_to member_domain(member.website), member.website %></p>
   <p><%= member.bio %></p>
-  <%== member_platforms(member.platforms) %>
+  <%== member_tags(member.work_types, member.platforms) %>
   <%== member_meta(member) %>
 </div>

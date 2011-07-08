@@ -17,23 +17,17 @@ describe MemberHelper do
     end
   end
   
-  it "formats the member's plaforms" do
+  it "formats tags about the member" do
     [
-      [nil, ''],
-      ['', ''],
-      [%w(), ''],
-      [%w(windows-phone-7), "<ul class=\"tags\"><li>Windows Phone 7</li></ul>"],
-      [%w(web ios osx ), "<ul class=\"tags\"><li>The Web</li><li>iOS</li><li>Mac OS X</li></ul>"]
-    ].each do |example, expected|
-      member_platforms(example).should == expected
+      [nil, nil, ''],
+      ['', '', ''],
+      [%w(), %(), ''],
+      [%w(design), %w(windows-phone-7), "<ul class=\"tags\"><li>Design</li><li>Windows Phone 7</li></ul>"],
+      [%w(development marketing), %w(web ios osx ), "<ul class=\"tags\"><li>Development</li><li>Marketing</li><li>The Web</li><li>iOS</li><li>Mac OS X</li></ul>"]
+    ].each do |work_types, platforms, expected|
+      member_tags(work_types, platforms).should == expected
     end
   end
-  
-  # t.string   "work_location"
-  # t.text     "platforms"
-  # t.text     "job_offers_url"
-  # t.boolean  "available_for_hire"
-  # t.text     "work_types"
   
   it "formates the meta information about a member" do
     [
