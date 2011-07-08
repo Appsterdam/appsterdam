@@ -50,4 +50,16 @@ describe "On the", SessionsController, "a visitor" do
     session[:token].should.be.nil
     session[:token_secret].should.be.nil
   end
+  
+  it "logs out when clearing the session" do
+    get :clear, {}, {:twitter_id => 1234 }
+    session[:twitter_id].should.be.blank
+    should.redirect_to root_url
+  end
+  
+  it "redirects back after logging out" do
+    request.env["HTTP_REFERER"] = 'http://example.org/back'
+    get :clear
+    should.redirect_to request.env["HTTP_REFERER"]
+  end
 end

@@ -28,7 +28,11 @@ class ApplicationController < ActionController::Base
   def login
     session[:twitter_id] = twitter_client.info['id']
   end
-
+  
+  def logout
+    session.delete(:twitter_id)
+  end
+  
   # Responds with a http status code and an error document
   def send_response_document(status)
     format = (request.format === [Mime::XML, Mime::JSON]) ? request.format : Mime::HTML

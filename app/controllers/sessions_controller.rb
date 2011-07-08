@@ -12,4 +12,13 @@ class SessionsController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def clear
+    logout
+    if request.env["HTTP_REFERER"]
+      redirect_to :back
+    else
+      redirect_to root_url
+    end
+  end
 end
