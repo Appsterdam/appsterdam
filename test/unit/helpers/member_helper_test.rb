@@ -21,6 +21,7 @@ describe MemberHelper do
     [
       [nil, nil, ''],
       ['', '', ''],
+      [%w(), nil, ''],
       [%w(), %(), ''],
       [%w(design), %w(windows-phone-7), "<ul class=\"tags\"><li>Design</li><li>Windows Phone 7</li></ul>"],
       [%w(development marketing), %w(web ios osx ), "<ul class=\"tags\"><li>Development</li><li>Marketing</li><li>The Web</li><li>iOS</li><li>Mac OS X</li></ul>"]
