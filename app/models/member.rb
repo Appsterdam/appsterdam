@@ -9,6 +9,14 @@ class Member < ActiveRecord::Base
     ['windows',         'Windows']
   ]]
 
+  WORK_TYPES = ActiveSupport::OrderedHash[[
+    ['design',                   'Design'],
+    ['development',              'Development'],
+    ['marketing',                'Marketing'],
+    ['management-executive',     'Management / Executive'],
+    ['support-customer_service', 'Support / Customer service']
+  ]]
+
   def twitter_user_attributes=(attributes)
     self.attributes = {
       :twitter_id => attributes['id'],
@@ -45,9 +53,13 @@ class Member < ActiveRecord::Base
   end
 
   serialize :platforms, Array
+  def platforms=(value)
+    write_attribute :platforms, value.reject(&:blank?)
+  end
 
-  def platforms=(platforms)
-    write_attribute :platforms, platforms.reject(&:blank?)
+  serialize :work_types, Array
+  def work_types=(value)
+    write_attribute :work_types, value.reject(&:blank?)
   end
 
   def hiring?
@@ -63,12 +75,20 @@ class Member < ActiveRecord::Base
   private
 
   def supported_platforms
-    if platforms && !(invalid = platforms - PLATFORMS.keys).empty?
-      errors.add(:platforms, "currently can't include #{invalid.to_sentence}")
+    check_that_elements_are_allowed :platforms, PLATFORMS.keys, platforms
+  end
+
+  def supported_work_types
+    check_that_elements_are_allowed :work_types, WORK_TYPES.keys, work_types
+  end
+
+  def check_that_elements_are_allowed(attr, allowed, actual)
+    if actual && !(invalid = actual - allowed).empty?
+      errors.add(attr, "currently can't include #{invalid.to_sentence}")
     end
   end
 
   validates_presence_of :twitter_id
   validates_uniqueness_of :twitter_id
-  validate :supported_platforms
+  validate :supported_platforms, :supported_work_types
 end

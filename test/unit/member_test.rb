@@ -17,10 +17,18 @@ describe Member, "concerning validation" do
   end
 
   it "requires the platforms to be in the available platforms list" do
-    @member.platforms = %w{ web ios android windows-phone-7 webos osx windows beos}
+    @member.platforms = %w{ web ios android windows-phone-7 webos osx windows beos }
     @member.should.be.invalid
     @member.errors[:platforms].should.not.be.blank
     @member.platforms = %w{ web ios android windows-phone-7 webos osx windows }
+    @member.should.be.valid
+  end
+
+  it "requires the work types to be in the available platforms list" do
+    @member.work_types = %w{ design development marketing management-executive support-customer_service dompteur }
+    @member.should.be.invalid
+    @member.errors[:work_types].should.not.be.blank
+    @member.work_types = %w{ design development marketing management-executive support-customer_service }
     @member.should.be.valid
   end
 end
@@ -106,5 +114,15 @@ describe "A", Member do
   it "santizes the platforms input" do
     @member.platforms = ['ios', '', 'osx']
     @member.platforms.should == %w{ ios osx }
+  end
+
+  it "takes a list of work types the member has experience with" do
+    @member.update_attribute :work_types, %w{ design marketing }
+    @member.reload.work_types.should == %w{ design marketing }
+  end
+
+  it "sanitizes the work types input" do
+    @member.work_types = ['design', 'marketing', '']
+    @member.work_types.should == %w{ design marketing }
   end
 end

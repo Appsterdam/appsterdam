@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708112814) do
+ActiveRecord::Schema.define(:version => 20110708124407) do
 
   create_table "members", :force => true do |t|
     t.string   "twitter_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110708112814) do
     t.text     "platforms"
     t.text     "job_offers_url"
     t.boolean  "available_for_hire"
+    t.text     "work_types"
   end
 
 end

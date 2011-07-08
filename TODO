@@ -1,6 +1,6 @@
 - Remove cancel link from members/edit, because there's nothing to cancel and add a remove account action.
 - Use form helpers in members/edit.
-- Think of better way to express Member#work_location, the design html uses `where'.
+- Think of better way to express Member#work_location (the design html uses `where') and Member#work_types.
 - Do we need a helper that formats the user's web site url properly?
 - Autolink @handle in member bio?
 - Create actual 401/403 html pages

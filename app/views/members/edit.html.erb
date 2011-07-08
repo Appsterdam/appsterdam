@@ -60,11 +60,9 @@
       <span class="when_entity_is group">
         What subjects is your group concerned with?
       </span>
-      <label><input type="checkbox"> Design</label>
-      <label><input type="checkbox"> Development</label>
-      <label><input type="checkbox"> Marketing</label>
-      <label><input type="checkbox"> Management / Executive</label>
-      <label><input type="checkbox"> Support / Customer service</label>
+      <% Member::WORK_TYPES.each do |value, label| %>
+        <label><%= f.check_box :work_types, { :multiple => true }, value, '' %> <%= label %></label>
+      <% end %>
     </div>
 
     <div>
