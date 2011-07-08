@@ -31,8 +31,12 @@ describe MemberHelper do
   
   it "formates the meta information about a member" do
     [
-      [stub(:available_for_hire? => false), "<div class=\"meta\"></div>"],
-      [stub(:available_for_hire? => true), "<div class=\"meta\">Available for hire</div>"]
+      [stub(:entity => nil, :available_for_hire? => false, :work_location => nil),
+        nil],
+      [stub(:entity => 'individual', :available_for_hire? => false, :work_location => 'applander'),
+        "<div class=\"meta\">An individual close to Appsterdam</div>"],
+      [stub(:entity => 'company', :available_for_hire? => true, :work_location => 'appsterdammer'),
+        "<div class=\"meta\">A company<br>Available for hire</div>"]
     ].each do |example, expected|
       member_meta(example).should == expected
     end

@@ -25,9 +25,23 @@ module MemberHelper
     out
   end
   
+  def member_description(member)
+    out = "#{member.entity == 'individual' ? 'An' : 'A'} #{member.entity}"
+    case member.work_location
+    when 'appsterdam'
+      out << " in Appsterdam"
+    when 'applander'
+      out << " close to Appsterdam"
+    when 'appbroader'
+      out << " interested in Appsterdam"
+    end
+    out
+  end
+  
   def member_meta(member)
     meta = []
+    meta << member_description(member) unless member.entity.blank?
     meta << 'Available for hire' if member.available_for_hire? 
-    "<div class=\"meta\">#{meta.join('<br>')}</div>"
+    "<div class=\"meta\">#{meta.join('<br>')}</div>" unless meta.empty?
   end
 end
