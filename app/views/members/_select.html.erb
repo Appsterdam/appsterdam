@@ -10,37 +10,34 @@
 </span>
 who
 <span>
-<a href="#">are anywhere</a>
-<ul>
-  <li class="current"><a href="#">are anywhere</a></li>
-  <li><a href="#">Appsterdammers</a></li>
-  <li><a href="#">Applanders</a></li>
-  <li><a href="#">Appbroaders</a></li>
-</ul>
+<%== member_facet_links(@selection, :work_location, ActiveSupport::OrderedHash[[
+  ['all',           'are anywhere'],
+  ['appsterdammer', 'are Appsterdammers'],
+  ['applander',     'are Applanders'],
+  ['appbroader',    'are Appbroaders', ]
+]]) %>
 </span>
 doing
 <span>
-<a href="#">any work</a>
-<ul>
-  <li class="current"><a href="#">any work</a></li>
-  <li><a href="#">design</a></li>
-  <li><a href="#">development</a></li>
-  <li><a href="#">Management / Executive</a></li>
-  <li><a href="#">Support / Customer service</a></li>
-</ul>
+<%== member_facet_links(@selection, :work_type, ActiveSupport::OrderedHash[[
+  ['all',                      'any work'],
+  ['design',                   'design'],
+  ['development',              'development'],
+  ['management-executive',     'Management / Executive'],
+  ['support-customer_service', 'Support / Customer service']
+]]) %>
 </span>
 for
 <span>
-<a href="#">iOS</a>.
-<ul>
-  <li><a href="#">any platform</a></li>
-  <li><a href="#">The Web</a></li>
-  <li class="current"><a href="#">iOS</a></li>
-  <li><a href="#">Android</a></li>
-  <li><a href="#">Windows Phone 7</a></li>
-  <li><a href="#">WebOS</a></li>
-  <li><a href="#">Mac OS X</a></li>
-  <li><a href="#">Windows</a></li>
-</ul>
-</span>
+<%== member_facet_links(@selection, :platform, ActiveSupport::OrderedHash[[
+  ['all',             'any platform'],
+  ['web',             'The Web'],
+  ['ios',             'iOS'],
+  ['android',         'Android'],
+  ['windows-phone-7', 'Windows Phone 7'],
+  ['webos',           'WebOS'],
+  ['osx',             'Mac OS X'],
+  ['windows',         'Windows']
+]]) %>
+</span>.
 </div>

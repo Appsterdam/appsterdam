@@ -1,5 +1,5 @@
 class Selection
-  ATTRIBUTES = [:entity]
+  ATTRIBUTES = [:entity, :work_location, :work_type, :platform]
   attr_accessor *ATTRIBUTES
   
   def initialize(params={})
