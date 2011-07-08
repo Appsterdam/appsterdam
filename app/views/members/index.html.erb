@@ -1,3 +1,31 @@
 <h1><%= @title = 'Members' %></h1>
 
+<%= render 'members/select' %>
+
 <%= render @members %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script>
+(function(){
+  function deactivate() {
+    $("div.selection span.active").removeClass('active');
+  }
+  $("body").click(function() {
+    deactivate();
+  });
+  $("body").keydown(function(event) {
+    if (event.keyCode == 27) {
+      deactivate();
+    }
+  });
+  $("div.selection").delegate("span > a", "click", function(event) {
+    event.stopPropagation()
+    var clicked = $(this).parent();
+    if (clicked.hasClass('active')) {
+      clicked = $();
+    }
+    deactivate();
+    clicked.addClass('active');
+  });
+})();
+</script>
