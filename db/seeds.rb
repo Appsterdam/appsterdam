@@ -45,5 +45,7 @@ Dir.glob(Rails.root + 'db/seeds/*.json').each do |file|
     when 'marketeers'
       add_work_type(member, 'marketing')
     end
+    
+    member.save
   end
 end
