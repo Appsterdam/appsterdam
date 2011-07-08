@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   
   def create
     process_authorization_response do
-      @member = Member.create_with_twitter_user(user_attributes)
+      @member = Member.create_with_twitter_user_attributes(user_attributes)
       if @member.errors.empty?
         redirect_to edit_member_url(@member)
       else

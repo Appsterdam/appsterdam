@@ -2,8 +2,8 @@ class Member < ActiveRecord::Base
   validates_presence_of :twitter_id
   validates_uniqueness_of :twitter_id
   
-  def self.create_with_twitter_user(attributes)
-    create(
+  def twitter_user_attributes=(attributes)
+    self.attributes = {
       :twitter_id => attributes['id'],
       :name => attributes['name'],
       :username => attributes['screen_name'],
@@ -11,7 +11,14 @@ class Member < ActiveRecord::Base
       :location => attributes['location'],
       :website => attributes['url'],
       :bio => attributes['description']
-    )
+    }
+  end
+  
+  def self.create_with_twitter_user_attributes(attributes)
+    member = Member.new
+    member.twitter_user_attributes = attributes
+    member.save
+    member
   end
   
   # Returns a randomized list of members
@@ -21,7 +28,7 @@ class Member < ActiveRecord::Base
     # matched the desired number or of we've tried for 20 times.
     tries = 20
     randomized = Set.new
-    max_id = connection.execute("SELECT MAX(id) FROM members").first[0]
+    max_id = _max_id
     while(tries > 0 && randomized.length < limit)
       tries -= 1
       samples = (1..limit).map { rand(max_id) + 1 }

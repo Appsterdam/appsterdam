@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/environment',  __FILE__)
+
+twitter_client ||= TwitterOAuth::Client.new
+Member.batched do |members|
+  for member in members
+    if attributes = twitter_client.show(member.username)
+      member.twitter_user_attributes = attributes
+      member.save
+    end
+  end
+end

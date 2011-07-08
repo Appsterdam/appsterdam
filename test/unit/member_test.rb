@@ -18,8 +18,8 @@ describe Member, "concerning validation" do
 end
 
 describe Member do
-  it "creates a new member with user data from the Twitter client" do
-    attributes = {
+  before do
+    @attributes = {
       'id' => 6922782,
       'name' => 'Helen Old',
       'screen_name' => 'helenold',
@@ -28,12 +28,20 @@ describe Member do
       'url' => 'http://helenold.blogger.com',
       'description' => 'I like nitting'
     }
-    member = nil
+  end
+  
+  it "updates a member's attributes with user data from the Twitter client" do
+    member = Member.new
+    member.twitter_user_attributes = @attributes
+    member.twitter_id.should == @attributes['id']
+    member.username.should == @attributes['screen_name']
+  end
+  
+  it "creates a new member with user data from the Twitter client" do
     lambda {
-      member = Member.create_with_twitter_user(attributes)
+      member = Member.create_with_twitter_user_attributes(@attributes)
+      member.twitter_id.should == @attributes['id']
     }.should.differ('Member.count', +1)
-    member.twitter_id.should == attributes['id']
-    member.username.should == attributes['screen_name']
   end
   
   it "returns a number of members in a randomized order" do
