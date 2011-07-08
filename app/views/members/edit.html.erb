@@ -7,16 +7,16 @@
     <dt>Image:<dt>
     <dd><%= image_tag @authenticated.picture %></dd>
     <dt>Twitter username:</dt>
-    <dd><%=h @authenticated.username %></dd>
+    <dd><%= @authenticated.username %></dd>
     <!-- NOTE: We should use the Twitter ID internally because the username can be changed. -->
     <dt>Name:</dt>
-    <dd><%=h @authenticated.name %></dd>
+    <dd><%= @authenticated.name %></dd>
     <dt>Location:</dt>
-    <dd><%=h @authenticated.location %></dd>
+    <dd><%= @authenticated.location %></dd>
     <dt>Web:</dt>
     <dd><%= link_to @authenticated.website, @authenticated.website %></dd>
     <dt>Description:</dt>
-    <dd><%=h @authenticated.bio %></dd>
+    <dd><%= @authenticated.bio %></dd>
     </dl>
     <p>Want to make changes? Update your profile information on Twitter, then return to this page.</p>
   </fieldset>
