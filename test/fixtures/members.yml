@@ -6,6 +6,7 @@ developer:
   location: North-pole
   website: blog.devin.local
   bio: Besides being Dévin, I’m also an awesome developer. I love food, I love not making food myself. I play the air guitar and have the air pedals to match match it
+  entity: individual
 designer:
   twitter_id: 5678
   name: Desiree the Designer
@@ -14,3 +15,4 @@ designer:
   location: Southe-pole
   website: blog.desiree.local
   bio: I keep it short.
+  entity: individual

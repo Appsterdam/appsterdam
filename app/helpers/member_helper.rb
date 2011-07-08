@@ -1,6 +1,7 @@
 module MemberHelper
   def member_classes(member)
     classes = %w(member)
+    classes << member.entity unless member.entity.blank?
     classes.join(' ')
   end
   

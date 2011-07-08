@@ -2,7 +2,8 @@ require File.expand_path('../../../test_helper', __FILE__)
 
 describe MemberHelper do
   it "formats member classes" do
-    member_classes(members(:developer)).should == 'member'
+    member_classes(members(:developer)).should == 'member individual'
+    member_classes(members(:designer)).should == 'member individual'
   end
   
   it "retrieves the link without the protocol from a website URL" do
