@@ -54,3 +54,39 @@ describe Member do
     Member.randomized.first.should.be.kind_of(Member)
   end
 end
+
+describe "A", Member do
+  before do
+    @member = Member.new
+  end
+
+  it "returns that the company is hiring if a job offers URL is provided" do
+    @member.should.not.be.hiring
+    @member.job_offers_url = 'http://jobs.example.local'
+    @member.should.be.hiring
+  end
+
+  it "clears the job offers URL if a different entity type than `company' is selected" do
+    @member.job_offers_url = 'http://jobs.example.local'
+    @member.entity = 'student'
+    @member.job_offers_url.should.be.blank
+    @member.should.not.be.hiring
+  end
+
+  it "clears the `available for hire' field if a different entity type than `student` or `individual' is selected" do
+    @member.attributes = { :entity => 'student', :available_for_hire => true }
+    @member.should.be.available_for_hire
+    @member.entity = 'company'
+    @member.available_for_hire.should == nil
+  end
+
+  it "clears both the job offers URL and `available for hire' fields when selecting `group' as entity" do
+    @member.attributes = {
+      :job_offers_url => 'http://jobs.example.local',
+      :available_for_hire => true,
+      :entity => 'group'
+    }
+    @member.job_offers_url.should.be.blank
+    @member.available_for_hire.should == nil
+  end
+end

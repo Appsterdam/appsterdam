@@ -1,3 +1,4 @@
+- Remove cancel link from members/edit, because there's nothing to cancel and add a remove account action.
 - Use form helpers in members/edit.
 - Think of better way to express Member#work_location, the design html uses `where'.
 - Do we need a helper that formats the user's web site url properly?

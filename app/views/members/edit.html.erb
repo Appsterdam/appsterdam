@@ -31,13 +31,13 @@
       <label><%= f.radio_button :entity, "individual" %> Individual</label>
       <label><%= f.radio_button :entity, "group" %> Group (user group, non-profit collective, etc.)</label>
     </div>
-    <div class="when_type_is company">
+    <div class="when_entity_is company">
       <label>Is your company currently hiring? Please enter the webpage with your job offer(s) below:</label>
-      <input type="text">
+      <%= f.text_field :job_offers_url %>
     </div>
-    <div class="when_type_is student individual">
+    <div class="when_entity_is student individual">
       Are you currently available for hire?
-      <label><input type="checkbox"> Yes, I’m available for hire</label>
+      <label><%= f.check_box :available_for_hire %> Yes, I’m available for hire</label>
     </div>
 
     <div>
@@ -86,15 +86,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 <script>
 (function(){
-  $(".when_type_is:not(.default)").hide();
+  $(".when_entity_is:not(.default)").hide();
   function update(field) {
-    $(".when_type_is:not(." + field.value + ")").hide();
-    $(".when_type_is." + field.value).show();
+    $(".when_entity_is:not(." + field.value + ")").hide();
+    $(".when_entity_is." + field.value).show();
   }
-  $("input[name=type]").click(function() {
+  $('input[name="member[entity]"]').click(function() {
     update(this);
   })
-  $("input[name=type][checked]").each(function() {
+  $('input[name="member[entity]"][checked]').each(function() {
     update(this);
   });
 })();

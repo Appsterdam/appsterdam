@@ -36,4 +36,14 @@ class Member < ActiveRecord::Base
     end
     randomized.to_a
   end
+
+  def hiring?
+    !job_offers_url.blank?
+  end
+
+  def entity=(type)
+    write_attribute(:job_offers_url, nil) unless type == 'company'
+    write_attribute(:available_for_hire, nil) unless %w{ student individual }.include?(type)
+    write_attribute(:entity, type)
+  end
 end

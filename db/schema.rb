@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20110707165738) do
     t.datetime "updated_at"
     t.string   "entity"
     t.string   "work_location"
+    t.text     "job_offers_url"
+    t.boolean  "available_for_hire"
   end
 
 end
