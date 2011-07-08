@@ -35,4 +35,14 @@ describe Member do
     member.twitter_id.should == attributes['id']
     member.username.should == attributes['screen_name']
   end
+  
+  it "returns a number of members in a randomized order" do
+    (0..10).each { |index| Member.new(:twitter_id => index).save! }
+    Member.stubs(:rand).returns(*Member.all.map { |m| m.id - 1 })
+    
+    Member.randomized(2).length.should == 2
+    Member.randomized(10).length.should == 10
+    
+    Member.randomized.first.should.be.kind_of(Member)
+  end
 end

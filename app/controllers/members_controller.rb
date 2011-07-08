@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   include Twitter
   
   def index
-    @members = Member.all
+    @members = Member.randomized
   end
   
   def new
