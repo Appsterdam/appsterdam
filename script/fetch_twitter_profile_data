@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/environment',  __FILE__)
+
+USER = 'appsterdamrs'
+LISTS = %w{
+  appsterdammers
+  appsterdammers2
+  students
+  founders
+  hiring
+  available
+  designers
+  collectives
+  consultants
+  creatives
+  developers
+  companies
+  marketeers
+}
+
+SEEDS_ROOT = Rails.root + 'db/seeds'
+
+module TwitterOAuth
+  class Client
+    public :access_token
+  end
+end
+
+twitter_client = TwitterOAuth::Client.new
+
+LISTS.each do |list_name|
+  response = twitter_client.access_token.get("/1/#{USER}/#{list_name}/members.json")
+  file = SEEDS_ROOT + "#{list_name}.json"
+  puts file
+  File.open(file, 'w') { |f| f << response.body }
+end
