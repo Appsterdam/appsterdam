@@ -1,4 +1,17 @@
 class Member < ActiveRecord::Base
+  ENTITIES = ActiveSupport::OrderedHash[[
+    ['company',    'Company'],
+    ['student',    'Student'],
+    ['individual', 'Individual'],
+    ['group',      'Group (user group, non-profit collective, etc.)']
+  ]]
+
+  WORK_LOCATIONS = ActiveSupport::OrderedHash[[
+    ['appsterdam', 'I work in or nearby Amsterdam (you’re an Appsterdammer)'],
+    ['applander',  'I work somewhere else, but close enough to participate in events (you’re an Applander)'],
+    ['appbroader', 'I work elsewhere in the world (you’re an Appbroader)']
+  ]]
+
   PLATFORMS = ActiveSupport::OrderedHash[[
     ['web',             'The Web'],
     ['ios',             'iOS'],

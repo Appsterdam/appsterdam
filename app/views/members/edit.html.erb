@@ -26,25 +26,26 @@
 
     <div>
       What are you?
-      <label><%= f.radio_button :entity, "company" %> Company</label>
-      <label><%= f.radio_button :entity, "student" %> Student</label>
-      <label><%= f.radio_button :entity, "individual" %> Individual</label>
-      <label><%= f.radio_button :entity, "group" %> Group (user group, non-profit collective, etc.)</label>
+      <% Member::ENTITIES.each do |value, label| %>
+        <% id = "member_entity_#{value}" %>
+        <label for="<%= id %>"><%= f.radio_button :entity, value, :id => id %> <%= label %></label>
+      <% end %>
     </div>
     <div class="when_entity_is company">
-      <label>Is your company currently hiring? Please enter the webpage with your job offer(s) below:</label>
+      <label for="member_job_offers_url">Is your company currently hiring? Please enter the webpage with your job offer(s) below:</label>
       <%= f.text_field :job_offers_url %>
     </div>
     <div class="when_entity_is student individual">
       Are you currently available for hire?
-      <label><%= f.check_box :available_for_hire %> Yes, I’m available for hire</label>
+      <label for="member_available_for_hire"><%= f.check_box :available_for_hire %> Yes, I’m available for hire</label>
     </div>
 
     <div>
       Where do you work?
-      <label><%= f.radio_button :work_location, "appsterdam" %> I work in or nearby Amsterdam (you’re an Appsterdammer)</label>
-      <label><%= f.radio_button :work_location, "applander" %> I work somewhere else, but close enough to participate in events (you’re an Applander)</label>
-      <label><%= f.radio_button :work_location, "appbroader" %> I work elsewhere in the world (you’re an Appbroader)</label>
+      <% Member::WORK_LOCATIONS.each do |value, label| %>
+        <% id = "member_work_location_#{value}" %>
+        <label for="<%= id %>"><%= f.radio_button :work_location, value, :id => id %> <%= label %></label>
+      <% end %>
     </div>
 
     <div>
@@ -61,14 +62,16 @@
         What subjects is your group concerned with?
       </span>
       <% Member::WORK_TYPES.each do |value, label| %>
-        <label><%= f.check_box :work_types, { :multiple => true }, value, '' %> <%= label %></label>
+        <% id = "member_work_types_#{value}" %>
+        <label for="<%= id %>"><%= f.check_box :work_types, { :multiple => true, :id => id }, value, '' %> <%= label %></label>
       <% end %>
     </div>
 
     <div>
       For which platforms?
       <% Member::PLATFORMS.each do |value, label| %>
-        <label><%= f.check_box :platforms, { :multiple => true }, value, '' %> <%= label %></label>
+        <% id = "member_work_types_#{value}" %>
+        <label for="<%= id %>"><%= f.check_box :platforms, { :multiple => true, :id => id }, value, '' %> <%= label %></label>
       <% end %>
     </div>
   </fieldset>
