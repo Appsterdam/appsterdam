@@ -21,4 +21,10 @@ module MemberHelper
     end
     out
   end
+  
+  def member_meta(member)
+    meta = []
+    meta << 'Available for hire' if member.available_for_hire? 
+    "<div class=\"meta\">#{meta.join('<br>')}</div>"
+  end
 end

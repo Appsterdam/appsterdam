@@ -28,4 +28,19 @@ describe MemberHelper do
       member_platforms(example).should == expected
     end
   end
+  
+  # t.string   "work_location"
+  # t.text     "platforms"
+  # t.text     "job_offers_url"
+  # t.boolean  "available_for_hire"
+  # t.text     "work_types"
+  
+  it "formates the meta information about a member" do
+    [
+      [stub(:available_for_hire? => false), "<div class=\"meta\"></div>"],
+      [stub(:available_for_hire? => true), "<div class=\"meta\">Available for hire</div>"]
+    ].each do |example, expected|
+      member_meta(example).should == expected
+    end
+  end
 end
