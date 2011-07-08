@@ -31,14 +31,28 @@ describe MemberHelper do
   
   it "formates the meta information about a member" do
     [
-      [stub(:entity => nil, :available_for_hire? => false, :work_location => nil),
+      [stub(:entity => nil, :available_for_hire? => false, :work_location => nil, :job_offers_url => nil),
         nil],
-      [stub(:entity => 'individual', :available_for_hire? => false, :work_location => 'applander'),
+      [stub(:entity => 'individual', :available_for_hire? => false, :work_location => 'applander', :job_offers_url => nil),
         "<div class=\"meta\">An individual close to Appsterdam</div>"],
-      [stub(:entity => 'company', :available_for_hire? => true, :work_location => 'appsterdammer'),
-        "<div class=\"meta\">A company<br>Available for hire</div>"]
+      [stub(:entity => 'company', :available_for_hire? => true, :work_location => 'appsterdammer', :job_offers_url => nil),
+        "<div class=\"meta\">A company<br>Available for hire</div>"],
+        [stub(:entity => 'company', :available_for_hire? => true, :work_location => 'applander', :job_offers_url => 'http://example.org/hiring'),
+          "<div class=\"meta\">A company close to Appsterdam<br>Available for hire<br><a href=\"http://example.org/hiring\">We're hiring</a></div>"]
     ].each do |example, expected|
       member_meta(example).should == expected
+    end
+  end
+  
+  it "does not allow junk to be filled out for the job offer url" do
+    [
+      nil,
+      '',
+      'example.org',
+      '../../../phpadmin.php',
+      'skype://112'
+    ].each do |offer_url|
+      member_meta(stub(:entity => nil, :available_for_hire? => false, :work_location => nil, :job_offers_url => offer_url)).should.be.nil
     end
   end
 end

@@ -38,10 +38,20 @@ module MemberHelper
     out
   end
   
+  require 'uri'
   def member_meta(member)
     meta = []
     meta << member_description(member) unless member.entity.blank?
     meta << 'Available for hire' if member.available_for_hire? 
+    
+    begin
+      if member.job_offers_url =~ /^http/
+        URI.parse(member.job_offers_url)
+        meta << "<a href=\"#{member.job_offers_url}\">We're hiring</a>"
+      end
+    rescue URI::InvalidURIError
+    end
+    
     "<div class=\"meta\">#{meta.join('<br>')}</div>" unless meta.empty?
   end
 end
