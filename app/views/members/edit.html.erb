@@ -48,16 +48,16 @@
     </div>
 
     <div>
-      <span class="when_type_is company">
+      <span class="when_entity_is company">
         What kind of work does your company do?
       </span>
-      <span class="when_type_is student">
+      <span class="when_entity_is student">
         What kind of subjects do you study?
       </span>
-      <span class="when_type_is individual default">
+      <span class="when_entity_is individual default">
         What kind of work do you do?
       </span>
-      <span class="when_type_is group">
+      <span class="when_entity_is group">
         What subjects is your group concerned with?
       </span>
       <label><input type="checkbox"> Design</label>
@@ -69,13 +69,9 @@
 
     <div>
       For which platforms?
-      <label><input type="checkbox"> The Web</label>
-      <label><input type="checkbox"> iOS</label>
-      <label><input type="checkbox"> Android</label>
-      <label><input type="checkbox"> Windows Phone 7</label>
-      <label><input type="checkbox"> WebOS</label>
-      <label><input type="checkbox"> Mac OS X</label>
-      <label><input type="checkbox"> Windows</label>
+      <% Member::PLATFORMS.each do |value, label| %>
+        <label><%= f.check_box :platforms, { :multiple => true }, value, '' %> <%= label %></label>
+      <% end %>
     </div>
   </fieldset>
 

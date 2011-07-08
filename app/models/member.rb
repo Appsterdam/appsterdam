@@ -1,7 +1,14 @@
 class Member < ActiveRecord::Base
-  validates_presence_of :twitter_id
-  validates_uniqueness_of :twitter_id
-  
+  PLATFORMS = ActiveSupport::OrderedHash[[
+    ['web',             'The Web'],
+    ['ios',             'iOS'],
+    ['android',         'Android'],
+    ['windows-phone-7', 'Windows Phone 7'],
+    ['webos',           'WebOS'],
+    ['osx',             'Mac OS X'],
+    ['windows',         'Windows']
+  ]]
+
   def twitter_user_attributes=(attributes)
     self.attributes = {
       :twitter_id => attributes['id'],
@@ -37,6 +44,12 @@ class Member < ActiveRecord::Base
     randomized.to_a
   end
 
+  serialize :platforms, Array
+
+  def platforms=(platforms)
+    write_attribute :platforms, platforms.reject(&:blank?)
+  end
+
   def hiring?
     !job_offers_url.blank?
   end
@@ -46,4 +59,16 @@ class Member < ActiveRecord::Base
     write_attribute(:available_for_hire, nil) unless %w{ student individual }.include?(type)
     write_attribute(:entity, type)
   end
+
+  private
+
+  def supported_platforms
+    if platforms && !(invalid = platforms - PLATFORMS.keys).empty?
+      errors.add(:platforms, "currently can't include #{invalid.to_sentence}")
+    end
+  end
+
+  validates_presence_of :twitter_id
+  validates_uniqueness_of :twitter_id
+  validate :supported_platforms
 end

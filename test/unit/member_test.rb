@@ -15,6 +15,14 @@ describe Member, "concerning validation" do
     duplicate.should.be.invalid
     duplicate.errors[:twitter_id].should.not.be.blank
   end
+
+  it "requires the platforms to be in the available platforms list" do
+    @member.platforms = %w{ web ios android windows-phone-7 webos osx windows beos}
+    @member.should.be.invalid
+    @member.errors[:platforms].should.not.be.blank
+    @member.platforms = %w{ web ios android windows-phone-7 webos osx windows }
+    @member.should.be.valid
+  end
 end
 
 describe Member do
@@ -88,5 +96,15 @@ describe "A", Member do
     }
     @member.job_offers_url.should.be.blank
     @member.available_for_hire.should == nil
+  end
+
+  it "takes a list of platforms the member has experience with" do
+    @member.update_attribute :platforms, %w{ web ios osx }
+    @member.reload.platforms.should == %w{ web ios osx }
+  end
+
+  it "santizes the platforms input" do
+    @member.platforms = ['ios', '', 'osx']
+    @member.platforms.should == %w{ ios osx }
   end
 end
