@@ -1,6 +1,6 @@
 <div class="<%= member_classes(member) %>">
   <h2>
-    <%= link_to(member.website) do %>
+    <%= link_to("http://twitter.com/#{member.username}") do %>
       <img src="<%= member.picture %>">
       <%= member.name %>
     <% end %>
