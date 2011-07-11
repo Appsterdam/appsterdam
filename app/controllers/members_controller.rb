@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  allow_access(:authenticated, :only => [:edit, :update]) { @authenticated.id == Integer(params[:id]) }
+  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { @authenticated.id == Integer(params[:id]) }
   allow_access :all, :only => [:index, :new, :create]
 
   include Twitter
@@ -28,6 +28,12 @@ class MembersController < ApplicationController
   def update
     @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
     redirect_to edit_member_url(@authenticated)
+  end
+
+  def destroy
+    @authenticated.delete
+    logout
+    redirect_to members_url
   end
 
   private

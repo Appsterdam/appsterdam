@@ -70,8 +70,9 @@ describe "On the", MembersController, "a visitor" do
     assert_select 'h1'
   end
 
-  should.require_login.get :edit, :id => members(:developer).to_param
-  should.require_login.put :update, :id => members(:developer).to_param
+  should.require_login.get :edit, :id => members(:developer)
+  should.require_login.put :update, :id => members(:developer)
+  should.require_login.delete :destroy, :id => members(:developer)
 
   private
   
@@ -119,6 +120,16 @@ describe "On the", MembersController, "a member" do
     @authenticated.reload.attributes.except('updated_at').should == before.merge('entity' => 'company')
   end
 
+  it "can delete her listing" do
+    lambda {
+      delete :destroy, :id => @authenticated.to_param
+    }.should.differ('Member.count', -1)
+    Member.find_by_id(@authenticated.id).should == nil
+    should.redirect_to members_url
+    should.not.be.authenticated
+  end
+
   should.disallow.get :edit, :id => members(:designer)
   should.disallow.put :update, :id => members(:designer)
+  should.disallow.delete :destroy, :id => members(:designer)
 end
