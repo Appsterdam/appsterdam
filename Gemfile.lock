@@ -45,6 +45,7 @@ GEM
     mysql2 (0.2.11)
     oauth (0.4.5)
     on-test-spec (0.3.0)
+    peiji-san (1.0.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.14)
@@ -85,6 +86,7 @@ DEPENDENCIES
   mocha
   mysql2 (~> 0.2.6)
   on-test-spec
+  peiji-san (~> 1.0.0)
   rails (= 3.0.9)
   test-spec
   twitter_oauth (~> 0.4.3)

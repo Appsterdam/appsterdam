@@ -32,7 +32,12 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
+<<<<<<< HEAD
   ACCESSIBLE_ATTRS = [:entity, :work_location, :platforms, :job_offers_url, :available_for_hire, :work_types]
+=======
+  extend PeijiSan
+  self.entries_per_page = 32
+>>>>>>> Include Peiji-San in the member model.
 
   def twitter_user_attributes=(attributes)
     self.attributes = {
@@ -46,29 +51,6 @@ class Member < ActiveRecord::Base
     }
   end
   
-  def self.create_with_twitter_user_attributes(attributes)
-    member = Member.new
-    member.twitter_user_attributes = attributes
-    member.save
-    member
-  end
-  
-  # Returns a randomized list of members
-  def self.randomized(limit=20)
-    # Because the ID's might be sparse we don't know how many records we will
-    # get from a query. We keep trying with a random set of ID's until we've
-    # matched the desired number or of we've tried for 20 times.
-    tries = 20
-    randomized = Set.new
-    max_id = _max_id
-    while(tries > 0 && randomized.length < limit)
-      tries -= 1
-      samples = (1..limit).map { rand(max_id) + 1 }
-      randomized.merge all(:conditions => { :id => samples })
-    end
-    randomized.to_a
-  end
-
   serialize :platforms, Array
   def platforms=(value)
     write_attribute :platforms, value.reject(&:blank?)
@@ -87,6 +69,29 @@ class Member < ActiveRecord::Base
     write_attribute(:job_offers_url, nil) unless type == 'company'
     write_attribute(:available_for_hire, nil) unless %w{ student individual }.include?(type)
     write_attribute(:entity, type)
+  end
+
+  def self.create_with_twitter_user_attributes(attributes)
+    member = Member.new
+    member.twitter_user_attributes = attributes
+    member.save
+    member
+  end
+
+  # Returns a randomized list of members
+  def self.randomized(limit=20)
+    # Because the ID's might be sparse we don't know how many records we will
+    # get from a query. We keep trying with a random set of ID's until we've
+    # matched the desired number or of we've tried for 20 times.
+    tries = 20
+    randomized = Set.new
+    max_id = _max_id
+    while(tries > 0 && randomized.length < limit)
+      tries -= 1
+      samples = (1..limit).map { rand(max_id) + 1 }
+      randomized.merge all(:conditions => { :id => samples })
+    end
+    randomized.to_a
   end
 
   private
