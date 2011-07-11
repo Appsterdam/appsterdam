@@ -6,3 +6,4 @@ tmp/
 doc
 config/initializers/twitter.rb
 config/*.sphinx.conf
+db/sphinx
