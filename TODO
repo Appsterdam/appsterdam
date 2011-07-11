@@ -1,4 +1,5 @@
-- Remove cancel link from members/edit, because there's nothing to cancel and add a remove account action.
+- Remove cancel link from members/edit, because there's nothing to cancel.
+- Place `delete listing' action button in the right place and make the confirmation popup work. The default rails.js file is for prototype, but we already use some jQuery, so use the jQuery rails.js lib? https://github.com/rails/jquery-ujs/blob/master/src/rails.js
 - Use form helpers in members/edit.
 - Think of better way to express Member#work_location (the design html uses `where') and Member#work_types.
 - Do we need a helper that formats the user's web site url properly?
