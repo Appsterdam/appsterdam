@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Member < ActiveRecord::Base
   ENTITIES = ActiveSupport::OrderedHash[[
     ['company',    'Company'],
