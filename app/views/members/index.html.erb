@@ -2,11 +2,7 @@
 
 <%= render 'members/select' %>
 
-<%= render @members %>
-
-<% if @members.has_next_page? %>
-  <p id="more_listings"><%= link_to "Load more member listings", members_path(:page => @members.next_page) %></p>
-<% end %>
+<%= render :partial => 'page' %>
 
 <script>
 (function(){
@@ -36,12 +32,7 @@
   function load() {
     var url = $("#more_listings > a").attr("href");
     $("#more_listings").html("<span>Loading…</span>");
-    // TODO in this case we force the format param to 'js', but interpret as 'html'
-    // This has to do with dealing with the controller to send the correct data,
-    // but this is an ugly workaround, no?
-    $.get(url, { format:"js" }, function(response) {
-      $("#more_listings").replaceWith(response);
-    }, "html");
+    $.get(url, function(response) { $("#more_listings").replaceWith(response); });
   }
   $("#more_listings > a").live("click", function(event){
     load();

@@ -4,15 +4,16 @@ class MembersController < ApplicationController
 
   include Twitter
 
-  respond_to :js, :html
-
   def index
     @selection = Selection.new(params)
     if @selection.empty?
       params[:page] ||= Member.random_start_page
     end
     @members = Member.selection(@selection).order(:id).page(params[:page])
-    respond_with(@members)
+    respond_to do |format|
+      format.js { render :partial => 'page', :content_type => 'text/html' }
+      format.html
+    end
   end
   
   def new

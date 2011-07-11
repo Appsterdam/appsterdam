@@ -25,7 +25,7 @@ describe "On the", MembersController, "a visitor" do
     template.should.be 'members/index'
     assert_select 'h1'
   end
-  
+
   it "gets a random page number of start off with if it isn't set" do
     get :index
     request.params[:page].should.not.be.nil
@@ -96,6 +96,15 @@ describe "On the", MembersController, "a visitor" do
       'url' => 'http://helenold.blogger.com',
       'description' => 'I like nitting'
     }
+  end
+end
+
+describe "The", MembersController, "concerning an AJAX reques" do
+  it "returns a page of member listings without the layout" do
+    get :index, :page => 2, :format => 'js'
+    status.should.be :ok
+    template.should.be 'members/_page'
+    response.content_type.should == 'text/html'
   end
 end
 
