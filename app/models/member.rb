@@ -94,6 +94,12 @@ class Member < ActiveRecord::Base
     randomized.to_a
   end
 
+  # Returns a scope with the visitor's selection
+  def self.selection(selection)
+    facets = %w(entity work_location)
+    where(selection.to_hash.slice(*facets))
+  end
+
   private
 
   def supported_platforms

@@ -69,6 +69,29 @@ describe Member do
     
     Member.randomized.first.should.be.kind_of(Member)
   end
+  
+  it "returns a unactuated query with the visitor's selection" do
+    Member.selection(Selection.new).should.be.kind_of(ActiveRecord::Relation)
+    Member.selection(Selection.new).should.equal_set Member.all
+  end
+  
+  it "returns a unactuated query with the visitor's selection for simple facets" do
+    Member.selection(Selection.new('entity' => 'individual')).each do |member|
+      member.entity.should == 'individual'
+    end
+    Member.selection(Selection.new('work_location' => 'appsterdam')).each do |member|
+      member.work_location.should == 'appsterdam'
+    end
+  end
+  
+  xit "returns an unactuated query with the visitor's selection for list-like attributes" do
+    Member.selection(Selection.new('platform' => 'ios')).each do |member|
+      member.platforms.should.include 'ios'
+    end
+    Member.selection(Selection.new('work_type' => 'development')).each do |member|
+      member.work_types.should.include 'development'
+    end
+  end
 end
 
 describe "A", Member do
