@@ -7,6 +7,9 @@ developer:
   website: blog.devin.local
   bio: Besides being Dévin, I’m also an awesome developer. I love food, I love not making food myself. I play the air guitar and have the air pedals to match match it
   entity: individual
+  work_location: applander
+  work_types: ['design', 'development']
+  platforms: ['osx', 'windows']
 designer:
   twitter_id: 5678
   name: Desiree the Designer
@@ -16,3 +19,6 @@ designer:
   website: blog.desiree.local
   bio: I keep it short.
   entity: individual
+  work_location: appsterdam
+  work_types: ['development', 'marketing']
+  platforms: ['osx', 'windows']
