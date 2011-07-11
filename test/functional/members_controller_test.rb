@@ -87,10 +87,22 @@ describe "On the", MembersController, "a member" do
   end
 
   it "can update her listing" do
-    put :update, :id => @authenticated.to_param, :member => { :entity => 'individual', :work_location => 'appsterdam' }
+    put :update, :id => @authenticated.to_param, :member => { :entity => 'company', :work_location => 'appsterdam' }
     should.redirect_to edit_member_url(@authenticated)
-    @authenticated.reload.entity.should == 'individual'
+    @authenticated.reload.entity.should == 'company'
     @authenticated.work_location.should == 'appsterdam'
+  end
+
+  it "can't update the details that we retrieve from Twitter" do
+    before = @authenticated.attributes.except('updated_at')
+    put :update, :id => @authenticated.to_param, :member => {
+      :twitter_id => '7890', :name => 'Mister Devin', :username => 'mr_devin',
+      :picture => 'http://example.local/pics/other.png', :location => 'Amsterdam',
+      :website => 'new-blog.devin.local', :bio => 'I do secret stuff',
+      :entity => 'company' # this is the only attr that actually updates
+    }
+    should.redirect_to edit_member_url(@authenticated)
+    @authenticated.reload.attributes.except('updated_at').should == before.merge('entity' => 'company')
   end
 
   should.disallow.get :edit, :id => members(:designer)

@@ -26,7 +26,7 @@ class MembersController < ApplicationController
   end
 
   def update
-    @authenticated.update_attributes(params[:member])
+    @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
     redirect_to edit_member_url(@authenticated)
   end
 

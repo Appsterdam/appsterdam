@@ -30,6 +30,8 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
+  ACCESSIBLE_ATTRS = [:entity, :work_location, :platforms, :job_offers_url, :available_for_hire, :work_types]
+
   def twitter_user_attributes=(attributes)
     self.attributes = {
       :twitter_id => attributes['id'],
