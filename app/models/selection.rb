@@ -5,7 +5,7 @@ class Selection
   def initialize(params={})
     params.each do |key, value|
       setter = "#{key}="
-      if respond_to?(setter)
+      if respond_to?(setter) and value != 'all'
         send(setter, value)
       end
     end
@@ -22,6 +22,14 @@ class Selection
   end
   
   def merge(options={})
-    to_hash.merge(options)
+    merged = to_hash
+    options.each do |key, value|
+      if value == 'all'
+        merged.delete(key)
+      else
+        merged[key] = value
+      end
+    end
+    merged
   end
 end
