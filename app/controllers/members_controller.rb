@@ -7,7 +7,9 @@ class MembersController < ApplicationController
   def index
     @selection = Selection.new(params)
     if @selection.empty?
-      params[:page] ||= Member.random_start_page
+      unless params[:page]
+        params[:started_at_page] = params[:page] = Member.random_start_page
+      end
     end
     @members = Member.selection(@selection).order(:id).page(params[:page])
     respond_to do |format|

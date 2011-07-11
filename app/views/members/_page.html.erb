@@ -1,6 +1,2 @@
 <%= render @members %>
-
-<% if @members.has_next_page? %>
-  <p id="more_listings"><%= link_to "Load more member listings", members_path(:page => @members.next_page) %></p>
-<% end %>
-
+<%= link_to_next_page %>

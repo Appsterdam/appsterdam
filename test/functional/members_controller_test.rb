@@ -99,12 +99,23 @@ describe "On the", MembersController, "a visitor" do
   end
 end
 
-describe "The", MembersController, "concerning an AJAX reques" do
-  it "returns a page of member listings without the layout" do
+describe "The", MembersController, "concerning pagination" do
+  it "returns a page of member listings when requested by client-side JS" do
     get :index, :page => 2, :format => 'js'
     status.should.be :ok
     template.should.be 'members/_page'
     response.content_type.should == 'text/html'
+  end
+
+  it "stores the page at which pagination began in the params" do
+    get :index
+    controller.params[:started_at_page].should == controller.params[:page]
+  end
+
+  it "keeps the page at which pagination began around" do
+    get :index, :page => 2, :started_at_page => 1
+    controller.params[:page].should == 2
+    controller.params[:started_at_page].should == 1
   end
 end
 

@@ -65,4 +65,18 @@ module MemberHelper
     end
     out << '</ul>'
   end
+
+  def link_to_next_page
+    page = if @members.has_next_page?
+      # check if this is the last page to show after wrapping around
+      if params[:started_at_page].nil? || @members.current_page != params[:started_at_page].to_i - 1
+        @members.current_page + 1
+      end
+    elsif params[:started_at_page] && params[:started_at_page].to_i < @members.current_page
+      1 # wrap around
+    end
+    if page
+      %{<p id="more_listings">#{link_to("Load more member listings", members_path(params.merge(:page => page)))}</p>}.html_safe
+    end
+  end
 end

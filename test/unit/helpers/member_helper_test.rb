@@ -30,7 +30,7 @@ describe MemberHelper do
     end
   end
   
-  it "formates the meta information about a member" do
+  it "formats the meta information about a member" do
     [
       [stub(:entity => nil, :available_for_hire? => false, :work_location => nil, :job_offers_url => nil),
         nil],
@@ -73,5 +73,34 @@ describe MemberHelper do
       ['individual', 'individuals', ],
       ['group',      'groups']
     ]]).should == "<a href=\"#\">students</a><ul><li><a href=\"/members\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
+  end
+
+  it "generates a pagination link" do
+    params[:entity] = 'student' # could be any param
+
+    params[:started_at_page] = '3'
+    @members = stub(:has_next_page? => true, :current_page => 3)
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 4, :started_at_page => 3, :entity => 'student'))}</p>}
+
+    @members = stub(:has_next_page? => false, :current_page => 4)
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 1, :started_at_page => 3, :entity => 'student'))}</p>}
+
+    @members = stub(:has_next_page? => true, :current_page => 1)
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :started_at_page => 3, :entity => 'student'))}</p>}
+
+    @members = stub(:has_next_page? => true, :current_page => 2)
+    link_to_next_page.should == nil
+  end
+
+  it "generates a pagination link when not wrapping around" do
+    params[:entity] = 'student' # could be any param
+    @members = stub(:has_next_page? => true, :current_page => 1)
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :entity => 'student'))}</p>}
+  end
+
+  private
+
+  def params
+    @params ||= {}
   end
 end
