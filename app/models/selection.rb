@@ -32,4 +32,8 @@ class Selection
     end
     merged
   end
+  
+  def empty?
+    to_hash == {}
+  end
 end

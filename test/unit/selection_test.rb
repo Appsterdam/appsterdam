@@ -27,4 +27,10 @@ describe "A", Selection do
     Selection.new.merge('entity' => 'all').to_hash.should == {}
     Selection.new('entity' => 'student').merge('entity' => 'all').to_hash.should == {}
   end
+  
+  it "knows if the selection if empty" do
+    Selection.new.should.be.empty
+    Selection.new('entity' => 'all').should.be.empty
+    Selection.new('entity' => 'student').should.not.be.empty
+  end
 end
