@@ -82,6 +82,12 @@ describe Member do
       member.work_types.should.include 'development'
     end
   end
+  
+  it "returns a random start page to use for the member index" do
+    start_page = Member.random_start_page
+    start_page.should <= Member.page(0).page_count
+    start_page.should > 0
+  end
 end
 
 describe "A", Member do

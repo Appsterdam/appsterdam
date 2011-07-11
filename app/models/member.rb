@@ -82,6 +82,11 @@ class Member < ActiveRecord::Base
     where(selection.to_hash.slice(*facets))
   end
 
+  # Returns a random start page for the member index
+  def self.random_start_page
+    rand(page(0).page_count) + 1
+  end
+
   private
 
   def supported_platforms

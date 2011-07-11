@@ -26,6 +26,16 @@ describe "On the", MembersController, "a visitor" do
     assert_select 'h1'
   end
   
+  it "gets a random page number of start off with if it isn't set" do
+    get :index
+    request.params[:page].should.not.be.nil
+  end
+  
+  it "uses the same start page when it was already set" do
+    get :index, :page => 5
+    request.params[:page].should == 5
+  end
+  
   it "starts the process to add herself to the listing" do
     get :new
     should.redirect_to assigns(:request_token).authorize_url
