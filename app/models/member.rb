@@ -32,12 +32,10 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
-<<<<<<< HEAD
   ACCESSIBLE_ATTRS = [:entity, :work_location, :platforms, :job_offers_url, :available_for_hire, :work_types]
-=======
+
   extend PeijiSan
   self.entries_per_page = 32
->>>>>>> Include Peiji-San in the member model.
 
   def twitter_user_attributes=(attributes)
     self.attributes = {
