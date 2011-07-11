@@ -64,7 +64,7 @@ describe MemberHelper do
       ['student',    'students'],
       ['individual', 'individuals', ],
       ['group',      'groups']
-    ]]).should == "<a href=\"#\">all members</a><ul><li><a href=\"/members?entity=all\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
+    ]]).should == "<a href=\"#\">all members</a><ul><li><a href=\"/members\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
     
     member_facet_links(Selection.new(:entity => 'student'), :entity, ActiveSupport::OrderedHash[[
       ['all',        'all members'],
@@ -72,6 +72,6 @@ describe MemberHelper do
       ['student',    'students'],
       ['individual', 'individuals', ],
       ['group',      'groups']
-    ]]).should == "<a href=\"#\">students</a><ul><li><a href=\"/members?entity=all\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
+    ]]).should == "<a href=\"#\">students</a><ul><li><a href=\"/members\">all members</a></li><li><a href=\"/members?entity=company\">companies</a></li><li><a href=\"/members?entity=student\">students</a></li><li><a href=\"/members?entity=individual\">individuals</a></li><li><a href=\"/members?entity=group\">groups</a></li></ul>"
   end
 end
