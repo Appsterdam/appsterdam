@@ -3,13 +3,16 @@ class MembersController < ApplicationController
   allow_access :all, :only => [:index, :new, :create]
 
   include Twitter
-  
+
+  respond_to :js, :html
+
   def index
     @selection = Selection.new(params)
     if @selection.empty?
       params[:page] ||= Member.random_start_page
     end
     @members = Member.selection(@selection).order(:id).page(params[:page])
+    respond_with(@members)
   end
   
   def new

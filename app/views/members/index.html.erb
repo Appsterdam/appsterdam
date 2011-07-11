@@ -4,7 +4,10 @@
 
 <%= render @members %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<% if @members.has_next_page? %>
+  <p id="more_listings"><%= link_to "Load more member listings", members_path(:page => @members.next_page) %></p>
+<% end %>
+
 <script>
 (function(){
   function deactivate() {
@@ -26,6 +29,30 @@
     }
     deactivate();
     clicked.addClass('active');
+  });
+})();
+
+(function(){
+  function load() {
+    var url = $("#more_listings > a").attr("href");
+    $("#more_listings").html("<span>Loading…</span>");
+    // TODO in this case we force the format param to 'js', but interpret as 'html'
+    // This has to do with dealing with the controller to send the correct data,
+    // but this is an ugly workaround, no?
+    $.get(url, { format:"js" }, function(response) {
+      $("#more_listings").replaceWith(response);
+    }, "html");
+  }
+  $("#more_listings > a").live("click", function(event){
+    load();
+    return false;
+  })
+  $(window).scroll(function(event) {
+    if ($(document).height() - $(window).height() - $(document.body).scrollTop() < 800) {
+      if ($('#more_listings > a').size() != 0) {
+        load();
+      }
+    }
   });
 })();
 </script>
