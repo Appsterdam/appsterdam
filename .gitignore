@@ -5,3 +5,4 @@ tmp/
 *.swp
 doc
 config/initializers/twitter.rb
+config/*.sphinx.conf
