@@ -5,8 +5,8 @@ class MembersController < ApplicationController
   include Twitter
   
   def index
-    @members = Member.randomized
     @selection = Selection.new(params)
+    @members = Member.selection(@selection).order(:id).page(params[:page])
   end
   
   def new

@@ -12,6 +12,20 @@ describe "On the", MembersController, "a visitor" do
     assert_select 'h1'
   end
   
+  it "sees a list of members selected by work type" do
+    get :index, :work_type => 'developer'
+    status.should.be :ok
+    template.should.be 'members/index'
+    assert_select 'h1'
+  end
+  
+  it "sees the second page of members selected by work location" do
+    get :index, :work_type => 'developer', :page => 2
+    status.should.be :ok
+    template.should.be 'members/index'
+    assert_select 'h1'
+  end
+  
   it "starts the process to add herself to the listing" do
     get :new
     should.redirect_to assigns(:request_token).authorize_url
