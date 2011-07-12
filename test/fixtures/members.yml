@@ -7,11 +7,13 @@ admin:
   location: Core
   website: admin.are.the.bomb.local
   bio: I min, you min, we min.
+  as_new: false
 spammer:
   twitter_id: 999
   marked_as_spam: true
   username: spammer
   name: spammer
+  as_new: false
 developer:
   twitter_id: 1234
   name: Dévin the Dev
@@ -24,6 +26,7 @@ developer:
   work_location: applander
   work_types_as_string: 'design development'
   platforms_as_string: 'osx windows'
+  as_new: false
 designer:
   twitter_id: 5678
   name: Desiree the Designer
@@ -36,3 +39,13 @@ designer:
   work_location: appsterdam
   work_types_as_string: 'development marketing'
   platforms_as_string: 'osx windows'
+  as_new: false
+just_added:
+  twitter_id: 9136
+  name: Justin Newling
+  username: justin
+  picture: http://a4.twimg.com/sticky/default_profile_images/default_profile_1_bigger.png
+  location: 'Amsterdam, the Netherlands'
+  website: ~
+  bio: Consulting for fun and profit
+  as_new: true
