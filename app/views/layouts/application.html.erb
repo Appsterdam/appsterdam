@@ -27,20 +27,6 @@
       </ul>
     </div>
     <div class="grid_12 content">
-      <% if false %>
-        <div class="actions">
-          <%= form_tag members_path, :method => 'get' do %>
-            <% if @authenticated %>
-              <%= link_to 'Edit your listing', edit_member_path(@authenticated) %> <span>|</span>
-              <%= link_to 'Log out', clear_session_path %>
-            <% else %>
-              <%= link_to 'Join as a member', new_member_path %> <span>|</span>
-              <%= link_to 'Log in', new_session_path %>
-            <% end %>
-            <%= search_field_tag(:q, params[:q], :placeholder => 'Search members') %>
-          <% end %>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
   </div>
