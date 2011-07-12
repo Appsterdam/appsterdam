@@ -4,7 +4,7 @@ class SpamMarkingsController < ApplicationController
 
   def index
     @members = SpamMarking.all.map(&:member).compact.uniq
-    @members.concat Member.unscoped.where(:marked_as_spam => true).all
+    @members.concat Member.marked_as_spam
   end
 
   def create

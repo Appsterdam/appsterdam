@@ -88,6 +88,10 @@ describe Member do
     start_page.should <= Member.page(0).page_count
     start_page.should > 0
   end
+
+  it "returns all members marked as spam" do
+    Member.marked_as_spam.to_a.should ==  Member.unscoped.where(:marked_as_spam => true).to_a
+  end
 end
 
 describe "A", Member do
