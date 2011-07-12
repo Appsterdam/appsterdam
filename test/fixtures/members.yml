@@ -7,6 +7,9 @@ admin:
   location: Core
   website: admin.are.the.bomb.local
   bio: I min, you min, we min.
+spammer:
+  twitter_id: 999
+  marked_as_spam: true
 developer:
   twitter_id: 1234
   name: Dévin the Dev

@@ -1,3 +1,5 @@
+- Rename SpamMarking to SpamReport
+- Possibly optimize the SpamMarkingsController#index action, but it's not critical.
 - Remove cancel link from members/edit, because there's nothing to cancel.
 - Place `delete listing' action button in the right place.
 - Think of better way to express Member#work_location (the design html uses `where') and Member#work_types.

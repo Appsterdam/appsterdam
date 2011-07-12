@@ -65,10 +65,6 @@ class Member < ActiveRecord::Base
     !job_offers_url.blank?
   end
 
-  def marked_as_spam?
-    spam_markings.size != 0
-  end
-
   def entity=(type)
     write_attribute(:job_offers_url, nil) unless type == 'company'
     write_attribute(:available_for_hire, nil) unless %w{ student individual }.include?(type)

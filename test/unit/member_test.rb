@@ -148,9 +148,4 @@ describe "A", Member do
     @member.work_types = ['design', 'marketing', '']
     @member.work_types.should == %w{ design marketing }
   end
-
-  it "is marked as spam if it has at least one spam marking" do
-    members(:developer).spam_markings.create(:ip_address => '1.2.3.4')
-    members(:developer).should.be.marked_as_spam
-  end
 end

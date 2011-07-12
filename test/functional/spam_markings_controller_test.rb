@@ -7,7 +7,6 @@ share "SpamMarkingsController" do
     }.should.differ("SpamMarking.count", +1)
     should.redirect_to members_url
     members(:developer).spam_markings.size.should == 1
-    members(:developer).should.be.marked_as_spam
   end
 end
 
@@ -53,5 +52,11 @@ describe "On the", SpamMarkingsController, "an admin" do
     status.should.be :ok
     template.should.be 'spam_markings/index'
     assigns(:members).should == [members(:developer)]
+  end
+
+  it "does not see members that have already been marked as spam by an admin" do
+    members(:developer).update_attribute(:marked_as_spam, true)
+    get :index
+    assigns(:members).should.be.empty
   end
 end

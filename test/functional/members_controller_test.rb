@@ -80,6 +80,11 @@ describe "On the", MembersController, "a visitor" do
     assert_select 'h1'
   end
 
+  it "does not see members that have been marked as spam" do
+    get :index
+    assigns(:members).should.not.include members(:spammer)
+  end
+
   should.require_login.get :edit, :id => members(:developer)
   should.require_login.put :update, :id => members(:developer)
   should.require_login.delete :destroy, :id => members(:developer)
@@ -163,4 +168,18 @@ describe "On the", MembersController, "a member" do
   should.disallow.get :edit, :id => members(:designer)
   should.disallow.put :update, :id => members(:designer)
   should.disallow.delete :destroy, :id => members(:designer)
+end
+
+describe "On the", MembersController, "an admin" do
+  before do
+    login(members(:admin))
+  end
+
+  it "can flag a member so that she doesn't show up in the membership listing anymore" do
+    lambda {
+      delete :destroy, :id => members(:developer).to_param
+    }.should.not.differ('Member.count')
+    should.redirect_to spam_markings_url
+    members(:developer).reload.should.be.marked_as_spam
+  end
 end
