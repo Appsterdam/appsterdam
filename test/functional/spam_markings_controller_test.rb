@@ -35,4 +35,18 @@ describe "On the", SpamMarkingsController, "a member" do
     marking.ip_address.should == '1.2.3.4'
     marking.reporter.should == members(:designer)
   end
+
+describe "On the", SpamMarkingsController, "an admin" do
+  before do
+    login(members(:admin))
+    members(:developer).spam_markings.create(:ip_address => '1.2.3.4', :reporter => members(:designer))
+    members(:developer).spam_markings.create(:ip_address => '4.3.2.1')
+  end
+
+  it "sees an overview of all membership listings marked as spam" do
+    get :index
+    status.should.be :ok
+    template.should.be 'spam_markings/index'
+    assigns(:members).should == [members(:developer)]
+  end
 end

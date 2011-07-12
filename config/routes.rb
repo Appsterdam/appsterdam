@@ -6,9 +6,9 @@ Appsterdam::Application.routes.draw do
   resources :members do
     resources :spam_markings
   end
-
   resource :session
-  
+  resources :spam_markings
+
   root :to => "members#index"
   
   if Rails.env.test?

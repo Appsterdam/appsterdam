@@ -1,5 +1,8 @@
 class SpamMarkingsController < ApplicationController
   allow_access :all
+  def index
+    @members = SpamMarking.all.map(&:member).uniq
+  end
 
   def create
     member = Member.find(params[:member_id])
