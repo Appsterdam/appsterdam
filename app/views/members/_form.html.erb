@@ -2,17 +2,17 @@
   <legend>Profile</legend>
   <dl>
   <dt>Image:<dt>
-  <dd><%= image_tag @authenticated.picture, :width => '48', :height => '48' %></dd>
+  <dd><%= image_tag @member.picture, :width => '48', :height => '48' %></dd>
   <dt>Twitter username:</dt>
-  <dd><%= @authenticated.username %></dd>
+  <dd><%= @member.username %></dd>
   <dt>Name:</dt>
-  <dd><%= @authenticated.name %></dd>
+  <dd><%= @member.name %></dd>
   <dt>Location:</dt>
-  <dd><%= @authenticated.location %></dd>
+  <dd><%= @member.location %></dd>
   <dt>Web:</dt>
-  <dd><%= link_to @authenticated.website, @authenticated.website %></dd>
+  <dd><%= link_to @member.website, @member.website %></dd>
   <dt>Description:</dt>
-  <dd><%= @authenticated.bio %></dd>
+  <dd><%= @member.bio %></dd>
   </dl>
   <p>Want to make changes? Update your profile information on Twitter, then return to this page.</p>
 </fieldset>

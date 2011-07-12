@@ -1,7 +1,7 @@
 <h1><%= @title = "Update your membership listing" %></h1>
 
-<%= button_to "Delete membership listing", member_path(@authenticated), :confirm => 'Are you sure you want to delete your listing?', :method => :delete %>
+<%= button_to "Delete membership listing", member_path(@member), :confirm => 'Are you sure you want to delete your listing?', :method => :delete %>
 
-<%= form_for @authenticated do |f| %>
+<%= form_for @member do |f| %>
   <%= render 'members/form', :f => f %>
 <% end %>

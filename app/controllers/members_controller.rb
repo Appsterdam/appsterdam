@@ -42,19 +42,29 @@ class MembersController < ApplicationController
   end
   
   def edit
-    render @authenticated.as_new? ? :new : :edit
+    @member = @authenticated
+    render @member.as_new? ? :new : :edit
   end
 
   def update
-    @authenticated.as_new = false
+    accessible_attributes = Member::ACCESSIBLE_ATTRS
+    
     if @authenticated.admin?
-      if params[:member].has_key?(:marked_as_spam)
-        Member.unscoped.find(params[:id]).update_attribute(:marked_as_spam, params[:member][:marked_as_spam])
-      end
-      redirect_to spam_reports_url
+      @member = Member.unscoped.find(params[:id])
+      accessible_attributes << :marked_as_spam
     else
-      @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
-      redirect_to members_url(:q => @authenticated.unique_query)
+      @member = @authenticated
+    end
+    
+    @member.as_new = false
+    if @member.update_attributes(params[:member].slice(*accessible_attributes))
+      if @authenticated == @member
+        redirect_to members_url(:q => @authenticated.unique_query)
+      else
+        redirect_to spam_reports_url
+      end
+    else
+      render @member.as_new? ? :new : :edit
     end
   end
 

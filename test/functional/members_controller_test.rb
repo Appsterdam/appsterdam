@@ -199,7 +199,7 @@ describe "On the", MembersController, "an admin" do
   before do
     login(members(:admin))
   end
-
+  
   it "sees an overview of one member" do
     member = Member.unscoped.find_by_name('spammer')
     get :show, :id => member.to_param
@@ -207,7 +207,14 @@ describe "On the", MembersController, "an admin" do
     template.should.be 'members/show'
     assigns(:member).should == member
   end
-
+  
+  it "can update her listing" do
+    put :update, :id => @authenticated.to_param, :member => { :entity => 'company', :work_location => 'appsterdam' }
+    should.redirect_to members_url(:q => @authenticated.unique_query)
+    @authenticated.reload.entity.should == 'company'
+    @authenticated.work_location.should == 'appsterdam'
+  end
+  
   it "can flag a member so that she doesn't show up in the membership listing anymore" do
     member = members(:developer)
     lambda {
