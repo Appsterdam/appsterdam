@@ -1,15 +1,6 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  offered: false
-  category: MyString
-  title: MyText
-  description: MyText
-  placer_id: 1
-
-two:
-  offered: false
-  category: MyString
-  title: MyText
-  description: MyText
-  placer_id: 1
+bike:
+  offered: true
+  category: bikes
+  title: A great granny bike!
+  description: It's quite simply the most awesome bike in town.
+  placer: developer
