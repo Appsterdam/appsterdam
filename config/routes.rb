@@ -3,7 +3,10 @@ Appsterdam::Application.routes.draw do
   match '/session'        => 'sessions#create', :as => :session
   match '/session/clear'  => 'sessions#clear',  :as => :clear_session
   
-  resources :members
+  resources :members do
+    resources :spam_markings
+  end
+
   resource :session
   
   root :to => "members#index"

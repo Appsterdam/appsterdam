@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'test/spec/rails/macros'
+require 'test/spec/share'
 
 $:.unshift(File.expand_path('../test_helper', __FILE__))
 require 'fake_twitter'
