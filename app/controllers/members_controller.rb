@@ -54,7 +54,7 @@ class MembersController < ApplicationController
       redirect_to spam_reports_url
     else
       @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
-      redirect_to edit_member_url(@authenticated)
+      redirect_to members_url(:q => @authenticated.unique_query)
     end
   end
 

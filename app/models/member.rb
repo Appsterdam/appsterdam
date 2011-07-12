@@ -108,6 +108,10 @@ class Member < ActiveRecord::Base
     write_attribute :marked_as_spam, marked_as_spam
     spam_reports.each(&:mark_for_destruction) if !read_attribute(:marked_as_spam)
   end
+  
+  def unique_query
+    "@username #{username}"
+  end
 
   def self.create_with_twitter_user_attributes(attributes)
     member = Member.new

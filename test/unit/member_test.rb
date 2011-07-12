@@ -167,4 +167,8 @@ describe "A", Member do
       @member.update_attribute(:marked_as_spam, 'false')
     }.should.differ('@member.reload.spam_reports.size', -2)
   end
+  
+  it "retuns a search query with itself as the only result" do
+    members(:developer).unique_query.should == "@username devin"
+  end
 end

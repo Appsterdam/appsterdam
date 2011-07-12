@@ -150,7 +150,7 @@ describe "On the", MembersController, "a member" do
 
   it "can update her listing" do
     put :update, :id => @authenticated.to_param, :member => { :entity => 'company', :work_location => 'appsterdam' }
-    should.redirect_to edit_member_url(@authenticated)
+    should.redirect_to members_url(:q => @authenticated.unique_query)
     @authenticated.reload.entity.should == 'company'
     @authenticated.work_location.should == 'appsterdam'
   end
@@ -164,7 +164,7 @@ describe "On the", MembersController, "a member" do
       :role => 'admin',
       :entity => 'company' # this is the only attr that actually updates
     }
-    should.redirect_to edit_member_url(@authenticated)
+    should.redirect_to members_url(:q => @authenticated.unique_query)
     @authenticated.reload.attributes.except('updated_at').should == before.merge('entity' => 'company')
   end
 
