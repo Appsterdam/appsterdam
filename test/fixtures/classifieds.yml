@@ -4,3 +4,9 @@ bike:
   title: A great granny bike!
   description: It's quite simply the most awesome bike in town.
   placer: developer
+house:
+  offered: false
+  category: housing
+  title: Houseboat wanted!
+  description: Urgently looking for one of those most romantic house types in the world.
+  placer: designer

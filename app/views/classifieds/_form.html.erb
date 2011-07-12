@@ -1,0 +1,29 @@
+<%= form_for @classified do |f| %>
+  <fieldset>
+    <legend>Your posting</legend>
+    <div>
+      What kind of posting is this?
+      <label for="classified_offered"><%= f.radio_button :offered, true, :id => 'classified_offered' %> Offered</label>
+      <label for="classified_wanted"><%= f.radio_button :offered, false, :id => 'classified_wanted' %> Wanted</label>
+    </div>
+    <div>
+      Which category?
+      <% Classified::CATEGORIES.each do |value, label| %>
+        <% id = "classified_category_#{value}" %>
+        <label for="<%= id %>"><%= f.radio_button :category, value, :id => id %> <%= label %></label>
+      <% end %>
+    </div>
+    <div>
+      <label for="classified_title">Title</label>
+       <%= f.text_field :title %>
+    </div>
+    <div>
+      <label for="classified_description">Description</label>
+      <%= f.text_area :description %>
+    </div>
+    <p>Your classified will be removed automatically after 30 days.</p>
+  </fieldset>
+
+  <%= f.submit "#{@classified.new_record? ? 'Post' : 'Update'} classified" %>
+  <%= link_to "Cancel and go back", classifieds_path %>
+<% end %>
