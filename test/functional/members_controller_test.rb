@@ -184,6 +184,17 @@ describe "On the", MembersController, "a member" do
   should.disallow.delete :destroy, :id => members(:designer)
 end
 
+describe "On the", MembersController, "a newly created member" do
+  before do
+    login(members(:just_added))
+  end
+  
+  it "marks itself as 'not new' when updating for the first time" do
+    put :update, :id => @authenticated.to_param, :member => { :entity => 'individual' }
+    @authenticated.reload.should.not.be.as_new
+  end
+end
+
 describe "On the", MembersController, "an admin" do
   before do
     login(members(:admin))
