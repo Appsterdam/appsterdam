@@ -11,6 +11,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20110712124246) do
+
   create_table "members", :force => true do |t|
     t.string   "twitter_id"
     t.string   "name"
@@ -27,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20110712124246) do
     t.text     "job_offers_url"
     t.boolean  "available_for_hire"
     t.text     "work_types_as_string"
-    t.string   "role",               :default => "member"
-    t.boolean  "marked_as_spam",     :default => false
+    t.string   "role",                 :default => "member"
+    t.boolean  "marked_as_spam",       :default => false
   end
 
   create_table "spam_reports", :force => true do |t|
