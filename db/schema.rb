@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712142938) do
+ActiveRecord::Schema.define(:version => 20110712143907) do
+
+  create_table "classifieds", :force => true do |t|
+    t.boolean  "offered"
+    t.string   "category"
+    t.text     "title"
+    t.text     "description"
+    t.integer  "placer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", :force => true do |t|
     t.string   "twitter_id"

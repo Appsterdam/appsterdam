@@ -148,4 +148,13 @@ describe "A", Member do
   it "retuns a search query with itself as the only result" do
     members(:developer).unique_query.should == "@username devin"
   end
+
+  it "returns the classsified ads placed by the member" do
+    @member = members(:developer)
+    ad = @member.classifieds.create({
+        :offered => true, :category => 'bikes',
+        :title => 'A great granny bike!', :description => "It's quite simply the most awesome bike in town."
+    })
+    @member.classifieds.should == [ad]
+  end
 end

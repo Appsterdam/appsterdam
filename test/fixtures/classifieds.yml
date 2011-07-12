@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  offered: false
+  category: MyString
+  title: MyText
+  description: MyText
+  placer_id: 1
+
+two:
+  offered: false
+  category: MyString
+  title: MyText
+  description: MyText
+  placer_id: 1

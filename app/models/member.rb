@@ -32,6 +32,7 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
+  has_many :classifieds, :foreign_key => :placer_id
   has_many :spam_reports, :autosave => true
 
   default_scope where(:marked_as_spam => false)
