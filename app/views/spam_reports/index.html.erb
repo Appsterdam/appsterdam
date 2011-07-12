@@ -8,7 +8,7 @@
   </tr>
   <% @members.each do |member| %>
     <tr>
-      <td><%= member.name %></td>
+      <td><%= link_to member.name, member_path(member) %></td>
       <td><%= member.spam_reports.size %></td>
       <td><%= member.spam_reports.map(&:ip_address).to_sentence %></td>
       <td><%= member.spam_reports.map { |s| s.reporter.try(:name) }.compact.to_sentence %></td>
