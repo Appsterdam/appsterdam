@@ -1,6 +1,6 @@
 class ClassifiedsController < ApplicationController
   allow_access(:authenticated, :only => [:new, :create])
-  allow_access(:authenticated, :only => [:edit, :update]) { !find_classified.nil? }
+  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_classified.nil? }
 
   def new
     @classified = @authenticated.classifieds.build
@@ -13,6 +13,11 @@ class ClassifiedsController < ApplicationController
 
   def update
     @classified.update_attributes(params[:classified])
+    redirect_to classifieds_url
+  end
+
+  def destroy
+    @classified.destroy
     redirect_to classifieds_url
   end
 

@@ -3,6 +3,9 @@ require File.expand_path('../../test_helper', __FILE__)
 describe "On the", ClassifiedsController, "a visitor" do
   should.require_login.get :new
   should.require_login.post :create
+  should.require_login.get :edit, :id => classifieds(:house)
+  should.require_login.put :update, :id => classifieds(:house)
+  should.require_login.delete :destroy, :id => classifieds(:house)
 end
 
 describe "On the", ClassifiedsController, "a member" do
@@ -44,5 +47,15 @@ describe "On the", ClassifiedsController, "a member" do
     classifieds(:bike).reload.should.be.wanted
   end
 
+  it "can delete a classified ad of herself" do
+    lambda {
+      delete :destroy, :id => classifieds(:bike).to_param
+    }.should.differ('Classified.count', -1)
+    should.redirect_to classifieds_url
+    members(:developer).classifieds.should.be.empty
+  end
+
   should.disallow.get :edit, :id => classifieds(:house)
+  should.disallow.put :update, :id => classifieds(:house)
+  should.disallow.delete :destroy, :id => classifieds(:house)
 end
