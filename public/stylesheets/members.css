@@ -1,0 +1,57 @@
+div.selection
+{
+  font-size: 150%;
+}
+div.selection span
+{
+  position: relative;
+  padding: 8px;
+  margin: -8px;
+}
+div.selection span a
+{
+  text-decoration: none;
+}
+div.selection span > a
+{
+  cursor: pointer;
+}
+div.selection span li
+{
+  list-style-type: none;
+}
+div.selection span li a
+{
+  display: block;
+  padding: 4px 8px;
+}
+div.selection span li a:hover
+{
+  background-color: #00f;
+  color: #fff;
+}
+div.selection span li a:active
+{
+  background-color: #00c;
+}
+div.selection ul
+{
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0px;
+  margin: 0;
+  background-color: #e6e8e8;
+  border: 1px solid #888;
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+div.selection .active ul
+{
+  display: block;
+}
+div.selection li
+{
+  white-space: nowrap;
+}

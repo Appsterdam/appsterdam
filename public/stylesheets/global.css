@@ -1,0 +1,641 @@
+* { margin: 0; padding: 0; }
+
+body {
+	font-size: 14px;
+	line-height: 18px;
+	font-family: 'Open Sans', helvetica, arial;
+	color: #5b5b5b;
+	background: #d7d7d7 url('../images/background.jpg') top center no-repeat;
+}
+
+p {	    
+    font-size: 14px;
+    line-height: 18px;	
+    padding-bottom: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #dc1f26;
+	cursor: pointer;
+}
+
+a:hover, a:active {
+	color: #3a3a3a;
+}
+
+h1, h2, h3, .sidebar p{
+	width: 100%;
+	float: left;
+}
+
+h1 { 
+    font-family: 'Arvo', arial, serif; 
+    font-size: 36px; 
+    line-height: 42px; 
+    margin: 0px 0px 10px 0px;
+    color: #3a3a3a;
+}
+
+h2 {
+    font-family: 'Open Sans';
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #dc1f26;
+    margin: 0px 0px 10px 0px;
+}
+
+h3 {
+    font-family: 'Arvo';
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #dc1f26;
+    margin: 10px 0px 10px 0px;
+}
+
+/******** ELEMENTS ********/
+
+div.hr {
+    background: transparent url('../images/dashed.png') center left repeat-x;
+    height: 3px;
+    border: 0px;
+	width: 100%;
+	float: left;
+	font-size: 0;
+}
+
+div.twitter-hr {
+    background: transparent url('../images/twitter-dashed.png') center left repeat-x;
+    height: 3px;
+    border: 0px;
+	width: 100%;
+	float: left;
+	font-size: 0;
+}
+
+.grid_7 .hr.date {
+	width: 380px;
+}
+
+.pager {
+	width: 100%;
+	margin: 10px 0px 30px;
+	float: left;
+}
+
+.previous {
+	float: left;
+	width: 142px;
+	height: 36px;
+}
+
+.previous a {
+	padding: 7px 0px 0px 33px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	width: 109px;
+	height: 29px;
+	display: block;
+	background: transparent url('../images/iconsprite.png') no-repeat -1px -98px;
+}
+
+.previous a:hover {
+	color: #eee;
+	background: transparent url('../images/iconsprite.png') no-repeat -144px -98px;
+}
+
+.next {
+	float: right;
+	width: 114px;
+	height: 36px;
+}
+
+.next a {
+	padding: 7px 0px 0px 13px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	width: 102px;
+	height: 29px;
+	display: block;
+	background: transparent url('../images/iconsprite.png') no-repeat -1px -135px;
+}
+
+.next a:hover {
+	color: #eee;
+	background: transparent url('../images/iconsprite.png') no-repeat -117px -135px;
+}
+
+/******** NAVIGATION ********/
+
+.nav {
+	height: 36px;
+	width: 100%;
+	margin: 104px 10px 21px 10px;
+}
+
+.nav ul {
+    list-style:none outside none;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0px 18px 0px 18px;
+}
+
+.nav ul li.first {
+    margin: 0px 18px 0px 0px;
+}
+
+.nav ul li.last {
+    margin-bottom: 0px 0px 0px 18px;
+}
+
+.nav ul li a {
+	font-family: 'Arvo', arial, serif; 
+	font-weight: bold;
+	color: #fff;
+	font-size: 20px;
+	line-height: 24px; 
+}
+
+.nav ul li a:hover, .nav ul li a:active, .nav ul li .active {
+    color: #dc1f26;
+}
+
+/* body#page-home div div ul li.nav-home a {color: #fc5b62;} */
+body#page-members div div ul li.nav-members a {color: #fc5b62;}
+body#page-reading div div ul li.nav-reading a {color: #fc5b62;}
+body#page-events div div ul li.nav-events a {color: #fc5b62;}
+body#page-tours div div ul li.nav-tours a {color: #fc5b62;}
+
+/******** SOCIAL ********/
+
+.social {
+    height: 32px;
+    margin-top: 16px;
+}
+
+.social ul {
+    list-style:none outside none;
+	margin-left: 40px;
+}
+
+.social ul li {
+    float: left;
+    margin: 0px 4px 0px 4px;
+}
+
+.social ul li a {
+    display: block;
+}
+
+.social ul li a.twitter {
+    width: 32px;
+    height: 32px;
+    background: transparent url('../images/iconsprite.png') no-repeat -32px 0px;
+}
+.social ul li a.twitter:hover {
+    background: transparent url('../images/iconsprite.png') no-repeat 0px 0px;
+}
+
+.social ul li a.facebook {
+    width: 32px;
+    height: 32px;
+    background: transparent url('../images/iconsprite.png') no-repeat -32px -32px;
+}
+.social ul li a.facebook:hover {
+    background: transparent url('../images/iconsprite.png') no-repeat 0px -32px;
+}
+
+.social ul li a.youtube {
+    width: 32px;
+    height: 32px;
+    background: transparent url('../images/iconsprite.png') no-repeat -32px -64px;
+}
+.social ul li a.youtube:hover {
+    background: transparent url('../images/iconsprite.png') no-repeat 0px -64px;
+}
+
+
+/******** CONTENT ********/
+
+.content {
+    margin-top: 72px;
+}
+
+.content img {
+	border: 2px solid #fff;
+}
+
+.content.article p {
+	padding-bottom: 20px;
+}
+
+div.hr.date {
+    height: 18px; 
+    float: left;
+    width: 460px;
+}
+
+.publish-date {
+    font-size: 16px;
+	line-height: 20px; 
+    color: #888;
+    float: right;
+}
+
+.disqus {
+    margin: 30px 0px 30px 0px;
+    height: 200px;
+}
+
+#dsq-content { color: #3a3a3a; }
+
+#dsq-account-dropdown h3 { float: left; padding-left: 50px; color: #3a3a3a }
+
+/* TODO make the width proper! */
+.dsq-textarea { float: left; width: 92%; }
+
+.dsq-subscribe li a { color: #888; }
+
+.footer {
+	height: 50px;
+	clear: both;
+}
+
+/********** FORM *********/
+
+form {
+	margin: 20px 0px 20px 0px;
+}
+
+.required-text {
+	float: right;
+}
+
+.ss-q-title {
+	display: block;
+	margin: 5px 0px 5px 0px;
+	color: #3a3a3a;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.ss-q-help {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	font-size: 13px;
+	font-style: italic;
+	color:#dc1f26;
+}
+
+.ss-gridrow {
+	border-bottom: 1px solid #ccc;
+}
+
+.ss-gridrow, .ss-gridnumber {
+	text-align: center;
+	font-size: 13px; 
+	padding: 5px;
+}
+
+.ss-leftlabel {
+	text-align: left;
+}
+
+.ss-choices {
+	list-style: outside none;
+	padding: 8px;
+}
+
+.ss-choices li {
+	padding: 3px;
+}
+
+.ss-q-short {
+	width: 300px;
+	border: 1px solid #bbb;
+	background: white url('../images/form-bg.gif') repeat-x;
+	font-size: 15px;
+	color: black;
+	text-indent: 7px;
+	padding: 7px 0;
+	margin-bottom: 10px;
+}
+
+.ss-q-long {
+	width: 500px;
+	border: 1px solid #bbb;
+	background: white url('../images/form-bg.gif') repeat-x;
+	font-size: 15px;
+	color: black;
+	text-indent: 7px;
+	padding: 7px 0;
+	margin-bottom: 10px;
+}
+
+.ss-navigate div input {
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	width: 115px;
+	height: 36px;
+	display: block;
+	background: transparent url('../images/iconsprite.png') no-repeat -1px -135px;
+	border: none;
+	text-align: left;
+	padding: 0px 0px 0px 25px;
+	line-height: 14px;
+}
+
+.ss-navigate div input:hover {
+	background: transparent url('../images/iconsprite.png') no-repeat -117px -135px;
+}
+
+.errorbox-bad label {
+  color: #DC1F26 !important;
+}
+
+/******** HOME **********/
+
+#map_canvas {
+	border: 2px #fff solid;
+}
+
+/******** MEMBERS ********/
+
+.twitter-box {
+	margin: 20px 0px;
+}
+
+.twitter-image {
+	height: 48px;
+	width: 48px;
+	background: #ccc;
+	float: left;
+	margin-top: 5px;
+}
+
+.twitter-image img {
+	height: 48px;
+	width: 48px;
+}
+
+.twitter-info  {
+	width: 240px;
+	float: left;
+	margin-left: 10px;
+}
+
+.twitter-name {
+	color: #3a3a3a;
+	font-weight: 600;
+}
+
+.twitter-url {
+	font-size: 13px;
+}
+
+.twitter-desc {
+	font-size: 13px;
+	line-height: 16px;
+}
+
+ul.memberlist {
+	list-style: none inside;
+}
+
+ul.memberlist li {
+	float: left;
+	height: 25px;
+}
+
+ul.memberlist li a div.membernumber {
+	float: right;
+	font-family: 'Arvo', arial;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 22px; 
+	width: 40px;
+	text-align: right;
+	cursor: pointer;
+}
+
+ul.memberlist li a div.memberclass {
+	float: right;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px; 
+	width: 120px;
+	text-align: left;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+/******** READING *******/
+
+
+.hr.article {
+	margin: 0px 0px 20px 0px;
+}
+
+ul.articlelist {
+	float: left;
+	list-style: none inside;
+	margin-top: 20px;
+}
+
+ul.articlelist li {
+	width: 100%;
+	padding: 10px 0px 15px 0px;
+	background: transparent url('../images/dashed-50.png') repeat-x bottom left;
+}
+
+ul.articlelist li.first {
+	padding: 0px 0px 15px 0px;
+}
+ul.articlelist li.last {
+	background: none;
+}
+
+ul.articlelist li a .articleclass {
+	font-family: 'Arvo', arial;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px; 
+	text-align: left;
+	cursor: pointer;
+}
+
+ul.articlelist li .articledate {
+
+}
+
+/******** EVENTS ********/
+
+.event {
+    
+}
+
+.event ul {
+    list-style: none outside;
+}
+
+.event ul li {
+	height: 20px;
+	margin: 5px 0px 10px 0px;	
+	padding-left: 25px;
+}
+
+.event ul li.eventdate {
+	background: transparent url('../images/eventdate.gif')  no-repeat center left;
+}
+
+.event ul li.eventlocation {
+	background: transparent url('../images/eventlocation.gif')  no-repeat center left;
+}
+
+.eventitle {
+    color: #5b5b5b;
+    margin-top: 20px;
+}
+
+.datestamp {
+    background: transparent url('../images/date.png') no-repeat top left;
+    margin: 20px 6px 0px 6px;
+    height: 66px;
+}
+
+.datestamp.upcoming {
+    background: transparent url('../images/date_upcoming.png') no-repeat top left;
+}
+
+.datestamp .month {
+    font-family: 'Arvo', arial, serif;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #ccc;
+    font-weight: bold;
+    margin: 8px 0px 0px 15px;
+}
+
+.datestamp.upcoming .month {
+    color: #acacac;
+}
+
+.datestamp .day {
+    font-family: 'Arvo', arial, serif;
+    font-size: 28px;
+    line-height: 32px; 
+    color: #fff;
+    font-weight: bold;
+    margin: -3px 0px 0px 15px;
+}
+
+h1.year {
+	font-size: 24px;
+	line-height: 28px; 
+	color: #5b5b5b;
+	margin: 20px 0px 10px 0px;
+}
+
+.sidebar.upcomingevents {
+	text-align: right;
+}
+
+.sidebar.upcomingevents ul {
+    list-style: none outside;
+}
+
+.sidebar.upcomingevents ul li {
+	color: #dc1f26;
+	font-size: 18px;
+	line-height: 22px; 
+	font-weight: 600;
+	margin: 5px 0px;
+}
+
+/******** TOURS *********/
+
+.tour {
+	padding-bottom: 15px;
+    background: transparent url('../images/dashed.png') bottom left repeat-x;
+}
+
+.tour ul {
+    list-style: none outside;
+}
+
+.tour ul li {
+	height: 20px;
+	margin: 5px 0px 10px 0px;	
+	padding-left: 25px;
+}
+
+.tour ul li.eventdate {
+	background: transparent url('../images/eventdate.gif')  no-repeat center left;
+}
+
+.tour ul li.eventlocation {
+	background: transparent url('../images/eventlocation.gif')  no-repeat center left;
+}
+
+.tourtitle {
+    color: #3a3a3a;
+    margin-top: 20px;
+	font-weight: bold;
+}
+
+/******** SIDEBAR ********/
+
+.sidebar {
+    margin-top: 72px; 
+	color: #888;
+}
+
+
+
+.sidebar .hr.date {
+    height: 13px; 
+    float: left;
+    width: 70px;
+	margin-top: 24px;
+}
+
+.sidebar .publish-date {
+    font-size: 14px;
+	line-height: 14px; 
+    color: #3a3a3a;
+    float: right;
+	margin-top: 22px;
+}
+
+.sidebar p { margin-bottom: 10px;}
+
+.read-more {
+	float: left;
+	width: 114px;
+	height: 36px;
+	margin-bottom: 20px;
+}
+
+.read-more a {
+	padding: 7px 0px 0px 13px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	width: 102px;
+	height: 29px;
+	display: block;
+	background: transparent url('../images/iconsprite.png') no-repeat -1px -135px;
+}
+
+.read-more a:hover {
+	color: #eee;
+	background: transparent url('../images/iconsprite.png') no-repeat -117px -135px;
+}
