@@ -1,7 +1,7 @@
-<div class="<%= member_classes(member) %>">
+<div class="<%= member_classes(member, member_counter) %>">
   <h2>
     <%= link_to("http://twitter.com/#{member.username}") do %>
-      <img src="<%= member.picture %>">
+      <%= image_tag member.picture, :alt => member.name %>
       <%= member.name %>
     <% end %>
   </h2>

@@ -1,6 +1,7 @@
 module MemberHelper
-  def member_classes(member)
-    classes = %w(member)
+  def member_classes(member, counter)
+    classes = %w(member grid_6 twitter-box)
+    classes << (counter.odd? ? 'omega' : 'alpha')
     classes << member.entity unless member.entity.blank?
     classes.join(' ')
   end

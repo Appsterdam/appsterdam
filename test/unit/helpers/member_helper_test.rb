@@ -2,8 +2,8 @@ require File.expand_path('../../../test_helper', __FILE__)
 
 describe MemberHelper do
   it "formats member classes" do
-    member_classes(members(:developer)).should == 'member individual'
-    member_classes(members(:designer)).should == 'member individual'
+    member_classes(members(:developer), 0).should == 'member grid_4 twitter-box alpha individual'
+    member_classes(members(:designer), 1).should == 'member grid_4 twitter-box omega individual'
   end
   
   it "retrieves the link without the protocol from a website URL" do
