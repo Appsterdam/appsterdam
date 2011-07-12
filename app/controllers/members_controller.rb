@@ -37,6 +37,10 @@ class MembersController < ApplicationController
     end
   end
 
+  def show
+    @member = Member.unscoped.find(params[:id])
+  end
+
   def update
     if @authenticated.admin?
       if params[:member].has_key?(:marked_as_spam)

@@ -9,7 +9,9 @@
   <p><%= member.bio %></p>
   <%== member_tags(member.work_types, member.platforms) %>
   <%== member_meta(member) %>
-  <ul>
-    <li class="report"><%= link_to "Report as spam", member_spam_reports_path(member), :method => :post %></li>
-  </ul>
+  <% unless @member %>
+    <ul>
+      <li class="report"><%= link_to "Report as spam", member_spam_reports_path(member), :method => :post %></li>
+    </ul>
+  <% end %>
 </div>

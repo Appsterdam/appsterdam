@@ -1,4 +1,3 @@
-- We need a (at least naive) members/show page, because otherwise it will be hard to judge spam reports.
 - Currently when reporting a member as spam the page is reloaded, thus possibly making it harder to report a string of spammers.
 - Test that members that are marked as spam can't circumvent it by signing up again.
 - Possibly optimize the SpamMarkingsController#index action, but it's not critical.
