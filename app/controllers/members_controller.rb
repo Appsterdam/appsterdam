@@ -11,7 +11,7 @@ class MembersController < ApplicationController
       unless params[:page]
         params[:started_at_page] = params[:page] = Member.random_start_page
       end
-      @members = Member.selection(@selection).order(:id).page(params[:page])
+      @members = Member.order(:id).page(params[:page])
     else
       @members = Member.search(params[:q].to_s, :conditions => @selection.conditions, :order => :id, :page => params[:page], :per_page => 32, :match_mode => :extended)
     end

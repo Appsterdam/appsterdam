@@ -120,12 +120,6 @@ class Member < ActiveRecord::Base
     member
   end
 
-  # Returns a scope with the visitor's selection
-  def self.selection(selection)
-    facets = %w(entity work_location)
-    where(selection.to_hash.slice(*facets))
-  end
-
   # Returns a random start page for the member index
   def self.random_start_page
     rand(page(0).page_count) + 1
