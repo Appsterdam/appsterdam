@@ -63,6 +63,10 @@ class Member < ActiveRecord::Base
     write_attribute :work_types, value.reject(&:blank?)
   end
 
+  def admin?
+    role == 'admin'
+  end
+
   def hiring?
     !job_offers_url.blank?
   end

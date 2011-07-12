@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { member_is_current_user? }
+  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { @authenticated.id == Integer(params[:id]) }
   allow_access :all, :only => [:index, :new, :create]
   allow_access :admin
 
@@ -36,26 +36,24 @@ class MembersController < ApplicationController
   end
 
   def update
-    @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
-    redirect_to edit_member_url(@authenticated)
-  end
-
-  def destroy
-    if member_is_current_user?
-      @authenticated.delete
-      logout
-      redirect_to members_url
-    else
-      Member.find(params[:id]).update_attribute(:marked_as_spam, true)
+    if @authenticated.admin?
+      if params[:member].has_key?(:marked_as_spam)
+        Member.unscoped.find(params[:id]).update_attribute(:marked_as_spam, params[:member][:marked_as_spam])
+      end
       redirect_to spam_markings_url
+    else
+      @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
+      redirect_to edit_member_url(@authenticated)
     end
   end
 
-  private
-  
-  def member_is_current_user?
-    @authenticated.id == Integer(params[:id])
+  def destroy
+    @authenticated.delete
+    logout
+    redirect_to members_url
   end
+
+  private
 
   def user_attributes
     twitter_client.info

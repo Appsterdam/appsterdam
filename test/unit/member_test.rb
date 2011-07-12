@@ -97,6 +97,9 @@ describe "A", Member do
 
   it "has the `member' role by default" do
     @member.role.should == 'member'
+    @member.should.not.be.admin
+    @member.role = 'admin'
+    @member.should.be.admin
   end
 
   it "returns that the company is hiring if a job offers URL is provided" do

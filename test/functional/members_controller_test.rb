@@ -177,10 +177,17 @@ describe "On the", MembersController, "an admin" do
 
   it "can flag a member so that she doesn't show up in the membership listing anymore" do
     member = members(:developer)
-    lambda {
-      delete :destroy, :id => member.to_param
-    }.should.not.differ('Member.unscoped.count')
+    put :update, :id => member.to_param, :member => { :marked_as_spam => true }
     should.redirect_to spam_markings_url
     member.reload.should.be.marked_as_spam
+    Member.all.should.not.include(member)
+  end
+
+  it "can flag a member so that she shows up in the membership listing again" do
+    member = Member.unscoped.find_by_name('spammer')
+    put :update, :id => member.to_param, :member => { :marked_as_spam => false }
+    should.redirect_to spam_markings_url
+    member.reload.should.not.be.marked_as_spam
+    Member.all.should.include(member)
   end
 end

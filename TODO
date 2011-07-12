@@ -1,4 +1,6 @@
 - Rename SpamMarking to SpamReport
+- Test that members that are marked as spam can't circumbvent it by signing up again.
+- Remove all spam markings once a member has been flagged as not being spam?
 - Possibly optimize the SpamMarkingsController#index action, but it's not critical.
 - Remove cancel link from members/edit, because there's nothing to cancel.
 - Place `delete listing' action button in the right place.

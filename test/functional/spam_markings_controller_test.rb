@@ -51,12 +51,17 @@ describe "On the", SpamMarkingsController, "an admin" do
     get :index
     status.should.be :ok
     template.should.be 'spam_markings/index'
-    assigns(:members).should == [members(:developer)]
+    assert_select %{form[action="#{member_path(members(:developer))}"]} do
+      assert_select 'input[type=hidden][value=true]'
+      assert_select 'input[type=submit][value="Remove membership listing"]'
+    end
   end
 
-  it "does not see members that have already been marked as spam by an admin" do
-    members(:developer).update_attribute(:marked_as_spam, true)
+  it "sees an `unmark' button for those that have been marked as spam" do
     get :index
-    assigns(:members).should.be.empty
+    assert_select %{form[action="#{member_path(Member.unscoped.find_by_name('spammer'))}"]} do
+      assert_select 'input[type=hidden][value=false]'
+      assert_select 'input[type=submit][value="Unmark as spam"]'
+    end
   end
 end
