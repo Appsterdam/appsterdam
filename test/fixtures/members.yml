@@ -10,6 +10,8 @@ admin:
 spammer:
   twitter_id: 999
   marked_as_spam: true
+  username: spammer
+  name: spammer
 developer:
   twitter_id: 1234
   name: Dévin the Dev

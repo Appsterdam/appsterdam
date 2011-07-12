@@ -12,7 +12,7 @@ class MembersController < ApplicationController
         params[:started_at_page] = params[:page] = Member.random_start_page
       end
     end
-    @members = Member.where(:marked_as_spam => false).selection(@selection).order(:id).page(params[:page])
+    @members = Member.selection(@selection).order(:id).page(params[:page])
     respond_to do |format|
       format.js { render :partial => 'page', :content_type => 'text/html' }
       format.html

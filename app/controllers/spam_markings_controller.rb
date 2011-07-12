@@ -3,7 +3,7 @@ class SpamMarkingsController < ApplicationController
   allow_access :admin
 
   def index
-    @members = SpamMarking.all.map(&:member).reject(&:marked_as_spam).uniq
+    @members = SpamMarking.all.map(&:member).compact.uniq
   end
 
   def create

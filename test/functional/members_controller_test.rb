@@ -82,7 +82,7 @@ describe "On the", MembersController, "a visitor" do
 
   it "does not see members that have been marked as spam" do
     get :index
-    assigns(:members).should.not.include members(:spammer)
+    assigns(:members).map(&:name).should.not.include 'spammer'
   end
 
   should.require_login.get :edit, :id => members(:developer)
@@ -176,10 +176,11 @@ describe "On the", MembersController, "an admin" do
   end
 
   it "can flag a member so that she doesn't show up in the membership listing anymore" do
+    member = members(:developer)
     lambda {
-      delete :destroy, :id => members(:developer).to_param
-    }.should.not.differ('Member.count')
+      delete :destroy, :id => member.to_param
+    }.should.not.differ('Member.unscoped.count')
     should.redirect_to spam_markings_url
-    members(:developer).reload.should.be.marked_as_spam
+    member.reload.should.be.marked_as_spam
   end
 end

@@ -34,6 +34,8 @@ class Member < ActiveRecord::Base
 
   has_many :spam_markings
 
+  default_scope where(:marked_as_spam => false)
+
   ACCESSIBLE_ATTRS = [:entity, :work_location, :platforms, :job_offers_url, :available_for_hire, :work_types]
 
   extend PeijiSan
