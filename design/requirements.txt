@@ -27,7 +27,7 @@ As a visitor I don’t want to have to click pagination links so that I don’t 
 Classifieds
 
 As a vistor I would like to see an overview of classified ads so that I can get an idea of what’s being offered and what’s needed. - #12 1h todo i4
-As a member I would like to see which member posted a classified ad so that I can contact the member. - #13 1h todo i4
+As a visitor I would like to see which member posted a classified ad so that I can contact the member. - #13 1h todo i4
 As a visitor I would like to limit the classifieds overview to specific attributes so that I only see what I’m interested in. - #14 2h todo i4
 As a visitor I would like to be able to search classified ads so that I can find what I’m looking for. - #15 2h todo i4
 As a member I would like to post a classified ad so that I can offer or request help or services. - #16 2h todo i4
