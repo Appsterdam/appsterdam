@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712104816) do
+ActiveRecord::Schema.define(:version => 20110712124246) do
 
   create_table "members", :force => true do |t|
     t.string   "twitter_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20110712104816) do
     t.boolean  "marked_as_spam",     :default => false
   end
 
-  create_table "spam_markings", :force => true do |t|
+  create_table "spam_reports", :force => true do |t|
     t.integer  "member_id"
     t.integer  "reporter_id"
     t.string   "ip_address"

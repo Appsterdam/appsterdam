@@ -32,7 +32,7 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
-  has_many :spam_markings
+  has_many :spam_reports
 
   default_scope where(:marked_as_spam => false)
   scope :marked_as_spam, where(:marked_as_spam => true)

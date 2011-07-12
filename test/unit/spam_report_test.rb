@@ -1,8 +1,8 @@
 require File.expand_path("../../test_helper", __FILE__)
 
-describe SpamMarking, "concerning validation" do
+describe SpamReport, "concerning validation" do
   before do
-    @marking = members(:developer).spam_markings.build(:ip_address => '1.2.3.4')
+    @marking = members(:developer).spam_reports.build(:ip_address => '1.2.3.4')
   end
 
   it "is invalid without a `member'" do
@@ -18,9 +18,9 @@ describe SpamMarking, "concerning validation" do
   end
 end
 
-describe "A", SpamMarking do
+describe "A", SpamReport do
   before do
-    @marking = members(:developer).spam_markings.build(:ip_address => '1.2.3.4')
+    @marking = members(:developer).spam_reports.build(:ip_address => '1.2.3.4')
   end
 
   it "returns the member that's reported as being spam" do

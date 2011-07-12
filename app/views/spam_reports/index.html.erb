@@ -9,9 +9,9 @@
   <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
-      <td><%= member.spam_markings.size %></td>
-      <td><%= member.spam_markings.map(&:ip_address).to_sentence %></td>
-      <td><%= member.spam_markings.map { |s| s.reporter.try(:name) }.compact.to_sentence %></td>
+      <td><%= member.spam_reports.size %></td>
+      <td><%= member.spam_reports.map(&:ip_address).to_sentence %></td>
+      <td><%= member.spam_reports.map { |s| s.reporter.try(:name) }.compact.to_sentence %></td>
       <td>
         <%= form_for member do |f| %>
           <%= f.hidden_field :marked_as_spam, :value => !member.marked_as_spam? %>
@@ -25,3 +25,4 @@
     </tr>
   <% end %>
 </table>
+

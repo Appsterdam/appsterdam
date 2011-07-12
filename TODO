@@ -1,4 +1,4 @@
-- Rename SpamMarking to SpamReport
+- Currently when reporting a member as spam the page is reloaded, thus possibly making it harder to report a string of spammers.
 - Test that members that are marked as spam can't circumbvent it by signing up again.
 - Remove all spam markings once a member has been flagged as not being spam?
 - Possibly optimize the SpamMarkingsController#index action, but it's not critical.

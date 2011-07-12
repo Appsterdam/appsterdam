@@ -40,7 +40,7 @@ class MembersController < ApplicationController
       if params[:member].has_key?(:marked_as_spam)
         Member.unscoped.find(params[:id]).update_attribute(:marked_as_spam, params[:member][:marked_as_spam])
       end
-      redirect_to spam_markings_url
+      redirect_to spam_reports_url
     else
       @authenticated.update_attributes(params[:member].slice(*Member::ACCESSIBLE_ATTRS))
       redirect_to edit_member_url(@authenticated)
