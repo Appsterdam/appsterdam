@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 *.swp
+*.swo
 doc
 config/initializers/twitter.rb
 config/*.sphinx.conf
