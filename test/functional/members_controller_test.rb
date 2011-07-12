@@ -138,12 +138,13 @@ describe "On the", MembersController, "a member" do
     @authenticated.work_location.should == 'appsterdam'
   end
 
-  it "can't update the details that we retrieve from Twitter" do
+  it "can't update the details that we retrieve from Twitter or its role" do
     before = @authenticated.attributes.except('updated_at')
     put :update, :id => @authenticated.to_param, :member => {
       :twitter_id => '7890', :name => 'Mister Devin', :username => 'mr_devin',
       :picture => 'http://example.local/pics/other.png', :location => 'Amsterdam',
       :website => 'new-blog.devin.local', :bio => 'I do secret stuff',
+      :role => 'admin',
       :entity => 'company' # this is the only attr that actually updates
     }
     should.redirect_to edit_member_url(@authenticated)

@@ -95,6 +95,10 @@ describe "A", Member do
     @member = Member.new
   end
 
+  it "has the `member' role by default" do
+    @member.role.should == 'member'
+  end
+
   it "returns that the company is hiring if a job offers URL is provided" do
     @member.should.not.be.hiring
     @member.job_offers_url = 'http://jobs.example.local'
