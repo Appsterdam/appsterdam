@@ -37,7 +37,8 @@ As an administrator I would like classified ads to be removed automatically afte
 
 Spam management
 
-As a visitor I would like to be able to report a membership listing or classified ad as spam so that an administrator can remove it. - #20 1h todo i3
+As a visitor I would like to be able to report a membership listing or classified ad as spam so that an administrator can remove it. - #20 1h partially i3
+  Implemented for membership listings.
 As an administrator I would like to see an overview of items marked as spam so that I can remove these. - #21 1h todo i3
 As an administrator I would like to be able to remove an items marked as spam so that I can keep the overviews free of spam. - #22 1h todo i3
 As an administrator I would like to be able to “unmark” an item marked as spam in case it’s legitimate after all. - #23 1h todo i3

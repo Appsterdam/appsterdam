@@ -32,6 +32,8 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
+  has_many :spam_markings
+
   ACCESSIBLE_ATTRS = [:entity, :work_location, :platforms, :job_offers_url, :available_for_hire, :work_types]
 
   extend PeijiSan
@@ -61,6 +63,10 @@ class Member < ActiveRecord::Base
 
   def hiring?
     !job_offers_url.blank?
+  end
+
+  def marked_as_spam?
+    spam_markings.size != 0
   end
 
   def entity=(type)
