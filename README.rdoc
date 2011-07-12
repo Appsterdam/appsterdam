@@ -18,3 +18,5 @@ Fix the consumer credentials.
 After that install Sphinx
 
     $ brew instal sphinx
+    $ rake ts:index
+    $ rake ts:start
