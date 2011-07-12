@@ -48,10 +48,10 @@ class Member < ActiveRecord::Base
     indexes :location
     indexes :bio
 
-    has :entity
-    has :work_location
-    has :platforms_as_string
-    has :work_types_as_string
+    indexes :entity
+    indexes :work_location
+    indexes :platforms_as_string
+    indexes :work_types_as_string
 
     has :available_for_hire, :as => :boolean
 

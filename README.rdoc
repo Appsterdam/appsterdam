@@ -14,3 +14,7 @@ First do the regular Rails 3 dance.
     $ open config/initializers/twitter.rb
 
 Fix the consumer credentials.
+
+After that install Sphinx
+
+    $ brew instal sphinx
