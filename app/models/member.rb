@@ -32,7 +32,7 @@ class Member < ActiveRecord::Base
     ['support-customer_service', 'Support / Customer service']
   ]]
 
-  has_many :spam_reports
+  has_many :spam_reports, :autosave => true
 
   default_scope where(:marked_as_spam => false)
   scope :marked_as_spam, where(:marked_as_spam => true)
@@ -76,6 +76,11 @@ class Member < ActiveRecord::Base
     write_attribute(:job_offers_url, nil) unless type == 'company'
     write_attribute(:available_for_hire, nil) unless %w{ student individual }.include?(type)
     write_attribute(:entity, type)
+  end
+
+  def marked_as_spam=(marked_as_spam)
+    write_attribute :marked_as_spam, marked_as_spam
+    spam_reports.each(&:mark_for_destruction) if !read_attribute(:marked_as_spam)
   end
 
   def self.create_with_twitter_user_attributes(attributes)

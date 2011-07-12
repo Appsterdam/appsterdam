@@ -155,4 +155,16 @@ describe "A", Member do
     @member.work_types = ['design', 'marketing', '']
     @member.work_types.should == %w{ design marketing }
   end
+
+  it "removes all spam reports when it's unmarked as being spam" do
+    @member = members(:developer)
+    @member.spam_reports.create(:ip_address => '1.2.3.4')
+    @member.spam_reports.create(:ip_address => '5.6.7.8')
+    lambda {
+      @member.update_attribute(:marked_as_spam, 'true')
+    }.should.not.differ('@member.reload.spam_reports.size')
+    lambda {
+      @member.update_attribute(:marked_as_spam, 'false')
+    }.should.differ('@member.reload.spam_reports.size', -2)
+  end
 end

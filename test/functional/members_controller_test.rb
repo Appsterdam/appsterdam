@@ -177,7 +177,9 @@ describe "On the", MembersController, "an admin" do
 
   it "can flag a member so that she doesn't show up in the membership listing anymore" do
     member = members(:developer)
-    put :update, :id => member.to_param, :member => { :marked_as_spam => true }
+    lambda {
+      put :update, :id => member.to_param, :member => { :marked_as_spam => true }
+    }.should.not.differ('SpamReport.count')
     should.redirect_to spam_reports_url
     member.reload.should.be.marked_as_spam
     Member.all.should.not.include(member)
@@ -189,5 +191,14 @@ describe "On the", MembersController, "an admin" do
     should.redirect_to spam_reports_url
     member.reload.should.not.be.marked_as_spam
     Member.all.should.include(member)
+  end
+
+  it "deletes all spam reports when the member is unmarked as being spam" do
+    member = Member.unscoped.find_by_name('spammer')
+    member.spam_reports.create(:ip_address => '1.2.3.4')
+    lambda {
+      put :update, :id => member.to_param, :member => { :marked_as_spam => 'false' }
+    }.should.differ('SpamReport.count', -1)
+    member.reload.spam_reports.should.be.empty
   end
 end
