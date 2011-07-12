@@ -22,8 +22,8 @@ developer:
   bio: Besides being Dévin, I’m also an awesome developer. I love food, I love not making food myself. I play the air guitar and have the air pedals to match match it
   entity: individual
   work_location: applander
-  work_types: ['design', 'development']
-  platforms: ['osx', 'windows']
+  work_types_as_string: 'design development'
+  platforms_as_string: 'osx windows'
 designer:
   twitter_id: 5678
   name: Desiree the Designer
@@ -34,5 +34,5 @@ designer:
   bio: I keep it short.
   entity: individual
   work_location: appsterdam
-  work_types: ['development', 'marketing']
-  platforms: ['osx', 'windows']
+  work_types_as_string: 'development marketing'
+  platforms_as_string: 'osx windows'

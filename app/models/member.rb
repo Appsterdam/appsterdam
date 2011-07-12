@@ -42,6 +42,22 @@ class Member < ActiveRecord::Base
   extend PeijiSan
   self.entries_per_page = 32
 
+  define_index do
+    indexes :name
+    indexes :username
+    indexes :location
+    indexes :bio
+
+    has :entity
+    has :work_location
+    has :platforms_as_string
+    has :work_types_as_string
+
+    has :available_for_hire, :as => :boolean
+
+    set_property :group_concat_max_len => 8192
+  end
+
   def twitter_user_attributes=(attributes)
     self.attributes = {
       :twitter_id => attributes['id'],
@@ -53,15 +69,23 @@ class Member < ActiveRecord::Base
       :bio => attributes['description']
     }
   end
-  
-  serialize :platforms, Array
-  def platforms=(value)
-    write_attribute :platforms, value.reject(&:blank?)
-  end
 
-  serialize :work_types, Array
-  def work_types=(value)
-    write_attribute :work_types, value.reject(&:blank?)
+  def platforms
+    return [] if platforms_as_string.blank?
+    platforms_as_string.split
+  end
+  
+  def platforms=(values)
+    self.platforms_as_string = values.reject(&:blank?).join(' ')
+  end
+  
+  def work_types
+    return [] if work_types_as_string.blank?
+    work_types_as_string.split
+  end
+  
+  def work_types=(values)
+    self.work_types_as_string = values.reject(&:blank?).join(' ')
   end
 
   def admin?
