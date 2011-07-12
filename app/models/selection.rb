@@ -36,4 +36,16 @@ class Selection
   def empty?
     to_hash == {}
   end
+  
+  def conditions
+    as_hash    = to_hash
+    conditions = as_hash.slice(*ATTRIBUTES[0,2])
+    
+    ATTRIBUTES[2,2].each do |attr|
+      if values = as_hash[attr]
+        conditions[attr.to_s + 's_as_string'] = values
+      end
+    end
+    conditions
+  end
 end

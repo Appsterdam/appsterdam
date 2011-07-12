@@ -33,4 +33,10 @@ describe "A", Selection do
     Selection.new('entity' => 'all').should.be.empty
     Selection.new('entity' => 'student').should.not.be.empty
   end
+  
+  it "returns a hash with search conditions" do
+    Selection.new('entity' => 'student').conditions.should == {'entity' => 'student'}
+    Selection.new('work_type' => 'marketing').conditions.should == {'work_types_as_string' => 'marketing'}
+    Selection.new('work_type' => 'marketing', 'platform' => 'ios').conditions.should == {'work_types_as_string' => 'marketing', 'platforms_as_string' => 'ios'}
+  end
 end
