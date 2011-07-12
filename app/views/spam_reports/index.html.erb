@@ -14,10 +14,12 @@
       <td><%= member.spam_reports.map { |s| s.reporter.try(:name) }.compact.to_sentence %></td>
       <td>
         <%= form_for member do |f| %>
-          <%= f.hidden_field :marked_as_spam, :value => !member.marked_as_spam? %>
-          <% if member.marked_as_spam? %>
-            <%= f.submit "Unmark as spam", :confirm => "Add `#{member.name}' back to the membership listing?" %>
-          <% else %>
+          <%= f.hidden_field :marked_as_spam, :value => false %>
+          <%= f.submit "Unmark as spam", :confirm => "Add `#{member.name}' back to the membership listing?" %>
+        <% end %>
+        <% unless member.marked_as_spam? %>
+          <%= form_for member do |f| %>
+            <%= f.hidden_field :marked_as_spam, :value => true %>
             <%= f.submit "Remove membership listing", :confirm => "Remove `#{member.name}' from the membership listing?" %>
           <% end %>
         <% end %>

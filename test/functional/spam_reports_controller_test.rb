@@ -43,11 +43,12 @@ end
 describe "On the", SpamReportsController, "an admin" do
   before do
     login(members(:admin))
-    members(:developer).spam_reports.create(:ip_address => '1.2.3.4', :reporter => members(:designer))
-    members(:developer).spam_reports.create(:ip_address => '4.3.2.1')
   end
 
-  it "sees an overview of all membership listings marked as spam" do
+  it "sees an overview of all membership listings reported for spam" do
+    members(:developer).spam_reports.create(:ip_address => '1.2.3.4', :reporter => members(:designer))
+    members(:developer).spam_reports.create(:ip_address => '4.3.2.1')
+
     get :index
     status.should.be :ok
     template.should.be 'spam_reports/index'
@@ -55,10 +56,15 @@ describe "On the", SpamReportsController, "an admin" do
       assert_select 'input[type=hidden][value=true]'
       assert_select 'input[type=submit][value="Remove membership listing"]'
     end
+    assert_select %{form[action="#{member_path(members(:developer))}"]} do
+      assert_select 'input[type=hidden][value=false]'
+      assert_select 'input[type=submit][value="Unmark as spam"]'
+    end
   end
 
   it "sees an `unmark' button for those that have been marked as spam" do
     get :index
+    assert_select 'input[type=submit][value="Remove membership listing"]', :count => 0
     assert_select %{form[action="#{member_path(Member.unscoped.find_by_name('spammer'))}"]} do
       assert_select 'input[type=hidden][value=false]'
       assert_select 'input[type=submit][value="Unmark as spam"]'
