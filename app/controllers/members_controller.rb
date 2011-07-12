@@ -7,13 +7,13 @@ class MembersController < ApplicationController
 
   def index
     @selection = Selection.new(params)
-    if @selection.empty?
+    if @selection.empty? and params[:q].blank?
       unless params[:page]
         params[:started_at_page] = params[:page] = Member.random_start_page
       end
       @members = Member.selection(@selection).order(:id).page(params[:page])
     else
-      @members = Member.search(:conditions => @selection.conditions, :order => :id, :page => params[:page], :per_page => 32)
+      @members = Member.search(params[:q].to_s, :conditions => @selection.conditions, :order => :id, :page => params[:page], :per_page => 32)
     end
     respond_to do |format|
       format.js { render :partial => 'page', :content_type => 'text/html' }
