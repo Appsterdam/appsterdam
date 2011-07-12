@@ -19,6 +19,8 @@ describe "On the", SpamMarkingsController, "a vistor" do
     post :create, :member_id => members(:developer).to_param
     members(:developer).spam_markings.first.ip_address.should == '1.2.3.4'
   end
+
+  should.require_login.get :index
 end
 
 describe "On the", SpamMarkingsController, "a member" do
@@ -35,6 +37,9 @@ describe "On the", SpamMarkingsController, "a member" do
     marking.ip_address.should == '1.2.3.4'
     marking.reporter.should == members(:designer)
   end
+
+  should.disallow.get :index
+end
 
 describe "On the", SpamMarkingsController, "an admin" do
   before do

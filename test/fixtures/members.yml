@@ -1,5 +1,12 @@
 admin:
   role: admin
+  twitter_id: 1000
+  name: Ad Min
+  username: tjauwmin
+  picture: http://a0.twimg.com/sticky/default_profile_images/default_profile_3_bigger.png
+  location: Core
+  website: admin.are.the.bomb.local
+  bio: I min, you min, we min.
 developer:
   twitter_id: 1234
   name: Dévin the Dev
@@ -17,7 +24,7 @@ designer:
   name: Desiree the Designer
   username: desiree
   picture: http://a0.twimg.com/sticky/default_profile_images/default_profile_4_bigger.png
-  location: Southe-pole
+  location: South-pole
   website: blog.desiree.local
   bio: I keep it short.
   entity: individual
