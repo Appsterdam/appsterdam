@@ -1,6 +1,13 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 describe "On the", ClassifiedsController, "a visitor" do
+  it "sees an overview of all classifieds" do
+    get :index
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == Classified.all
+  end
+
   should.require_login.get :new
   should.require_login.post :create
   should.require_login.get :edit, :id => classifieds(:house)

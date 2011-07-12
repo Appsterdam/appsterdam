@@ -1,0 +1,50 @@
+<h1><%= @title = 'Classifieds' %> <%= link_to 'Members', members_path %></h1>
+
+<div class="selection">Showing
+<span>
+<a href="#">offered</a>
+<ul>
+  <li><a href="#">offered</a></li>
+  <li><a href="#">wanted</a></li>
+</ul>
+</span>
+in
+<span>
+<a href="#">any category</a>
+<ul>
+  <li><a href="#">any category</a></li>
+  <li><a href="#">housing</a></li>
+  <li><a href="#">desks and office space</a></li>
+  <li><a href="#">bikes</a></li>
+  <li><a href="#">other</a></li>
+</ul>.
+</span>
+</div>
+
+<%= render @classifieds %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script>
+(function(){
+  function deactivate() {
+    $("div.selection span.active").removeClass('active');
+  }
+  $("body").click(function() {
+    deactivate();
+  });
+  $("body").keydown(function(event) {
+    if (event.keyCode == 27) {
+      deactivate();
+    }
+  });
+  $("div.selection").delegate("span > a", "click", function(event) {
+    event.stopPropagation()
+    var clicked = $(this).parent();
+    if (clicked.hasClass('active')) {
+      clicked = $();
+    }
+    deactivate();
+    clicked.addClass('active');
+  });
+})();
+</script>

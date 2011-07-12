@@ -1,6 +1,11 @@
 class ClassifiedsController < ApplicationController
   allow_access(:authenticated, :only => [:new, :create])
   allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_classified.nil? }
+  allow_access(:all, :only => :index)
+
+  def index
+    @classifieds = Classified.all
+  end
 
   def new
     @classified = @authenticated.classifieds.build

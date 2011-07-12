@@ -1,0 +1,5 @@
+<div>
+  <h2><%= classified.offered? ? 'Offered' : 'Wanted' %>: <%= classified.title %></h2>
+  <p><%= classified.description %></p>
+  <p>Contact <%= link_to classified.placer.name, "http://twitter.com/#{classified.placer.username}" %>
+</div>
