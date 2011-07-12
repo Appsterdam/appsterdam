@@ -79,22 +79,22 @@ describe MemberHelper do
     params[:entity] = 'student' # could be any param
 
     params[:started_at_page] = '3'
-    @members = stub(:has_next_page? => true, :current_page => 3)
+    @members = stub(:next_page => 4, :current_page => 3)
     link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 4, :started_at_page => 3, :entity => 'student'))}</p>}
 
-    @members = stub(:has_next_page? => false, :current_page => 4)
+    @members = stub(:next_page => nil, :current_page => 4)
     link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 1, :started_at_page => 3, :entity => 'student'))}</p>}
 
-    @members = stub(:has_next_page? => true, :current_page => 1)
+    @members = stub(:next_page => 2, :current_page => 1)
     link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :started_at_page => 3, :entity => 'student'))}</p>}
 
-    @members = stub(:has_next_page? => true, :current_page => 2)
+    @members = stub(:next_page => 3, :current_page => 2)
     link_to_next_page.should == nil
   end
 
   it "generates a pagination link when not wrapping around" do
     params[:entity] = 'student' # could be any param
-    @members = stub(:has_next_page? => true, :current_page => 1)
+    @members = stub(:next_page => 2, :current_page => 1)
     link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :entity => 'student'))}</p>}
   end
 

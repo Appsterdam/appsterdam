@@ -67,7 +67,7 @@ module MemberHelper
   end
 
   def link_to_next_page
-    page = if @members.has_next_page?
+    page = if @members.next_page
       # check if this is the last page to show after wrapping around
       if params[:started_at_page].nil? || @members.current_page != params[:started_at_page].to_i - 1
         @members.current_page + 1

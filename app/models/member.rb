@@ -43,6 +43,8 @@ class Member < ActiveRecord::Base
   self.entries_per_page = 32
 
   define_index do
+    has :id
+    
     indexes :name
     indexes :username
     indexes :location
