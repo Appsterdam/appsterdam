@@ -21,7 +21,7 @@
       <label for="classified_description">Description</label>
       <%= f.text_area :description, :cols => 60, :rows => 6 %>
     </div>
-    <p class="help">Your classified will be removed automatically after 30 days.</p>
+    <p class="help">Your classified will be automatically removed after 30 days.</p>
   </fieldset>
   <div class="submit">
     <%= f.submit "#{@classified.new_record? ? 'Post' : 'Update'} classified" %>
