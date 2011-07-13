@@ -66,6 +66,12 @@ li
   list-style-type: none;
 }
 
+dt
+{
+  width: 150px;
+  float: left;
+}
+
 /******** ELEMENTS ********/
 
 div.hr {
@@ -371,6 +377,8 @@ legend
 {
   font-size: 120%;
   font-weight: bold;
+  border-bottom: 1px dashed #444;
+  padding: 4px 0;
 }
 fieldset > div
 {
@@ -386,6 +394,7 @@ label
 }
 form div.submit
 {
+  padding-top: 8px;
 }
 form div.submit a
 {
@@ -396,9 +405,6 @@ form .help
 {
   color: #666;
   font-size: 80%;
-}
-#page-classifieds textarea
-{
 }
 
 /******** HOME **********/

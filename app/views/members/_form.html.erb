@@ -14,12 +14,12 @@
   <dt>Description:</dt>
   <dd><%= @member.bio %></dd>
   </dl>
-  <p>Want to make changes? Update your profile information on Twitter, then return to this page.</p>
+  <p class="help">Want to make changes? Update your profile information on Twitter and we will automatically pick up the changes.</p>
 </fieldset>
 
 <fieldset>
   <legend>Listing</legend>
-
+  
   <div>
     What are you?
     <% Member::ENTITIES.each do |value, label| %>
@@ -72,8 +72,10 @@
   </div>
 </fieldset>
 
+<div class="submit">
 <%= f.submit "Update membership listing" %>
 <%= link_to "Cancel and go back", members_path %>
+</div>
 
 <script>
 (function(){
