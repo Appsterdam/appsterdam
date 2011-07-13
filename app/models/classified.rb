@@ -8,6 +8,10 @@ class Classified < ActiveRecord::Base
 
   belongs_to :placer, :class_name => 'Member'
 
+  def self.purge_outdated!
+    delete_all ["classifieds.created_at < ?", 30.days.ago]
+  end
+
   def wanted?
     !offered
   end

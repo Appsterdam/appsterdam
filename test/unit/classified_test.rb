@@ -38,6 +38,17 @@ describe Classified, "concerning validation" do
   end
 end
 
+describe Classified do
+  it "deletes ads that are 30 days old" do
+    classifieds(:bike).update_attribute(:created_at, 31.days.ago)
+    classifieds(:house).update_attribute(:created_at, 29.days.ago)
+    lambda {
+      Classified.purge_outdated!
+    }.should.differ('Classified.count', -1)
+    Classified.all.should == [classifieds(:house)]
+  end
+end
+
 describe "A", Classified do
   before do
     @classified = classifieds(:bike)
