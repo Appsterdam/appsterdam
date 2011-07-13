@@ -1,5 +1,4 @@
-- Show validation errors on classifieds/_form.
-- Currently when reporting a member as spam the page is reloaded, thus possibly making it harder to report a string of spammers.
+- Actuall show the validation errors on classifieds/_form. SHould we use the https://github.com/rails/dynamic_form plugin?
 - Test that members that are marked as spam can't circumvent it by signing up again.
 - Possibly optimize the SpamMarkingsController#index action, but it's not critical.
 - Remove cancel link from members/edit, because there's nothing to cancel.
