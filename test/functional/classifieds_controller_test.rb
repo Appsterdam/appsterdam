@@ -9,15 +9,23 @@ describe "On the", ClassifiedsController, "a visitor" do
   end
 
   it "sees an overview of classifieds selected by offers" do
-    Classified.expects(:search).with('', {:order => :id, :conditions => {'offered' => 'true'}, :match_mode => :extended}).returns(Classified.where(:offered => true))
+    Classified.expects(:search).with('', {:order => :id, :with => { :offered => true }, :conditions => {}, :match_mode => :extended}).returns(Classified.where(:offered => true))
     get :index, :offered => 'true'
     status.should.be :ok
     template.should.be 'classifieds/index'
     assigns(:classifieds).should == Classified.where(:offered => true)
   end
 
+  it "sees an overview of classifieds selected by wanted" do
+    Classified.expects(:search).with('', {:order => :id, :with => { :offered => false }, :conditions => {}, :match_mode => :extended}).returns(Classified.where(:offered => true))
+    get :index, :offered => 'false'
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == Classified.where(:offered => true)
+  end
+
   it "sees an overview of classifieds selected by category" do
-    Classified.expects(:search).with('', {:order => :id, :conditions => {'category' => 'bikes'}, :match_mode => :extended}).returns([classifieds(:bike)])
+    Classified.expects(:search).with('', {:order => :id, :with => {}, :conditions => {'category' => 'bikes'}, :match_mode => :extended}).returns([classifieds(:bike)])
     get :index, :category => 'bikes'
     status.should.be :ok
     template.should.be 'classifieds/index'

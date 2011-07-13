@@ -1,4 +1,4 @@
-- Actually add indexing/search to Classified.
+- Move :with/:conditions logic from ClassifiedsController to Selection.
 - Selection JS is now duplicated in members/index and classifieds/index.
 - Actually show the validation errors on classifieds/_form. SHould we use the https://github.com/rails/dynamic_form plugin?
 - Test that members that are marked as spam can't circumvent it by signing up again.

@@ -8,9 +8,12 @@ class Classified < ActiveRecord::Base
 
   belongs_to :placer, :class_name => 'Member'
 
-  # TODO this is a tmp no-op until indexing is actually added to this model
-  def self.search(query, conditions)
-    all
+  define_index do
+    has :id
+    has :offered, :type => :boolean
+    indexes :category
+    indexes :title
+    indexes :description
   end
 
   def self.purge_outdated!

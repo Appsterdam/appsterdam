@@ -7,11 +7,18 @@ class ClassifiedsController < ApplicationController
     if my_classifieds?
       @classifieds = @authenticated.classifieds
     else
-      @selection = ClassifiedSelection.new(params)
+      @selection = Selection::Classified.new(params)
       if @selection.empty? && params[:q].blank?
         @classifieds = Classified.all
       else
-        @classifieds = Classified.search(params[:q].to_s, :conditions => @selection.conditions, :order => :id, :match_mode => :extended)
+        # TODO this all should go to Selection
+        conditions = @selection.conditions
+        with = {}
+        if conditions.has_key?(:offered)
+          with[:offered] = conditions[:offered] == 'true'
+        end
+        conditions.delete(:offered)
+        @classifieds = Classified.search(params[:q].to_s, :conditions => conditions, :with => with, :order => :id, :match_mode => :extended)
       end
     end
   end

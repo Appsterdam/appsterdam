@@ -50,7 +50,7 @@ class Selection
   end
 end
 
-class MemberSelection < Selection
+class Selection::Member < Selection
   self.attributes = [:entity, :work_location, :work_type, :platform]
 
   def resource_name
@@ -70,7 +70,7 @@ class MemberSelection < Selection
   end
 end
 
-class ClassifiedSelection < Selection
+class Selection::Classified < Selection
   self.attributes = [:offered, :category]
 
   def resource_name
