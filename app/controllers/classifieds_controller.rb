@@ -1,10 +1,10 @@
 class ClassifiedsController < ApplicationController
-  allow_access(:authenticated, :only => [:new, :create])
+  allow_access(:authenticated, :only => [:index, :new, :create])
   allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_classified.nil? }
-  allow_access(:all, :only => :index)
+  allow_access(:all, :only => :index) { !my_classifieds? } # visitors have no `my classifieds'
 
   def index
-    @classifieds = Classified.all
+    @classifieds = my_classifieds? ? @authenticated.classifieds : Classified.all
   end
 
   def new
@@ -34,6 +34,10 @@ class ClassifiedsController < ApplicationController
   end
 
   private
+
+  def my_classifieds?
+    params[:show] == :mine
+  end
 
   def find_classified
     @classified = @authenticated.classifieds.find_by_id(params[:id])

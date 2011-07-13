@@ -796,6 +796,7 @@ div.member:hover li.report a
 #page-classifieds h1 a,
 #page-classifieds h1 span
 {
+  margin-left: 10px;
   float: right;
   font-size: 14px;
 }

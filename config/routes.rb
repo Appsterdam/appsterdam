@@ -1,8 +1,9 @@
 Appsterdam::Application.routes.draw do
-  match '/members/create' => 'members#create',  :as => :create_members
-  match '/session'        => 'sessions#create', :as => :session
-  match '/session/clear'  => 'sessions#clear',  :as => :clear_session
-  
+  match '/members/create'   => 'members#create',    :as => :create_members
+  match '/session'          => 'sessions#create',   :as => :session
+  match '/session/clear'    => 'sessions#clear',    :as => :clear_session
+  match '/classifieds/mine' => 'classifieds#index', :as => :my_classifieds, :show => :mine
+
   resources :classifieds
   resources :members do
     resources :spam_reports

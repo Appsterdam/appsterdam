@@ -8,6 +8,7 @@ describe "On the", ClassifiedsController, "a visitor" do
     assigns(:classifieds).should == Classified.all
   end
 
+  should.require_login.get :index, :show => :mine
   should.require_login.get :new
   should.require_login.post :create
   should.require_login.get :edit, :id => classifieds(:house)
@@ -18,6 +19,13 @@ end
 describe "On the", ClassifiedsController, "a member" do
   before do
     login(members(:developer))
+  end
+
+  it "sees an overview of her own ads" do
+    get :index, :show => :mine
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == [classifieds(:bike)]
   end
 
   it "sees a form to create a new ad" do
