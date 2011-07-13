@@ -61,6 +61,17 @@ class Member < ActiveRecord::Base
     set_property :group_concat_max_len => 8192
   end
 
+  # The default scope will ensure that members marked as spam will never show
+  # up in result sets. However, thinking sphinx has already indexed those and
+  # wants to return it, thus resulting in `nil' showing up for those.
+  extend(Module.new do
+    def search(*args)
+      result = super
+      result.compact!
+      result
+    end
+  end)
+
   def twitter_user_attributes=(attributes)
     self.attributes = {
       :twitter_id => attributes['id'],
