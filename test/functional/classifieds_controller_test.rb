@@ -41,6 +41,13 @@ describe "On the", ClassifiedsController, "a member" do
     ad.description.should == "It's quite simply the most awesome bike in town."
   end
 
+  it "sees validation errors on a failed create" do
+    post :create, :classified => {}
+    status.should.be :ok
+    template.should.be 'classifieds/new'
+    assigns(:classified).should.be.invalid
+  end
+
   it "can edit a classified ad of herself" do
     get :edit, :id => classifieds(:bike).to_param
     status.should.be :ok
@@ -52,6 +59,13 @@ describe "On the", ClassifiedsController, "a member" do
     put :update, :id => classifieds(:bike).to_param, :classified => { :offered => 'false' }
     should.redirect_to classifieds_url
     classifieds(:bike).reload.should.be.wanted
+  end
+
+  it "sees validation errors on a failed update" do
+    put :update, :id => classifieds(:bike).to_param, :classified => { :description => '' }
+    status.should.be :ok
+    template.should.be 'classifieds/edit'
+    assigns(:classified).should.be.invalid
   end
 
   it "can delete a classified ad of herself" do

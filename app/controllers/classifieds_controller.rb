@@ -12,13 +12,20 @@ class ClassifiedsController < ApplicationController
   end
 
   def create
-    @authenticated.classifieds.create(params[:classified])
-    redirect_to classifieds_url
+    @classified = @authenticated.classifieds.build(params[:classified])
+    if @classified.save
+      redirect_to classifieds_url
+    else
+      render :new
+    end
   end
 
   def update
-    @classified.update_attributes(params[:classified])
-    redirect_to classifieds_url
+    if @classified.update_attributes(params[:classified])
+      redirect_to classifieds_url
+    else
+      render :edit
+    end
   end
 
   def destroy
