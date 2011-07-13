@@ -35,17 +35,17 @@
 
 (function(){
   function load() {
-    var url = $("#more_listings > a").attr("href");
-    $("#more_listings").html("<span>Loading…</span>");
-    $.get(url, function(response) { $("#more_listings").replaceWith(response); });
+    var url = $("#load_more > a").attr("href");
+    $("#load_more").html("<span>Loading…</span>");
+    $.get(url, function(response) { $("#load_more").replaceWith(response); });
   }
-  $("#more_listings > a").live("click", function(event){
+  $("#load_more > a").live("click", function(event){
     load();
     return false;
   })
   $(window).scroll(function(event) {
     if ($(document).height() - $(window).height() - $(document.body).scrollTop() < 800) {
-      if ($('#more_listings > a').size() != 0) {
+      if ($('#load_more > a').size() != 0) {
         load();
       }
     }

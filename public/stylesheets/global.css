@@ -618,12 +618,12 @@ div.selection span li a
 }
 div.selection span li a:hover
 {
-  background-color: #00f;
+  background-color: #444;
   color: #fff;
 }
 div.selection span li a:active
 {
-  background-color: #00c;
+  background-color: #222;
 }
 div.selection ul
 {
@@ -632,7 +632,7 @@ div.selection ul
   position: absolute;
   top: 100%;
   left: 0;
-  padding: 0px;
+  padding: 4px 0 8px 0;
   margin: 0;
   background-color: #e6e8e8;
   border: 1px solid #888;
@@ -721,4 +721,23 @@ div.member li.report a
 div.member:hover li.report a
 {
   display: block;
+}
+
+#load_more
+{
+  text-align: center;
+  margin: 16px 0;
+}
+#load_more a
+{
+  display: block;
+  padding: 8px 0;
+}
+#load_more a:hover
+{
+  background-color: #ccc;
+}
+#load_more a:active
+{
+  background-color: #aaa;
 }
