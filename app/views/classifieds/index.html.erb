@@ -12,6 +12,9 @@
   <% else %>
     <span>Join and sign in to post classifieds</span>
   <% end %>
+  <%= form_tag classifieds_path, :method => 'get', :id => 'search' do %>
+    <%= search_field_tag(:q, params[:q], :placeholder => 'Search classifieds') %>
+  <% end %>
 </h1>
 
 <% unless my_classifieds? %>

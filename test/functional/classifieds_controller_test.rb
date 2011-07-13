@@ -32,6 +32,14 @@ describe "On the", ClassifiedsController, "a visitor" do
     assigns(:classifieds).should == [classifieds(:bike)]
   end
 
+  it "sees search results for a query" do
+    Classified.expects(:search).with('bike', {:order => :id, :with => {}, :conditions => {}, :match_mode => :extended}).returns([classifieds(:bike)])
+    get :index, :q => 'bike'
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == [classifieds(:bike)]
+  end
+
   should.require_login.get :index, :show => :mine
   should.require_login.get :new
   should.require_login.post :create
