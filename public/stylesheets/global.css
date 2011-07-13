@@ -710,12 +710,15 @@ div.member div.meta
 }
 div.member li.report
 {
-  display: none;
   position: absolute;
   bottom: 0;
   right: 0;
 }
-div.member:hover li.report
+div.member li.report a
+{
+  display: none;
+}
+div.member:hover li.report a
 {
   display: block;
 }

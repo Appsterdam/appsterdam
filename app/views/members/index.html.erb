@@ -51,4 +51,8 @@
     }
   });
 })();
+
+$('.report a').live('ajax:success', function() {
+  $(this).replaceWith('Reported as spam');
+});
 </script>

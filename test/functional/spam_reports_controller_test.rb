@@ -3,10 +3,21 @@ require File.expand_path('../../test_helper', __FILE__)
 share "SpamReportsController" do
   it "can mark a member listing as being spam" do
     lambda {
-      post :create, :member_id => members(:developer).to_param
+      post :create, :member_id => members(:developer).to_param, :format => 'js'
     }.should.differ("SpamReport.count", +1)
-    should.redirect_to members_url
+    status.should.be :created
+    response.body.strip.should.be.empty
     members(:developer).spam_reports.size.should == 1
+  end
+
+  it "returns that the report creation failed" do
+    request.env['REMOTE_ADDR'] = nil
+    lambda {
+      post :create, :member_id => members(:developer).to_param, :format => 'js'
+    }.should.not.differ("SpamReport.count")
+    status.should.be :bad_request
+    response.body.strip.should.be.empty
+    members(:developer).spam_reports.size.should == 0
   end
 end
 

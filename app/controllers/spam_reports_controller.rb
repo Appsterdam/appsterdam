@@ -8,7 +8,7 @@ class SpamReportsController < ApplicationController
 
   def create
     member = Member.find(params[:member_id])
-    member.spam_reports.create(:reporter => @authenticated, :ip_address => request.env['REMOTE_ADDR'])
-    redirect_to members_url
+    report = member.spam_reports.build(:reporter => @authenticated, :ip_address => request.env['REMOTE_ADDR'])
+    head(report.save ? :created : :bad_request)
   end
 end
