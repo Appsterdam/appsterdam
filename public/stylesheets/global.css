@@ -755,3 +755,27 @@ div.member:hover li.report a
   float: right;
   font-size: 14px;
 }
+
+div.classified
+{
+  position: relative;
+  margin: 16px 0 0 0;
+  padding: 16px 0 0 0;
+}
+div.classified.alpha
+{
+  clear: both;
+}
+div.classified .inner
+{
+  border-top: 1px dashed #999;
+  padding: 16px 0;
+}
+div.classified.omega .inner
+{
+  margin-left: 16px;
+}
+div.classified .description
+{
+  margin: 16px 0 8px 0;
+}

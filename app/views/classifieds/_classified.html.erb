@@ -1,5 +1,14 @@
-<div>
-  <h2><%= classified.offered? ? 'Offered' : 'Wanted' %>: <%= classified.title %></h2>
-  <p><%= classified.description %></p>
-  <p>Contact <%= link_to classified.placer.name, "http://twitter.com/#{classified.placer.username}" %>
+<div class="<%= classified_classes(classified, classified_counter) %>">
+  <div class="inner">
+    <h2><%= classified.title %></h2>
+    <p class="description"><%= classified.description %></p>
+    <p>
+      <% if classified.offered? %>
+        <span>Offered</span>
+      <% else %>
+        <span>Wanted</span>
+      <% end %>
+      by <%= link_to classified.placer.name, "http://twitter.com/#{classified.placer.username}" %>
+    </p>
+  </div>
 </div>
