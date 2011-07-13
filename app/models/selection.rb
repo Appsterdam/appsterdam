@@ -1,6 +1,12 @@
 class Selection
-  ATTRIBUTES = [:entity, :work_location, :work_type, :platform]
-  attr_accessor *ATTRIBUTES
+  def self.attributes=(attrs)
+    @attributes = attrs
+    attr_accessor *attrs
+  end
+  
+  def self.attributes
+    @attributes
+  end
   
   def initialize(params={})
     params.each do |key, value|
@@ -12,14 +18,16 @@ class Selection
   end
   
   def to_hash
-    hash = {}.with_indifferent_access
-    ATTRIBUTES.each do |attribute|
+    hash = ActiveSupport::HashWithIndifferentAccess.new
+    self.class.attributes.each do |attribute|
       unless (value = send(attribute)).blank?
         hash[attribute] = value
       end
     end
     hash
   end
+  
+  alias_method :conditions, :to_hash
   
   def merge(options={})
     merged = to_hash
@@ -34,18 +42,26 @@ class Selection
   end
   
   def empty?
-    to_hash == {}
+    to_hash.empty?
   end
-  
+end
+
+class MemberSelection < Selection
+  self.attributes = [:entity, :work_location, :work_type, :platform]
+
   def conditions
     as_hash    = to_hash
-    conditions = as_hash.slice(*ATTRIBUTES[0,2])
+    conditions = as_hash.slice(*self.class.attributes[0,2])
     
-    ATTRIBUTES[2,2].each do |attr|
+    self.class.attributes[2,2].each do |attr|
       if values = as_hash[attr]
         conditions[attr.to_s + 's_as_string'] = values
       end
     end
     conditions
   end
+end
+
+class ClassifiedSelection < Selection
+  self.attributes = [:offered, :category]
 end

@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   include Twitter
 
   def index
-    @selection = Selection.new(params)
+    @selection = MemberSelection.new(params)
     if @selection.empty? and params[:q].blank?
       unless params[:page]
         params[:started_at_page] = params[:page] = Member.random_start_page
