@@ -2,8 +2,8 @@ require File.expand_path('../../../test_helper', __FILE__)
 
 describe MemberHelper do
   it "formats member classes" do
-    member_classes(members(:developer), 0).should == 'member grid_4 twitter-box alpha individual'
-    member_classes(members(:designer), 1).should == 'member grid_4 twitter-box omega individual'
+    member_classes(members(:developer), 0).should == 'member grid_6 twitter-box alpha individual'
+    member_classes(members(:designer), 1).should == 'member grid_6 twitter-box omega individual'
   end
   
   it "retrieves the link without the protocol from a website URL" do
@@ -80,13 +80,13 @@ describe MemberHelper do
 
     params[:started_at_page] = '3'
     @members = stub(:next_page => 4, :current_page => 3)
-    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 4, :started_at_page => 3, :entity => 'student'))}</p>}
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more", members_path(:page => 4, :started_at_page => 3, :entity => 'student'))}</p>}
 
     @members = stub(:next_page => nil, :current_page => 4)
-    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 1, :started_at_page => 3, :entity => 'student'))}</p>}
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more", members_path(:page => 1, :started_at_page => 3, :entity => 'student'))}</p>}
 
     @members = stub(:next_page => 2, :current_page => 1)
-    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :started_at_page => 3, :entity => 'student'))}</p>}
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more", members_path(:page => 2, :started_at_page => 3, :entity => 'student'))}</p>}
 
     @members = stub(:next_page => 3, :current_page => 2)
     link_to_next_page.should == nil
@@ -95,7 +95,7 @@ describe MemberHelper do
   it "generates a pagination link when not wrapping around" do
     params[:entity] = 'student' # could be any param
     @members = stub(:next_page => 2, :current_page => 1)
-    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more member listings", members_path(:page => 2, :entity => 'student'))}</p>}
+    link_to_next_page.should == %{<p id="more_listings">#{link_to("Load more", members_path(:page => 2, :entity => 'student'))}</p>}
   end
 
   private

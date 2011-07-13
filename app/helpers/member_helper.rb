@@ -77,7 +77,7 @@ module MemberHelper
       1 # wrap around
     end
     if page
-      %{<p id="more_listings">#{link_to("Load more member listings", members_path(params.merge(:page => page)))}</p>}.html_safe
+      %{<p id="more_listings">#{link_to("Load more", members_path(params.merge(:page => page)))}</p>}.html_safe
     end
   end
 end

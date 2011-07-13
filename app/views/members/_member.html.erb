@@ -1,17 +1,17 @@
-<div class="<%= member_classes(member, member_counter) %>">
-  <h2>
-    <%= link_to("http://twitter.com/#{member.username}") do %>
-      <%= image_tag member.picture, :alt => member.name %>
-      <%= member.name %>
+<div class="<%= member_classes(member, local_assigns[:member_counter]||0) %>">
+  <div class="inner">
+    <h2>
+      <%= image_tag(member.picture, :alt => member.name) unless member.picture.blank? %>
+      <%= link_to(member.name, "http://twitter.com/#{member.username}") %>
+      <%= link_to member_domain(member.website), member.website %>
+    </h2>
+    <%== member_meta(member) %>
+    <p><%= member.bio %></p>
+    <%== member_tags(member.work_types, member.platforms) %>
+    <% unless @member %>
+      <ul>
+        <li class="report"><%= link_to "Report as spam", member_spam_reports_path(member), :method => :post %></li>
+      </ul>
     <% end %>
-  </h2>
-  <p><%= link_to member_domain(member.website), member.website %></p>
-  <p><%= member.bio %></p>
-  <%== member_tags(member.work_types, member.platforms) %>
-  <%== member_meta(member) %>
-  <% unless @member %>
-    <ul>
-      <li class="report"><%= link_to "Report as spam", member_spam_reports_path(member), :method => :post %></li>
-    </ul>
-  <% end %>
+  </div>
 </div>
