@@ -95,8 +95,6 @@ describe "On the", MembersController, "a visitor" do
     assigns(:members).map(&:name).should.not.include 'spammer'
   end
 
-  should.require_login.get :show, :id => members(:developer)
-
   should.require_login.get :edit, :id => members(:developer)
   should.require_login.put :update, :id => members(:developer)
   should.require_login.delete :destroy, :id => members(:developer)
@@ -177,8 +175,6 @@ describe "On the", MembersController, "a member" do
     should.not.be.authenticated
   end
 
-  should.disallow.get :show, :id => members(:developer)
-
   should.disallow.get :edit, :id => members(:designer)
   should.disallow.put :update, :id => members(:designer)
   should.disallow.delete :destroy, :id => members(:designer)
@@ -198,14 +194,6 @@ end
 describe "On the", MembersController, "an admin" do
   before do
     login(members(:admin))
-  end
-  
-  it "sees an overview of one member" do
-    member = Member.unscoped.find_by_name('spammer')
-    get :show, :id => member.to_param
-    status.should.be :ok
-    template.should.be 'members/show'
-    assigns(:member).should == member
   end
   
   it "can update her listing" do

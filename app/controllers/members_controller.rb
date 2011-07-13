@@ -36,10 +36,6 @@ class MembersController < ApplicationController
       end
     end
   end
-
-  def show
-    @member = Member.unscoped.find(params[:id])
-  end
   
   def edit
     @member = @authenticated

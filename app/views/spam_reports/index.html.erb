@@ -1,19 +1,37 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Weigth</th>
-    <th>IPs</th>
-    <th>Reporters</th>
-    <th></th>
-  </tr>
-  <% @members.each do |member| %>
-    <tr>
-      <td><%= link_to member.name, member_path(member) %></td>
-      <td><%= member.spam_reports.size %></td>
-      <td><%= member.spam_reports.map(&:ip_address).to_sentence %></td>
-      <td><%= member.spam_reports.map { |s| s.reporter.try(:name) }.compact.to_sentence %></td>
-      <td><%= render :partial => 'mark_as_spam_forms', :locals => { :member => member } %></td>
-    </tr>
-  <% end %>
-</table>
+<h1><%= @title = 'Spam report' %></h1>
 
+<% counter = 0 %>
+<% @members.each do |member| %>
+<div class="<%= member_classes(member, counter) %>">
+  <div class="inner">
+    <h2>
+      <%= image_tag(member.picture, :alt => member.name) unless member.picture.blank? %>
+      <%= link_to(member.name, "http://twitter.com/#{member.username}") %>
+      <%= link_to member_domain(member.website), member.website %>
+    </h2>
+    <%== member_meta(member) %>
+    <p><%= member.bio %></p>
+    <%== member_tags(member.work_types, member.platforms) %>
+    <p>
+    <ul>
+      <li>Reported <%= pluralize(member.spam_reports.size, 'time') %></li>
+      <li>From <%= member.spam_reports.map { |s| "#{s.ip_address}#{" (#{s.reporter.name})" if s.reporter}" }.to_sentence %></li>
+    </ul>
+    </p>
+    <p>
+      <% if member.marked_as_spam? %>
+        Removed from membership listing.
+      <% else %>
+        <%= form_for member do |f| %>
+          <%= f.hidden_field :marked_as_spam, :value => true %>
+          <%= f.submit "Remove membership listing", :confirm => "Remove `#{member.name}' from the membership listing?" %>
+        <% end %>
+      <% end %>
+      <%= form_for member do |f| %>
+        <%= f.hidden_field :marked_as_spam, :value => false %>
+        <%= f.submit "Unmark as spam", :confirm => "Add `#{member.name}' back to the membership listing?" %>
+      <% end %>
+    </p>
+  </div>
+</div>
+<% end %>
