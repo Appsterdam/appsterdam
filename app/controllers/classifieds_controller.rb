@@ -4,7 +4,16 @@ class ClassifiedsController < ApplicationController
   allow_access(:all, :only => :index) { !my_classifieds? } # visitors have no `my classifieds'
 
   def index
-    @classifieds = my_classifieds? ? @authenticated.classifieds : Classified.all
+    if my_classifieds?
+      @classifieds = @authenticated.classifieds
+    else
+      @selection = ClassifiedSelection.new(params)
+      if @selection.empty? && params[:q].blank?
+        @classifieds = Classified.all
+      else
+        @classifieds = Classified.search(params[:q].to_s, :conditions => @selection.conditions, :order => :id, :match_mode => :extended)
+      end
+    end
   end
 
   def new
@@ -38,6 +47,7 @@ class ClassifiedsController < ApplicationController
   def my_classifieds?
     params[:show] == :mine
   end
+  helper_method :my_classifieds?
 
   def find_classified
     @classified = @authenticated.classifieds.find_by_id(params[:id])

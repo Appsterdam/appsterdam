@@ -8,6 +8,11 @@ class Classified < ActiveRecord::Base
 
   belongs_to :placer, :class_name => 'Member'
 
+  # TODO this is a tmp no-op until indexing is actually added to this model
+  def self.search(query, conditions)
+    all
+  end
+
   def self.purge_outdated!
     delete_all ["classifieds.created_at < ?", 30.days.ago]
   end

@@ -1,0 +1,19 @@
+<div class="selection">Showing
+<span>
+<%== facet_links(@selection, :offered, ActiveSupport::OrderedHash[[
+  ['all',   'all'],
+  ['true',  'offered'],
+  ['false', 'wanted']
+]]) %>
+</span>
+in
+<span>
+<%== facet_links(@selection, :category, ActiveSupport::OrderedHash[[
+  ['all',        'any category'],
+  ['housing',    'housing'],
+  ['work_space', 'desks and office space'],
+  ['bikes',      'bikes'],
+  ['other',      'other']
+]]) %>
+</span>
+</div>

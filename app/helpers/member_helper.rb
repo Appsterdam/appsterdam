@@ -55,17 +55,6 @@ module MemberHelper
     
     "<div class=\"meta\">#{meta.join('<br>')}</div>" unless meta.empty?
   end
-  
-  def member_facet_links(selection, facet, options)
-    out = ''
-    current_label = (value = selection.send(facet)) ? options[value] : options.first[1]
-    out << link_to(current_label, '#')
-    out << '<ul>'
-    options.each do |value, label|
-      out << "<li>#{link_to(label, members_path(selection.merge(facet => value)))}</li>"
-    end
-    out << '</ul>'
-  end
 
   def link_to_next_page
     page = if @members.next_page

@@ -13,7 +13,7 @@ describe "On the", MembersController, "a visitor" do
   end
   
   it "sees a list of members selected by work type" do
-    Member.stubs(:search).with('', {:order => :id, :page => nil, :per_page => 32, :conditions => {'work_types_as_string' => 'developer'}, :match_mode => :extended}).returns(Member.page(1))
+    Member.expects(:search).with('', {:order => :id, :page => nil, :per_page => 32, :conditions => {'work_types_as_string' => 'developer'}, :match_mode => :extended}).returns(Member.page(1))
     get :index, :work_type => 'developer'
     status.should.be :ok
     template.should.be 'members/index'
@@ -21,8 +21,8 @@ describe "On the", MembersController, "a visitor" do
   end
   
   it "sees the second page of members selected by work location" do
-    Member.stubs(:search).with('', {:order => :id, :page => 2, :per_page => 32, :conditions => {'work_types_as_string' => 'developer'}, :match_mode => :extended}).returns(Member.page(2))
-    get :index, :work_type => 'developer', :page => 2
+    Member.expects(:search).with('', {:order => :id, :page => 2, :per_page => 32, :conditions => {'work_location' => 'appsterdam'}, :match_mode => :extended}).returns(Member.page(2))
+    get :index, :work_location => 'appsterdam', :page => 2
     status.should.be :ok
     template.should.be 'members/index'
     assert_select 'h1'

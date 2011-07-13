@@ -1,6 +1,6 @@
 <div class="selection">Showing
 <span>
-<%== member_facet_links(@selection, :entity, ActiveSupport::OrderedHash[[
+<%== facet_links(@selection, :entity, ActiveSupport::OrderedHash[[
   ['all',        'all members'],
   ['company',    'companies'],
   ['student',    'students'],
@@ -10,7 +10,7 @@
 </span>
 who
 <span>
-<%== member_facet_links(@selection, :work_location, ActiveSupport::OrderedHash[[
+<%== facet_links(@selection, :work_location, ActiveSupport::OrderedHash[[
   ['all',           'are anywhere'],
   ['appsterdam',    'are Appsterdammers'],
   ['applander',     'are Applanders'],
@@ -19,7 +19,7 @@ who
 </span>
 doing
 <span>
-<%== member_facet_links(@selection, :work_type, ActiveSupport::OrderedHash[[
+<%== facet_links(@selection, :work_type, ActiveSupport::OrderedHash[[
   ['all',                      'any work'],
   ['design',                   'design'],
   ['development',              'development'],
@@ -29,7 +29,7 @@ doing
 </span>
 for
 <span>
-<%== member_facet_links(@selection, :platform, ActiveSupport::OrderedHash[[
+<%== facet_links(@selection, :platform, ActiveSupport::OrderedHash[[
   ['all',             'any platform'],
   ['web',             'The Web'],
   ['ios',             'iOS'],

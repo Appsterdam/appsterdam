@@ -39,6 +39,10 @@ describe "A", MemberSelection do
     MemberSelection.new('work_type' => 'marketing').conditions.should == {'work_types_as_string' => 'marketing'}
     MemberSelection.new('work_type' => 'marketing', 'platform' => 'ios').conditions.should == {'work_types_as_string' => 'marketing', 'platforms_as_string' => 'ios'}
   end
+
+  it "returns the resource name" do
+    MemberSelection.new.resource_name.should == 'member'
+  end
 end
 
 describe "A", ClassifiedSelection do
@@ -75,5 +79,9 @@ describe "A", ClassifiedSelection do
     ClassifiedSelection.new.should.be.empty
     ClassifiedSelection.new('category' => 'all').should.be.empty
     ClassifiedSelection.new('category' => 'housing').should.not.be.empty
+  end
+
+  it "returns the resource name" do
+    ClassifiedSelection.new.resource_name.should == 'classified'
   end
 end

@@ -44,10 +44,18 @@ class Selection
   def empty?
     to_hash.empty?
   end
+  
+  def resource_name
+    raise 'Implemented by the subclasses!'
+  end
 end
 
 class MemberSelection < Selection
   self.attributes = [:entity, :work_location, :work_type, :platform]
+
+  def resource_name
+    'member'
+  end
 
   def conditions
     as_hash    = to_hash
@@ -64,4 +72,8 @@ end
 
 class ClassifiedSelection < Selection
   self.attributes = [:offered, :category]
+
+  def resource_name
+    'classified'
+  end
 end

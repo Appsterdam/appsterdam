@@ -8,6 +8,22 @@ describe "On the", ClassifiedsController, "a visitor" do
     assigns(:classifieds).should == Classified.all
   end
 
+  it "sees an overview of classifieds selected by offers" do
+    Classified.expects(:search).with('', {:order => :id, :conditions => {'offered' => 'true'}, :match_mode => :extended}).returns(Classified.where(:offered => true))
+    get :index, :offered => 'true'
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == Classified.where(:offered => true)
+  end
+
+  it "sees an overview of classifieds selected by category" do
+    Classified.expects(:search).with('', {:order => :id, :conditions => {'category' => 'bikes'}, :match_mode => :extended}).returns([classifieds(:bike)])
+    get :index, :category => 'bikes'
+    status.should.be :ok
+    template.should.be 'classifieds/index'
+    assigns(:classifieds).should == [classifieds(:bike)]
+  end
+
   should.require_login.get :index, :show => :mine
   should.require_login.get :new
   should.require_login.post :create
