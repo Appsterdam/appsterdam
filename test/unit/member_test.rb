@@ -150,7 +150,7 @@ describe "A", Member do
   end
 
   it "returns the classsified ads placed by the member" do
-    @member = members(:developer)
+    @member = members(:admin)
     ad = @member.classifieds.create({
         :offered => true, :category => 'bikes',
         :title => 'A great granny bike!', :description => "It's quite simply the most awesome bike in town."
