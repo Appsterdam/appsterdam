@@ -742,3 +742,16 @@ div.member:hover li.report a
 {
   background-color: #aaa;
 }
+
+/* Classifieds listing */
+
+#page-classifieds h1
+{
+  position: relative;
+}
+#page-classifieds h1 a,
+#page-classifieds h1 span
+{
+  float: right;
+  font-size: 14px;
+}

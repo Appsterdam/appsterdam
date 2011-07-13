@@ -1,4 +1,11 @@
-<h1><%= @title = 'Classifieds' %> <%= link_to 'Members', members_path %></h1>
+<h1>
+  <%= @title = 'Classifieds' %>
+  <% if @authenticated %>
+    <%= link_to 'Post to classifieds', new_classified_path %>
+  <% else %>
+    <span>Join and sign in to post classifieds</span>
+  <% end %>
+</h1>
 
 <div class="selection">Showing
 <span>
