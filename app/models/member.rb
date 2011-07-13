@@ -58,6 +58,8 @@ class Member < ActiveRecord::Base
 
     has :available_for_hire, :as => :boolean
 
+    where "marked_as_spam = 'false'"
+
     set_property :group_concat_max_len => 8192
   end
 
