@@ -15,15 +15,16 @@
     </div>
     <div>
       <label for="classified_title">Title</label>
-       <%= f.text_field :title %>
+       <%= f.text_field :title, :size => 60 %>
     </div>
     <div>
       <label for="classified_description">Description</label>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :cols => 60, :rows => 6 %>
     </div>
-    <p>Your classified will be removed automatically after 30 days.</p>
+    <p class="help">Your classified will be removed automatically after 30 days.</p>
   </fieldset>
-
-  <%= f.submit "#{@classified.new_record? ? 'Post' : 'Update'} classified" %>
-  <%= link_to "Cancel and go back", classifieds_path %>
+  <div class="submit">
+    <%= f.submit "#{@classified.new_record? ? 'Post' : 'Update'} classified" %>
+    <%= link_to "Cancel and go back", classifieds_path %>
+  </div>
 <% end %>

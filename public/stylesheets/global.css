@@ -363,6 +363,44 @@ form {
   color: #DC1F26 !important;
 }
 
+fieldset
+{
+  border: none;
+}
+legend
+{
+  font-size: 120%;
+  font-weight: bold;
+}
+fieldset > div
+{
+  padding-top: 8px;
+}
+fieldset div.field_with_errors
+{
+  display: inline;
+}
+label
+{
+  display: block;
+}
+form div.submit
+{
+}
+form div.submit a
+{
+  margin-left: 8px;
+  color: #666;
+}
+form .help
+{
+  color: #666;
+  font-size: 80%;
+}
+#page-classifieds textarea
+{
+}
+
 /******** HOME **********/
 
 #map_canvas {
