@@ -20,3 +20,9 @@ After that install Sphinx
     $ brew instal sphinx
     $ rake ts:index
     $ rake ts:start
+
+== Production
+
+Add a cron job which runs once every day that purges outdated classifieds:
+
+    0 0 * * * cd /path/to/app && /usr/local/bin/bundle exec /usr/local/rake purge_outdated_classifieds
