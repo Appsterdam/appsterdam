@@ -26,3 +26,7 @@ After that install Sphinx
 Add a cron job which runs once every day that purges outdated classifieds:
 
     0 0 * * * cd /path/to/app && /usr/local/bin/bundle exec /usr/local/rake purge_outdated_classifieds
+
+You also might want to automatically update the Sphinx index
+
+    */5 * * * * cd /path/to/app && /usr/local/bin/bundle exec /usr/local/rake ts:in
