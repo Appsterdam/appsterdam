@@ -11,6 +11,10 @@ gem 'peiji-san',         '~> 1.0.0', :require => 'peiji_san'
 gem 'thinking-sphinx',   :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch => 'rails3'
 gem 'flying-sphinx',     :git => 'git://github.com/flying-sphinx/flying-sphinx.git'
 
+group :production do
+  gem 'thin'
+end
+
 group :test do
   gem 'test-spec',    :require => 'test/spec'
   gem 'on-test-spec', :require => 'test/spec/rails'
