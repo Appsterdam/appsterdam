@@ -107,12 +107,12 @@ PLATFORMS
 
 DEPENDENCIES
   authorization-san (~> 2.0.1)
-  flying-sphinx (= 0.5.0)
+  flying-sphinx
   mocha
   on-test-spec
   peiji-san (~> 1.0.0)
   pg
   rails (= 3.0.9)
   test-spec
-  thinking-sphinx (= 2.0.4)
+  thinking-sphinx
   twitter_oauth (~> 0.4.3)
