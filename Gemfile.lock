@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/flying-sphinx/flying-sphinx.git
+  revision: 0882ed35982ef68118e139839e4c85fcb9b4782f
+  specs:
+    flying-sphinx (0.5.1)
+      faraday (~> 0.6.1)
+      faraday_middleware (~> 0.6.3)
+      multi_json (~> 1.0.1)
+      net-ssh (>= 2.0.23)
+      rash (~> 0.3.0)
+      thinking-sphinx
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,13 +52,6 @@ GEM
       rack (< 2, >= 1.1.0)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
-    flying-sphinx (0.5.1)
-      faraday (~> 0.6.1)
-      faraday_middleware (~> 0.6.3)
-      multi_json (~> 1.0.1)
-      net-ssh (>= 2.0.23)
-      rash (~> 0.3.0)
-      thinking-sphinx
     hashie (1.0.0)
     i18n (0.5.0)
     json (1.5.2)
@@ -107,7 +112,7 @@ PLATFORMS
 
 DEPENDENCIES
   authorization-san (~> 2.0.1)
-  flying-sphinx (> 0.5.0)
+  flying-sphinx!
   mocha
   on-test-spec
   peiji-san (~> 1.0.0)
