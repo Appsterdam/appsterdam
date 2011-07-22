@@ -1,9 +1,11 @@
 Appsterdam::Application.routes.draw do
+  match '/commands/index'   => 'commands#create',   :task => 'index'
+  match '/classifieds/mine' => 'classifieds#index', :as => :my_classifieds, :show => :mine
   match '/members/create'   => 'members#create',    :as => :create_members
   match '/session'          => 'sessions#create',   :as => :session
   match '/session/clear'    => 'sessions#clear',    :as => :clear_session
-  match '/classifieds/mine' => 'classifieds#index', :as => :my_classifieds, :show => :mine
-
+  
+  
   resources :classifieds
   resources :commands
   resources :members do
