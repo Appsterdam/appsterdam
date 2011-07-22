@@ -76,6 +76,7 @@ GEM
     multi_json (1.0.3)
     multipart-post (1.1.2)
     net-ssh (2.1.4)
+    newrelic_rpm (3.1.0)
     oauth (0.4.5)
     on-test-spec (0.3.0)
     peiji-san (1.0.0)
@@ -126,6 +127,7 @@ DEPENDENCIES
   authorization-san (~> 2.0.1)
   flying-sphinx!
   mocha
+  newrelic_rpm
   on-test-spec
   peiji-san (~> 1.0.0)
   pg
