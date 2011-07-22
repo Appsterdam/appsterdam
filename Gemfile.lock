@@ -10,6 +10,15 @@ GIT
       rash (~> 0.3.0)
       thinking-sphinx
 
+GIT
+  remote: git://github.com/freelancing-god/thinking-sphinx.git
+  revision: ea7673a0188f6c8aab90ebaa857023e03ff2fc8a
+  branch: rails3
+  specs:
+    thinking-sphinx (2.0.5)
+      activerecord (>= 3.0.3)
+      riddle (>= 1.3.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -95,9 +104,6 @@ GEM
     rdoc (3.8)
     riddle (1.3.3)
     test-spec (0.10.0)
-    thinking-sphinx (2.0.4)
-      activerecord (>= 3.0.3)
-      riddle (>= 1.3.2)
     thor (0.14.6)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -119,5 +125,5 @@ DEPENDENCIES
   pg
   rails (= 3.0.9)
   test-spec
-  thinking-sphinx
+  thinking-sphinx!
   twitter_oauth (~> 0.4.3)
