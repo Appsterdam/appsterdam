@@ -23,4 +23,4 @@ task :purge_outdated_classifieds => :environment do
 end
 
 desc 'Have cron index the Sphinx search indices'
-task :cron => 'fs:index'
+task :cron => ['fs:index', 'purge_outdated_classifieds']
