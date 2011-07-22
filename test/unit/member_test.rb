@@ -69,10 +69,6 @@ describe Member do
   it "returns all members marked as spam" do
     Member.marked_as_spam.to_a.should ==  Member.unscoped.where(:marked_as_spam => true).to_a
   end
-
-  it "filters members marked as spam from the search results" do
-    Member.search('spam').should.be.empty
-  end
 end
 
 describe "A", Member do
