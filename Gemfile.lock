@@ -40,11 +40,11 @@ GEM
       rack (< 2, >= 1.1.0)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
-    flying-sphinx (0.5.0)
+    flying-sphinx (0.5.1)
       faraday (~> 0.6.1)
       faraday_middleware (~> 0.6.3)
       multi_json (~> 1.0.1)
-      net-ssh (~> 2.0.23)
+      net-ssh (>= 2.0.23)
       rash (~> 0.3.0)
       thinking-sphinx
     hashie (1.0.0)
@@ -59,7 +59,7 @@ GEM
     mocha (0.9.12)
     multi_json (1.0.3)
     multipart-post (1.1.2)
-    net-ssh (2.0.24)
+    net-ssh (2.1.4)
     oauth (0.4.5)
     on-test-spec (0.3.0)
     peiji-san (1.0.0)
@@ -107,7 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   authorization-san (~> 2.0.1)
-  flying-sphinx
+  flying-sphinx (> 0.5.0)
   mocha
   on-test-spec
   peiji-san (~> 1.0.0)

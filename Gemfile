@@ -9,7 +9,7 @@ gem 'peiji-san',         '~> 1.0.0', :require => 'peiji_san'
 
 # These are the versions recommended by Heroku
 gem 'thinking-sphinx'
-gem 'flying-sphinx'
+gem 'flying-sphinx',     '> 0.5.0'
 
 group :test do
   gem 'test-spec',    :require => 'test/spec'
