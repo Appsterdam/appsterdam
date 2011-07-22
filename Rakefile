@@ -21,3 +21,6 @@ desc "Deletes the classified ads that are over 30 days old"
 task :purge_outdated_classifieds => :environment do
   Classified.purge_outdated!
 end
+
+desc 'Have cron index the Sphinx search indices'
+task :cron => 'fs:index'
