@@ -6,7 +6,7 @@ Dir.glob(Rails.root + 'db/seeds/*.json').each do |file|
     member = Member.find_by_twitter_id(attributes['id'].to_s) || Member.create_with_twitter_user_attributes(attributes)
 
     # TODO Check for better way of setting properties in seed
-    member.entity << case list_name
+    member.entity = case list_name
     when "companies" then "company"
     when "students" then "student"
     when "collectives" then "group"
