@@ -59,11 +59,11 @@ GEM
     mocha (0.9.12)
     multi_json (1.0.3)
     multipart-post (1.1.2)
-    mysql2 (0.2.11)
     net-ssh (2.0.24)
     oauth (0.4.5)
     on-test-spec (0.3.0)
     peiji-san (1.0.0)
+    pg (0.10.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.14)
@@ -109,9 +109,9 @@ DEPENDENCIES
   authorization-san (~> 2.0.1)
   flying-sphinx (= 0.5.0)
   mocha
-  mysql2 (~> 0.2.6)
   on-test-spec
   peiji-san (~> 1.0.0)
+  pg
   rails (= 3.0.9)
   test-spec
   thinking-sphinx (= 2.0.4)

@@ -2,7 +2,7 @@ module Batched
   DEFAULT_BATCH_SIZE = 512
 
   def _max_id
-    connection.execute("SELECT MAX(id) FROM #{table_name}").first[0]
+    connection.execute("SELECT MAX(id) FROM #{table_name}")[0]['max'].to_i
   end
 
   def _ids_in_batch(batch_size, index)

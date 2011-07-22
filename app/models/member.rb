@@ -59,8 +59,6 @@ class Member < ActiveRecord::Base
     has :available_for_hire, :as => :boolean
 
     where "marked_as_spam = 'false'"
-
-    set_property :group_concat_max_len => 8192
   end
 
   # The default scope will ensure that members marked as spam will never show

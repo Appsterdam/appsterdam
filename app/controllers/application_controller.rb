@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def find_authenticated
     if id = session[:twitter_id]
-      @authenticated = Member.find_by_twitter_id(id)
+      @authenticated = Member.find_by_twitter_id(id.to_s)
     end
   end
 
