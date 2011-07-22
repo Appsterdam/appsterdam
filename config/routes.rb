@@ -5,6 +5,7 @@ Appsterdam::Application.routes.draw do
   match '/classifieds/mine' => 'classifieds#index', :as => :my_classifieds, :show => :mine
 
   resources :classifieds
+  resources :commands
   resources :members do
     resources :spam_reports
   end
