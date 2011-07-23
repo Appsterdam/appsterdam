@@ -13,7 +13,7 @@ module MemberHelper
   
   def member_tags(work_types, platforms)
     out = ''
-    if !work_types.blank? and !platforms.blank?
+    if !work_types.blank? || !platforms.blank?
       out << '<ul class="tags">'
       for work_type in work_types
         out << "<li>#{Member::WORK_TYPES[work_type]}</li>"
