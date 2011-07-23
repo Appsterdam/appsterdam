@@ -27,6 +27,8 @@ Dir.glob(Rails.root + 'db/seeds/*.json').each do |file|
       nil
     end
 
+    member.available_for_hire = true if list_name == "available"
+
     member.save
   end
 end
