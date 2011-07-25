@@ -1,7 +1,7 @@
 <div class="<%= classified_classes(classified, classified_counter) %>">
   <div class="inner">
     <h2><%= classified.title %> <%= link_to('(edit)', edit_classified_path(classified)) if classified.placer == @authenticated %></h2>
-    <p class="description"><%= classified.description %></p>
+    <p class="description"><%= simple_format auto_link(classified.description) %></p>
     <p>
       <% if classified.offered? %>
         <span>Offered</span>
