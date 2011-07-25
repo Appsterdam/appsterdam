@@ -6,7 +6,7 @@
       <%= link_to member_domain(member.website), member.website %>
     </h2>
     <%== member_meta(member) %>
-    <p><%= member.bio %></p>
+    <div><%= simple_format auto_link(member.bio) %></div>
     <%== member_tags(member.work_types, member.platforms) %>
     <% unless @member %>
       <ul>
