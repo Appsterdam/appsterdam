@@ -31,7 +31,7 @@ class MembersController < ApplicationController
       if @member.errors.empty?
         redirect_to edit_member_url(@member)
       else
-        @member = Member.find_by_twitter_id(user_attributes['id'])
+        @member = Member.find_by_twitter_id(user_attributes['id'].to_s)
         render :exists
       end
     end
