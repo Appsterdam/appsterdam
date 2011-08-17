@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712143907) do
+ActiveRecord::Schema.define(:version => 20110727153538) do
 
   create_table "classifieds", :force => true do |t|
     t.boolean  "offered"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(:version => 20110712143907) do
     t.integer  "placer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string   "url"
+    t.float    "fee"
+    t.string   "fee_description"
+    t.string   "location"
+    t.float    "lon"
+    t.float    "lat"
+    t.datetime "created_at"
   end
 
   create_table "members", :force => true do |t|
