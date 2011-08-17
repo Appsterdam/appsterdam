@@ -6,9 +6,7 @@ module Meetup
   class << self
     # returns an array of unsaved Event objects
     def get_events
-      puts "importing meetup events ..."
       events_data = Meetup.get_events_json
-      puts "found #{events_data.size} meetup events"
     
       events_data.inject([]) do |events, event_data|
         adapter = Adapter.new(event_data)

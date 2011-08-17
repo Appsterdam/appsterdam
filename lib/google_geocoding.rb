@@ -5,7 +5,6 @@ module GoogleGeocoding
   def self.geo_coordinates_for address
     google_data = get_geo_json address
     location = google_data['results'].first['geometry']['location'] rescue {}
-    p google_data['results']
     [location['lat'], location['lng']]
   end
   

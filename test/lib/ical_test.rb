@@ -5,11 +5,12 @@ describe Ical do
     @fake_ical = File.open(File.expand_path('../../test_helper/fake_ical_data', __FILE__))
     
     Ical.stubs(:get_ical_io).returns(@fake_ical)
+    GoogleGeocoding.stubs(:geo_coordinates_for).returns([nil, nil])
   end
   
   it "correctly imports events from ical subscription" do
     events = Ical.get_events
-    events.sort!
+    events = events.sort_by {|e| e.starts_at}
     
     rep_until = (Date.today >> Ical::MONTHS_ADVANCE_FOR_REPATING).to_time 
     # the first entry is a weekly repeating event
@@ -39,8 +40,8 @@ describe Ical do
     
     event = events[2] 
     event.name.should            == "#rbxday (Rubinius, Ruby)"
-    event.starts_at.should       == Date.new(2011, 8, 5)
-    event.ends_at.should         == Date.new(2011, 8, 6)
+    event.starts_at.should       == Time.local(2011, 8, 5)
+    event.ends_at.should         == Time.local(2011, 8, 6)
     event.location.should        == "80beans, Vijzelstraat 72, Amsterdam"
     event.lon.should             == nil
     event.lat.should             == nil

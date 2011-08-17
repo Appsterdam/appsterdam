@@ -9,9 +9,7 @@ module Ical
     # returns an array of unsaved Event objects
     def get_events
       events = []   
-      puts "importing ical events ..."
       Appsterdam::Application.ical_subscriptions.each do |options|
-        puts "retrieving calendar from #{options[:url]}"
         components = parse_ical(options[:url])
         events.concat(extract_events(components.first))
       end
@@ -25,11 +23,13 @@ module Ical
     def extract_events(calendar)
       events = []
       rep_until = Date.today >> MONTHS_ADVANCE_FOR_REPATING
-      puts "found #{calendar.events.size} ical events"
+      
       calendar.events.each do |event_entry|
         # for performance reasons, create event once and then clone per occurrence
         event      = Event.build_from(Adapter.new(event_entry))
         occurences = event_entry.occurrences(:before => rep_until)  
+        # again, for performance and api limit reasons, get geo coordinates for repeating
+        # events only once
         event.get_geo_coordinates if occurences.size > 1
     
         occurences.each do |ical_event|
@@ -44,7 +44,7 @@ module Ical
       events
     end
   
-    def self.parse_ical(url)
+    def parse_ical(url)
       RiCal.parse get_ical_io(url)
     end
   

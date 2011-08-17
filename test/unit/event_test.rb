@@ -17,6 +17,12 @@ describe Event do
     @ical_events = []
     @ical_events << Event.new( :name => "Appsterdam Delft Meeten en Drinken",
       :location  => "Belvédère, Beestenmarkt 8, 2611 GB Delft",
+      :starts_at => @tomorrow - 2.weeks,
+      :lon       => 4.3622053,
+      :lat       => 52.0116043
+    )
+    @ical_events << Event.new( :name => "Appsterdam Delft Meeten en Drinken",
+      :location  => "Belvédère, Beestenmarkt 8, 2611 GB Delft",
       :starts_at => @tomorrow - 1.week,
       :lon       => 4.3622053,
       :lat       => 52.0116043
@@ -75,13 +81,18 @@ describe Event do
   
   it "should correcty import including past events" do
     Event.count.should == 1
-    Event.sync_events
+    Event.sync_events true
     Event.count.should == 5
     @events = Event.find :all, :order => 'starts_at, name'
-    
+ 
     @events[0].name     == "Appsterdam Delft Meeten en Drinken"
     @events[0].location == "Belvédère, Beestenmarkt 8, 2611 GB Delft"
-    @events[0].starts_at.should == @tomorrow - 1.week
+    @events[0].starts_at.should == (@tomorrow - 2.weeks).to_time
+    
+    @events[3].name.should == "Weekly Meeten en Drinken Delft"
+    @events[3].location.should == 'Cafe Belvedere, Beestenmarkt, Delft'
+    @events[3].description.should == 'foo'
+    @events[3].starts_at.should == Time.local(@tomorrow.year, @tomorrow.month, @tomorrow.day, 19, 00, 0.0)
   end
   
   
