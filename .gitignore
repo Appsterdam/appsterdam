@@ -8,3 +8,4 @@ doc
 config/*.sphinx.conf
 db/sphinx
 tags
+/nbproject
