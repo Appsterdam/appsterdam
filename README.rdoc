@@ -29,6 +29,10 @@ After that install Sphinx
     $ rake ts:index
     $ rake ts:start
 
+To import events from all external sources use
+    
+    $ rake import_events 
+
 == Production
 
 Add a cron job which runs once every day that purges outdated classifieds:
