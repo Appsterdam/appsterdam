@@ -66,7 +66,7 @@ describe "On the", MembersController, "a visitor" do
   
   it "does not create a new member when it already exists" do
     attributes = user_attributes
-    attributes['id'] = members(:developer).twitter_id
+    attributes['id'] = members(:developer).twitter_id.to_i
     controller.twitter_client.stubs(:info).returns(attributes)
     lambda {
       get(:create,
