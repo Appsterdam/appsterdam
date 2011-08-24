@@ -117,12 +117,12 @@ describe Event, "concerning validation" do
     @event.should.be.invalid
     @event.errors[:starts_at].should.not.be.blank
   end
-  
-  it "requires a location" do
-    @event.location = nil
-    @event.should.be.invalid
-    @event.errors[:location].should.not.be.blank
-  end
+ 
+#  it "requires a location" do
+#    @event.location = nil
+#    @event.should.be.invalid
+#    @event.errors[:location].should.not.be.blank
+#  end
 end
 
 describe "A", Event do 
@@ -134,7 +134,7 @@ describe "A", Event do
       :lon       => 4.868032336235046,
       :lat       => 52.365603101261776
 
-    @e2 = Event.new :name => "Event 1",
+    @e2 = Event.new :name => "Event 2",
       :location  => 'Location 2',
       :starts_at => time,
       :description => "Description 2"

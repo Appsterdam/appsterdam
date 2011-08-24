@@ -13,8 +13,7 @@ gem 'flying-sphinx',     :git => 'git://github.com/flying-sphinx/flying-sphinx.g
 
 gem 'newrelic_rpm'
 
-gem 'ri_cal' # for parsing iCal 
-gem 'levenshtein'
+gem 'ri_cal' # for parsing iCal
 
 group :production do
   gem 'thin'

@@ -1,5 +1,3 @@
-require 'pp'
-
 class Event < ActiveRecord::Base
   # This hash configures external sources for events, by specifing the api module
   # plus the priority given to each source
@@ -10,27 +8,36 @@ class Event < ActiveRecord::Base
   
   validates :name,       :presence => true
   validates :starts_at,  :presence => true 
-  validates :location,   :presence => true 
+  #validates :location,   :presence => true 
   
   # synch events from external sources. All events are updated and the ones that 
   # don't appear in external sources anymore are removed.
   # Unless +include_past+ is set to true, events in the past are not imported and
   # existing past events are left untouched
-  def self.sync_events include_past = false
+  def self.sync_events include_past = false, log = nil
     index = {}
+    log ||= Rails.logger
+    log.info "syncing events #{include_past ? 'including past events ' :' '}..."
+    GoogleGeocoding.log = log
+    
     SOURCES.each do |source, conf|
-      index_by_time_and_source(conf[:api].get_events, source, index, include_past)
+      (api = conf[:api]).log = log
+      index_by_time_and_source(api.get_events, source, index, include_past)
     end
     
     cut_off = include_past ? Time.at(0) : Time.now
     self.destroy_all(["starts_at > ?", cut_off])
-    
+    log.info 'merging events ...'
     index.each do |time, events_per_source|
       consolidated = consolidate(events_per_source)
       consolidated.each do |event|
-        puts event.errors.full_messages.join(', ') unless event.save
+        unless event.save
+          log.warn "Not importing event #{event.name}. Reason: #{event.errors.full_messages.join(', ')}" 
+        end
       end
-    end      
+    end   
+    log.info 'done syncing events'
+    true
   end
   
   # returns a new event with attributes that are specified by the adapter object
@@ -49,12 +56,15 @@ class Event < ActiveRecord::Base
   # on geo coordinates
   def same_as? other
     return unless other
+    return unless self.lat and other.lat and self.lon and other.lon 
     return unless self.starts_at == other.starts_at
-    threshold = 10**-3
     
-    self.lat and other.lat and 
-      (self.lat - other.lat).abs < threshold
-    (self.lon - other.lon).abs < threshold
+    return true if self.name == other.name
+    
+    threshold = 10**-3
+   
+    (self.lat - other.lat).abs < threshold and
+      (self.lon - other.lon).abs < threshold
   end
   
   # retrive the geocoordinates for this event if they are not set already
@@ -107,20 +117,14 @@ class Event < ActiveRecord::Base
     # merge the array of events to the right into the the array on the left.
     # Events that are the same will be merged, giving prio to values on the left,
     # Others will be added to the left array 
-    def left_merge(left, right)
-      un_mergable = [] 
-      
+    def left_merge(left, right)      
       right.each do |event|
-        event.get_geo_coordinates unless event.lat
+        event.get_geo_coordinates unless event.lat and event.lon
         left.each do |top_prio|
-          if(event.same_as? top_prio)
-            top_prio.merge!(event)
-          else
-            un_mergable << event
-          end
+          top_prio.merge!(right.delete(event)) if(event.same_as? top_prio)
         end
       end
-      left.concat(un_mergable)
+      left.concat(right)
     end
   
     # returns a nested array of events, were events form a source with higher 

@@ -6,13 +6,17 @@ module Ical
   MONTHS_ADVANCE_FOR_REPATING = 12
   
   class << self
+    attr_accessor :log
     # returns an array of unsaved Event objects
     def get_events
-      events = []   
+      events = []  
+      @log ||= Rails.logger
       Appsterdam::Application.ical_subscriptions.each do |options|
+        @log.info "getting events from #{options[:url]}"
         components = parse_ical(options[:url])
         events.concat(extract_events(components.first))
       end
+      @log.info "done importing iCal events."
     
       events
     end
@@ -23,14 +27,14 @@ module Ical
     def extract_events(calendar)
       events = []
       rep_until = Date.today >> MONTHS_ADVANCE_FOR_REPATING
-      
+
       calendar.events.each do |event_entry|
         # for performance reasons, create event once and then clone per occurrence
         event      = Event.build_from(Adapter.new(event_entry))
         occurences = event_entry.occurrences(:before => rep_until)  
         # again, for performance and api limit reasons, get geo coordinates for repeating
         # events only once
-        event.get_geo_coordinates if occurences.size > 1
+        event.get_geo_coordinates #if occurences.size > 1
     
         occurences.each do |ical_event|
           adapter = Adapter.new(ical_event)
@@ -40,7 +44,8 @@ module Ical
           events << occurrence
         end
       end
-    
+      
+      @log.info "got #{events.size} events"
       events
     end
   
@@ -51,9 +56,9 @@ module Ical
     def get_ical_io(url)
       open url 
     rescue URI::InvalidURIError 
-      raise "invalid ical url: #{self.meetup_api_url}"
+      @log.fatal "invalid ical url: #{url}"
     rescue OpenURI::HTTPError
-      raise "unable to retreive ical data (http error) from url #{self.meetup_api_url}"
+      @log.fatal "unable to retreive ical data (http error) from url #{url}"
     end
   end 
   

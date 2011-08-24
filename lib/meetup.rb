@@ -4,14 +4,21 @@
 module Meetup
   
   class << self
+    attr_accessor :log
     # returns an array of unsaved Event objects
     def get_events
-      events_data = Meetup.get_events_json
+      @log ||= Rails.logger
+      
+      @log.info "importing Meetup events"
+      events_data = get_events_json
     
-      events_data.inject([]) do |events, event_data|
+      events = events_data.inject([]) do |events, event_data|
         adapter = Adapter.new(event_data)
         events << Event.build_from(adapter)
       end 
+      
+      @log.info "got #{events.size} Meetup events"
+      events
     end
 
     private 
@@ -22,9 +29,9 @@ module Meetup
       data['results']
 
     rescue URI::InvalidURIError 
-      raise "invalid meetup api url: #{self.meetup_api_url}"
+      @log.fatal "invalid meetup api url: #{self.meetup_api_url}"
     rescue OpenURI::HTTPError
-      raise "unable to retreive meetup data (http error) from url #{self.meetup_api_url}"
+      @log.fatal "unable to retreive meetup data (http error) from url #{self.meetup_api_url}"
     end
 
     def meetup_api_url
