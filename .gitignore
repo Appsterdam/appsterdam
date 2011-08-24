@@ -9,3 +9,4 @@ config/*.sphinx.conf
 db/sphinx
 tags
 /nbproject
+.DS_Store
