@@ -24,3 +24,9 @@ end
 
 desc 'Have cron index the Sphinx search indices'
 task :cron => ['fs:index', 'purge_outdated_classifieds']
+
+desc "Imports events from external data sources inlcuding past events"
+task :import_events => :environment do
+  log = Logger.new(STDOUT)
+  Event.sync_events true, log
+end
