@@ -10,10 +10,18 @@ First do the regular Rails 3 dance.
 
     $ bundle install
     $ rake db:setup
+
+Then configure twitter oauth
+
     $ cp config/initializers/twitter.example.rb config/initializers/twitter.rb
     $ open config/initializers/twitter.rb
 
-Fix the consumer credentials.
+Fix the consumer credentials. Then configure the meetup API with your key
+
+    $ cp config/initializers/meetup.example.rb config/initializers/meetup.rb
+    $ open config/initializers/meetup.rb
+
+You can get an api key here: http://www.meetup.com/meetup_api/key/.
 
 After that install Sphinx
 
