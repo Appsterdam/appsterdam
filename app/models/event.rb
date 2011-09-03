@@ -8,7 +8,14 @@ class Event < ActiveRecord::Base
   
   validates :name,       :presence => true
   validates :starts_at,  :presence => true 
-  #validates :location,   :presence => true 
+  
+  define_index do
+    indexes :name
+    indexes :description
+    indexes :location
+    
+    has :id, :starts_at, :lon, :lat
+  end
   
   # synch events from external sources. All events are updated and the ones that 
   # don't appear in external sources anymore are removed.
