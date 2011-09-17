@@ -13,7 +13,8 @@ Appsterdam::Application.routes.draw do
   end
   resource :session
   resources :spam_reports
-
+  resources :events
+  
   root :to => "members#index"
   
   if Rails.env.test?

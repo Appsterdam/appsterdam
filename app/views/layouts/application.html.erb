@@ -38,7 +38,7 @@
       <ul>
         <li class="nav-home first"><a title="Appsterdam, City of Apps" class="" href="http://appsterdam.rs">Home</a></li> 
         <li class="nav-articles"><a title="Appsterdam, City of Apps" class="" href="http://appsterdam.rs/articles">Reading</a></li> 
-        <li class="nav-events"><a title="Events in Appsterdam" class="" href="http://appsterdam.rs/events">Events</a></li>
+        <li class="nav-events"><%= link_to 'Events', events_url, :title => 'Events in Appsterdam' %></li>
         <li class="nav-members"><%= link_to 'Members', members_url, :title => 'Citizens of Appsterdam' %></li>
         <li class="nav-classifieds"><%= link_to 'Classifieds', classifieds_url, :title => 'Offer and search stuff' %></li>
       </ul>
