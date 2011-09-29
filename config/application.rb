@@ -12,6 +12,10 @@ module Appsterdam
     class << self
       # Stores consumer credentials for the Twitter client
       attr_accessor :twitter_options
+      
+      # external calendars
+      attr_accessor :meetup_api_options
+      attr_accessor :ical_subscriptions
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -44,5 +48,7 @@ module Appsterdam
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.time_zone = "Europe/Amsterdam"
   end
 end

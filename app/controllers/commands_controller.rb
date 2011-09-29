@@ -10,6 +10,8 @@ class CommandsController < ApplicationController
       request = FlyingSphinx::IndexRequest.new
       request.update_and_index
       Rails.logger.info("Finished indexing (#{request.status_message})")
+    when 'sync_events'
+      Event.sync_events
     end
     head :ok
   end
