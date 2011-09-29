@@ -10,3 +10,4 @@ db/sphinx
 tags
 /nbproject
 .DS_Store
+.idea
