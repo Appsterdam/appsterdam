@@ -2,6 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: appsterdam_development
+  template: template0
   pool: 5
   username: <%= ENV['USER'] %>
   min_messages: warning
@@ -9,6 +10,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: appsterdam_test
+  template: template0
   pool: 5
   username: <%= ENV['USER'] %>
   min_messages: warning
