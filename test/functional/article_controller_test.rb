@@ -36,8 +36,14 @@ describe "On the", ArticlesController, "a member" do
     status.should.be :found
   end
 
-  it "shouldn't destroy other member's article" do
+  it "shouldn't destroy another member's article" do
     post :destroy, :id => 2
     status.should.be :forbidden
   end
+
+  it "shouldn't update another member's article" do
+    post :update, :id => 2, :article => {:title => "Boo", :published => true}
+    status.should.be :forbidden
+  end
+
 end
