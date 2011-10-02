@@ -1,4 +1,5 @@
 admin:
+  id: 1
   role: admin
   twitter_id: 1000
   name: Ad Min
@@ -9,12 +10,14 @@ admin:
   bio: I min, you min, we min.
   as_new: false
 spammer:
+  id: 2
   twitter_id: 999
   marked_as_spam: true
   username: spammer
   name: spammer
   as_new: false
 developer:
+  id: 3
   twitter_id: 1234
   name: Dévin the Dev
   username: devin
@@ -28,6 +31,7 @@ developer:
   platforms_as_string: 'osx windows'
   as_new: false
 designer:
+  id: 4
   twitter_id: 5678
   name: Desiree the Designer
   username: desiree
@@ -41,6 +45,7 @@ designer:
   platforms_as_string: 'osx windows'
   as_new: false
 just_added:
+  id: 5
   twitter_id: 9136
   name: Justin Newling
   username: justin

@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  body: MyString
+article_from_developer:
+  id: 1
+  member_id: 3
+  title: First article's title
+  body: First article's body
 
-two:
-  title: MyString
-  body: MyString
+article_from_designer:
+  id: 2
+  member_id: 4
+  title: Another developer's article
+  body: Another developer's article body

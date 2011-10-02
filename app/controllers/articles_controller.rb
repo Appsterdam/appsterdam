@@ -1,17 +1,16 @@
 class ArticlesController < ApplicationController
 
-  allow_access(:all) do
-    @authenticated = Member.first(:conditions => {:username => 'isutton'})
-  end
+  allow_access(:authenticated, :only => [:index, :new, :create])
+  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_article.nil? }
+  allow_access(:all, :only => :index) { !my_articles? }
 
   def index
     if my_articles?
-      my_articles
+      fetch_my_articles
     else
-      all_articles
+      fetch_all_articles
     end
-
-
+    render :index
   end
 
   def new
@@ -28,11 +27,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-
+    @article.destroy
+    redirect_to articles_url
   end
 
   def update
-    @article = @authenticated.articles.find_by_id(params[:id])
     if @article.update_attributes(params[:article])
       redirect_to articles_url
     else
@@ -44,12 +43,16 @@ class ArticlesController < ApplicationController
     @article = @authenticated.articles.find_by_id(params[:id])
   end
 
-  def my_articles
+  def fetch_my_articles
     @articles = @authenticated.articles
   end
 
-  def all_articles
+  def fetch_all_articles
     @articles = Article.all
+  end
+
+  def find_article
+    @article = @authenticated.articles.find_by_id(params[:id])
   end
 
   def my_articles?
