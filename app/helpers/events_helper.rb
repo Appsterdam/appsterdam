@@ -29,4 +29,15 @@ module EventsHelper
       end
     end
   end
+  
+  def link_to_event_location event
+    return "unknown location" unless event.location
+    url = if event.lat
+      "http://maps.google.com/maps?z=17&q=loc:#{event.lat}+#{event.lon}"
+    else
+      "http://maps.google.com/maps?z=17&q=#{CGI.escape(event.location)}" 
+    end
+    
+    link_to event.location, url
+  end
 end
