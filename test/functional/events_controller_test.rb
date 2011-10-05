@@ -1,8 +1,14 @@
-require 'test_helper'
+require File.expand_path('../../test_helper', __FILE__)
 
-class EventsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+describe "On the", EventsController, "a visitor" do
+  before do
+    controller.stubs(:twitter_client).returns(fake_twitter)
+  end
+  
+  it "sees a list of events" do
+    get :index
+    status.should.be :ok
+    template.should.be 'events/index'
+    assert_select 'h1'
   end
 end
