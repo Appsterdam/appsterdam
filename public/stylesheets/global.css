@@ -556,8 +556,7 @@ ul.articlelist li .articledate {
   line-height: 32px; 
   color: #fff;
   font-weight: bold;
-  margin: -3px 0px 0px;
-  text-align: center;
+  margin: -3px 0px 0px 15px;
 }
 
 h1.year {

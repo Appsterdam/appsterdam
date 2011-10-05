@@ -4,7 +4,7 @@
     <div class="grid_1 alpha datetime">
         <div class="datestamp <%=status_class(event)%>">
             <div class="month"><%= event.starts_at.strftime("%b") %></div>
-            <div class="day"><%= event.starts_at.day %></div>
+            <div class="day"><%= event.starts_at.strftime("%d") %></div>
         </div>
 
         <div class="timestamp <%=status_class(event)%>">
