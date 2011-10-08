@@ -19,19 +19,16 @@ module Meetup
       
       @log.info "got #{events.size} Meetup events"
       events
-    end
-
-    private 
+    end 
   
     def get_events_json
-      response = open meetup_api_url
+      response = open self.meetup_api_url
       data = JSON.parse(response.read)
       data['results']
-
-    rescue URI::InvalidURIError 
-      @log.fatal "invalid meetup api url: #{self.meetup_api_url}"
-    rescue OpenURI::HTTPError
-      @log.fatal "unable to retreive meetup data (http error) from url #{self.meetup_api_url}"
+      rescue URI::InvalidURIError 
+        @log.fatal "invalid meetup api url: #{self.meetup_api_url}"
+      rescue OpenURI::HTTPError
+        @log.fatal "unable to retreive meetup data (http error) from url #{self.meetup_api_url}"
     end
 
     def meetup_api_url
