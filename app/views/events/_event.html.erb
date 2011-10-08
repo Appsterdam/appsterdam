@@ -1,8 +1,10 @@
+<% no_map = event.lat.blank?  %>
+
 <div class="grid_12 event">
     <div class="grid_1 alpha datetime">
         <div class="datestamp <%=status_class(event)%>">
             <div class="month"><%= event.starts_at.strftime("%b") %></div>
-            <div class="day"><%= event.starts_at.day %></div>
+            <div class="day"><%= event.starts_at.strftime("%d") %></div>
         </div>
 
         <div class="timestamp <%=status_class(event)%>">
@@ -10,15 +12,19 @@
         </div>
     </div>
 
-    <div class="map grid_3">
-        <div id="event_map_<%=event.id%>"></div>
+    <div class="map grid_3 <%=no_map ? 'no_map' : ''%>">
+        <div id="event_map_<%=event.id%>">
+            <%= "no map available" if no_map %>
+        </div>
     </div>
 
     <div class="grid_7 omgega">
         <h2 class="eventitle <%=status_class(event)%>"><%= event.name %></h2>
         <ul>
             <li class="eventdate"><%= time_summary(event) %></li>
-            <li class="eventlocation"><%= event.location || "unknown location" %></li>
+            <li class="eventlocation">
+                <%= link_to_event_location(event) %>
+            </li>
         </ul>
         <div class="eventdescription">
             <%= linkify(event.description).html_safe %>
@@ -27,9 +33,11 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        show_map("event_map_<%=event.id%>", <%=event.lat || 'null'%>, <%=event.lon || 'null'%>);
-    });
-</script>
+<% unless no_map %>
+    <script>
+        $(document).ready(function() {
+            show_map("event_map_<%=event.id%>", <%=event.lat || 'null'%>, <%=event.lon || 'null'%>);
+        });
+    </script>
+<% end %>
 

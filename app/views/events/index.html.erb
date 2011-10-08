@@ -1,6 +1,5 @@
 <h1>Events in Appsterdam</h1>
 
-
 <% @events_per_day.sort_by {|k,v| k}.each do |date, events| %>
     <h2 class="timeline"><%= timeline_header(date) %></h2>
     <div class="hr"></div>
@@ -10,10 +9,10 @@
 <% end %>
 
 
-<script type="text/javascript" 
+<script
         src="http://maps.google.com/maps/api/js?sensor=true"> 
 </script> 
-<script type="text/javascript"> 
+<script> 
     function show_map(dom_id, lat, lon) {
         var coordinates = new google.maps.LatLng(lat, lon);
         var options = {
@@ -26,7 +25,7 @@
         var map = new google.maps.Map(document.getElementById(dom_id), options);
         
         var image = '/images/eventlocation.gif';
-        var beachMarker = new google.maps.Marker({
+        new google.maps.Marker({
             position: coordinates,
             map: map,
             icon: image
@@ -46,7 +45,7 @@
         map.setMapTypeId('grayscale');
         
         $('#'+dom_id).mouseover(function () {
-            map.setOptions({disableDefaultUI: false});
+            map.setOptions({disableDefaultUI: false, mapTypeControl: false});
             map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
         });
         
