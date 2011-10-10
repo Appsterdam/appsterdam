@@ -19,7 +19,7 @@
     </div>
 
     <div class="grid_7 omgega">
-        <h2 class="eventitle <%=status_class(event)%>"><%= event.name %></h2>
+        <h2 class="eventitle <%=status_class(event)%>"><%= link_to event.name, event_url(event.id) %></h2>
         <ul>
             <li class="eventdate"><%= time_summary(event) %></li>
             <li class="eventlocation">
