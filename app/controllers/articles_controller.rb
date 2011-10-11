@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
   end
 
   def find_article
-    @article = @authenticated.articles.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:id])
   end
 
   def my_articles?
