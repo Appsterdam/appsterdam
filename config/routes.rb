@@ -4,7 +4,9 @@ Appsterdam::Application.routes.draw do
   match '/members/create'   => 'members#create',    :as => :create_members
   match '/session'          => 'sessions#create',   :as => :session
   match '/session/clear'    => 'sessions#clear',    :as => :clear_session
-  
+
+  match '/events/:from_date/:to_date' => 'events#index', :as => :filter_events
+  match '/events/:from_date'          => 'events#index', :as => :events_per_week
   
   resources :classifieds
   resources :commands
