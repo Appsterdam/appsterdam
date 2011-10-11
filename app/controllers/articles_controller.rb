@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   allow_access(:authenticated, :only => [:index, :new, :create])
   allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_article.nil? }
   allow_access(:all, :only => :index) { !my_articles? }
+  allow_access(:all, :only => :show) { !find_article.nil? }
 
   use_tinymce :all
 
@@ -59,5 +60,8 @@ class ArticlesController < ApplicationController
 
   def my_articles?
     params[:show] == :mine
+  end
+  
+  def show
   end
 end
