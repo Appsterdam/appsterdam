@@ -1,4 +1,10 @@
-<h1>Events in Appsterdam <span style="font-size: 18px; vertical-align: middle; font-family: 'Open Sans', helvetica, arial;"> <%= link_to "Current week", events_url %> | <%= link_to "Week of #{@next_monday}", events_per_week_url(@next_monday) %></span></h1>
+<h1>
+	Events in Appsterdam
+	<span style="font-size: 18px; vertical-align: middle; font-family: 'Open Sans', helvetica, arial;">
+		<%= link_to "Current week", events_url %> |
+		<%= link_to "Week of #{@next_monday}", events_per_week_url(@next_monday) %>
+	</span>
+</h1>
 
 <% @events_per_day.sort_by {|k,v| k}.each do |date, events| %>
     <h2 class="timeline"><%= timeline_header(date) %></h2>

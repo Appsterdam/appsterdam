@@ -879,3 +879,9 @@ div.classified .description
 {
   margin: 16px 0 8px 0;
 }
+
+.event.permalink {
+	font-size: 60%; 
+	vertical-align: middle;
+	text-decoration: underline;
+}

@@ -19,7 +19,12 @@
     </div>
 
     <div class="grid_7 omgega">
-        <h2 class="eventitle <%=status_class(event)%>"><%= link_to event.name, event_url(event.id) %></h2>
+        <h2 class="eventitle <%=status_class(event)%>">
+        	<%= link_to event.name, event_url(event.id) %>
+        	<span class="event permalink">
+        	<%= link_to 'Permalink', event_url(event.id) %>
+        	</span>
+        </h2>
         <ul>
             <li class="eventdate"><%= time_summary(event) %></li>
             <li class="eventlocation">
@@ -27,7 +32,7 @@
             </li>
         </ul>
         <div class="eventdescription">
-            <%= linkify(event.description).html_safe %>
+            <%= auto_link(event.description).html_safe %>
         </div>
         
     </div>
