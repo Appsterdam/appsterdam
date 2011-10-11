@@ -908,3 +908,10 @@ div.article-member {
 	border-bottom: 1px dashed #777;
 	
 }
+
+div.article span.permalink {
+	font-size: 40%;
+	vertical-align: middle;
+	font-family: 'Open Sans', helvetica, arial;
+	text-decoration: underline;
+}

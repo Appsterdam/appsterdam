@@ -1,5 +1,7 @@
 <div class="article">
-    <h2 class="article-title"><%= article.title %></h2>
+    <h2 class="article-title"><%= article.title %>
+    	<span class="permalink"><%= link_to 'Permalink', article %></span>
+    </h2>
     <div class="article-member">
         Posted by <%= link_to article.member.username, article.member %> on <%= article.created_at.to_s(:short) %>
     </div>
