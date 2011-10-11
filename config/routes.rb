@@ -7,6 +7,10 @@ Appsterdam::Application.routes.draw do
   match '/articles/mine'    => 'articles#index',    :as => :my_articles, :show => :mine
 
   resources :articles
+
+  match '/events/:from_date/:to_date' => 'events#index', :as => :filter_events
+  match '/events/:from_date'          => 'events#index', :as => :events_per_week, :constraints => { :from_date => /\d{4}-\d{2}-\d{2}/ }
+
   resources :classifieds
   resources :commands
   resources :members do
