@@ -11,6 +11,8 @@ gem 'peiji-san',         '~> 1.0.0', :require => 'peiji_san'
 gem 'thinking-sphinx', '~> 2.0.7', :require => 'thinking_sphinx'
 gem 'flying-sphinx',   '~> 0.6.0', :require => 'flying_sphinx'
 
+gem 'will_paginate', '~> 3.0.2'
+
 gem 'use_tinymce'
 
 gem 'newrelic_rpm'

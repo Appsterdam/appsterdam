@@ -47,11 +47,11 @@ class ArticlesController < ApplicationController
   end
 
   def fetch_my_articles
-    @articles = @authenticated.articles(:order => 'created_at desc')
+    @articles = @authenticated.articles.paginate(:page => params[:page]).order('created_at desc')
   end
 
   def fetch_all_articles
-    @articles = Article.all(:order => 'created_at desc')
+  	@articles = Article.where(:published => true).paginate(:per_page => 5, :page => params[:page]).order('created_at desc')
   end
 
   def find_article

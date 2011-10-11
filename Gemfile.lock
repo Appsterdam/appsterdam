@@ -110,6 +110,7 @@ GEM
       oauth (>= 0.4.1)
     tzinfo (0.3.27)
     use_tinymce (0.0.12)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
@@ -129,3 +130,4 @@ DEPENDENCIES
   thinking-sphinx (~> 2.0.7)
   twitter_oauth (~> 0.4.3)
   use_tinymce
+  will_paginate (~> 3.0.2)
