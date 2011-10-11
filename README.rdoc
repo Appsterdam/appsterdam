@@ -11,17 +11,14 @@ First do the regular Rails 3 dance.
     $ bundle install
     $ rake db:setup
 
-Then configure twitter oauth
+Export some environment variables:
 
-    $ cp config/initializers/twitter.example.rb config/initializers/twitter.rb
-    $ open config/initializers/twitter.rb
-
-Fix the consumer credentials. Then configure the meetup API with your key
-
-    $ cp config/initializers/meetup.example.rb config/initializers/meetup.rb
-    $ open config/initializers/meetup.rb
-
-You can get an api key here: http://www.meetup.com/meetup_api/key/.
+    # You can get Twitter's consumer key and secret here: http://dev.twitter.com/. 
+    $ export TWITTER_CONSUMER_KEY="consumer_key"
+    
+    # You can get a Meetup api key here: http://www.meetup.com/meetup_api/key/.
+    $ export TWITTER_CONSUMER_SECRET="consumer_secret"
+    $ export MEETUP_KEY="meetup_key"
 
 After that install Sphinx
 
@@ -29,16 +26,14 @@ After that install Sphinx
     $ rake ts:index
     $ rake ts:start
 
+Then initialize the application:
+
+    $ bundle exec rails s
+
 To import events from all external sources use
     
     $ rake import_events 
 
 == Production
 
-Add a cron job which runs once every day that purges outdated classifieds:
-
-    0 0 * * * cd /path/to/app && /usr/local/bin/bundle exec /usr/local/rake purge_outdated_classifieds
-
-You also might want to automatically update the Sphinx index
-
-    */5 * * * * cd /path/to/app && /usr/local/bin/bundle exec /usr/local/rake ts:in
+Removal of outdated classifieds, updates of Sphinx index and retrieval of new events are done by rake's `cron' task.
