@@ -109,6 +109,7 @@ GEM
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
     tzinfo (0.3.27)
+    use_tinymce (0.0.12)
 
 PLATFORMS
   ruby
@@ -127,3 +128,4 @@ DEPENDENCIES
   thin
   thinking-sphinx (~> 2.0.7)
   twitter_oauth (~> 0.4.3)
+  use_tinymce

@@ -1,9 +1,9 @@
-<div>
-    <h2><%= article.title %></h2>
-    <div>
-        Posted by <%= article.member.username %>
+<div class="article">
+    <h2 class="article-title"><%= article.title %></h2>
+    <div class="article-member">
+        Posted by <%= link_to article.member.username, article.member %> on <%= article.created_at.to_s(:short) %>
     </div>
-    <div>
-        <%= article.body %>
+    <div class="article-body">
+        <%= article.body.html_safe %>
     </div>
 </div>

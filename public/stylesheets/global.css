@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/global.css?1318353752 */
+
 * { margin: 0; padding: 0; }
 
 body {
@@ -8,20 +10,10 @@ body {
   background: #d7d7d7 url('../images/background.jpg') top center no-repeat;
 }
 
-p {
-  font-size: 14px;
-  line-height: 18px;
-  padding-bottom: 8px;
-}
-
 a {
   text-decoration: none;
   color: #dc1f26;
   cursor: pointer;
-}
-
-a:hover, a:active {
-  color: #3a3a3a;
 }
 
 h1, h2, h3, .sidebar p{
@@ -884,4 +876,35 @@ div.classified .description
 	font-size: 60%; 
 	vertical-align: middle;
 	text-decoration: underline;
+}
+
+.article-title {
+	font-family: 'Arvo', arial, serif;
+	font-weight: bold;
+	font-size: 200%;
+}
+
+.article-body ul {
+	margin-left: 10px;
+}
+
+div.article-body li {
+	list-style: square;
+	margin-left: 20px;
+}
+
+div.article.body {
+	border: 0px;
+}
+
+div.article {
+	margin-bottom: 20px;
+	padding: 1em;
+}
+
+div.article-member {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px dashed #777;
+	
 }

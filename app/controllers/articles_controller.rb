@@ -4,6 +4,8 @@ class ArticlesController < ApplicationController
   allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_article.nil? }
   allow_access(:all, :only => :index) { !my_articles? }
 
+  use_tinymce :all
+
   def index
     if my_articles?
       fetch_my_articles
