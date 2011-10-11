@@ -6,7 +6,7 @@ Appsterdam::Application.routes.draw do
   match '/session/clear'    => 'sessions#clear',    :as => :clear_session
 
   match '/events/:from_date/:to_date' => 'events#index', :as => :filter_events
-  match '/events/:from_date'          => 'events#index', :as => :events_per_week
+  match '/events/:from_date'          => 'events#index', :as => :events_per_week, :constraints => { :from_date => /\d{4}-\d{2}-\d{2}/ }
   
   resources :classifieds
   resources :commands

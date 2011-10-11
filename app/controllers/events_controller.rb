@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   allow_access :all
   
   def index
-    
     from_date = params[:from_date] ? Date.parse(params[:from_date]) : Date.today
     to_date = params[:to_date] ? Date.parse(params[:to_date]) : from_date.end_of_week
     
