@@ -913,5 +913,8 @@ div.article span.permalink {
 	font-size: 40%;
 	vertical-align: middle;
 	font-family: 'Open Sans', helvetica, arial;
-	text-decoration: underline;
+}
+
+div.article span.permalink a {
+    text-decoration: underline;
 }

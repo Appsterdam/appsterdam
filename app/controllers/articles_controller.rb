@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   allow_access(:authenticated, :only => [:index, :new, :create])
-  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_article.nil? }
+  allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_my_article.nil? }
   allow_access(:all, :only => :index) { !my_articles? }
   allow_access(:all, :only => :show) { !find_article.nil? }
 
@@ -9,9 +9,9 @@ class ArticlesController < ApplicationController
 
   def index
     if my_articles?
-      fetch_my_articles
+      find_my_articles
     else
-      fetch_all_articles
+      find_all_articles
     end
     render :index
   end
@@ -46,12 +46,16 @@ class ArticlesController < ApplicationController
     @article = @authenticated.articles.find_by_id(params[:id])
   end
 
-  def fetch_my_articles
+  def find_my_articles
     @articles = @authenticated.articles.paginate(:page => params[:page]).order('created_at desc')
   end
 
-  def fetch_all_articles
+  def find_all_articles
   	@articles = Article.where(:published => true).paginate(:per_page => 5, :page => params[:page]).order('created_at desc')
+  end
+
+  def find_my_article
+    @article = @authenticated.articles.find_by_id(params[:id])
   end
 
   def find_article
