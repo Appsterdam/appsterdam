@@ -893,8 +893,8 @@ div.article-body li {
 	margin-left: 20px;
 }
 
-div.article.body {
-	border: 0px;
+div.article-body p {
+    padding-bottom: 1em;
 }
 
 div.article {

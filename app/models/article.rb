@@ -6,8 +6,6 @@ class Article < ActiveRecord::Base
   validates :title, :presence => true
   validates :body, :presence => true
 
-  attr :published
-
   define_index do
     has :id
 
