@@ -2,6 +2,50 @@
 <div>
     <%= render @event %>
 </div>
-<div style="margin-bottom: 1em;">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="appsterdamrs">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-</div>
+
+<script
+        src="http://maps.google.com/maps/api/js?sensor=true">
+</script>
+<script>
+    function show_map(dom_id, lat, lon) {
+        var coordinates = new google.maps.LatLng(lat, lon);
+        var options = {
+            zoom: 12,
+            center: coordinates,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
+        };
+
+        var map = new google.maps.Map(document.getElementById(dom_id), options);
+
+        var image = '/images/eventlocation.gif';
+        new google.maps.Marker({
+            position: coordinates,
+            map: map,
+            icon: image
+        });
+        var styles = [
+            {
+                featureType: "all",
+                elementType: "all",
+                stylers: [
+                    { saturation: -100 }
+                ]
+            }
+        ];
+
+        var mapType = new google.maps.StyledMapType(styles, { name:"Grayscale" });
+        map.mapTypes.set('grayscale', mapType);
+        map.setMapTypeId('grayscale');
+
+        $('#'+dom_id).mouseover(function () {
+            map.setOptions({disableDefaultUI: false, mapTypeControl: false});
+            map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+        });
+
+         $('#'+dom_id).mouseleave(function () {
+            map.setOptions({disableDefaultUI: true});
+            map.setMapTypeId('grayscale');
+        })
+    }
+</script>
