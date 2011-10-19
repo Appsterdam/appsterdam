@@ -1,10 +1,9 @@
 <div class="article">
-    <h2 class="article-title"><%= article.title %>
-    	<span class="permalink"><%= link_to 'Permalink', article %>
+    <h2 class="article-title"><%= link_to article.title, article %>
     	<%- if @authenticated and @authenticated == article.member -%>
-    	| <%= link_to 'Edit', edit_article_url(article) %></span>
+    	<%= link_to 'Edit', edit_article_url(article) %>
     	<%- end -%>
-    	
+    	<%= tweet_button(article.title, articles_url(article)).html_safe %></span>
     </h2>
     <div class="article-member">
         Posted by <%= link_to article.member.username, article.member %> on <%= article.created_at.to_s(:short) %>
