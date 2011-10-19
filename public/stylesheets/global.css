@@ -21,10 +21,10 @@ h1, h2, h3, .sidebar p{
   float: left;
 }
 
-h1 { 
-  font-family: 'Arvo', arial, serif; 
-  font-size: 36px; 
-  line-height: 42px; 
+h1 {
+  font-family: 'Arvo', arial, serif;
+  font-size: 36px;
+  line-height: 42px;
   margin: 0px 0px 10px 0px;
   color: #3a3a3a;
 }
@@ -33,7 +33,7 @@ h2 {
   font-family: 'Open Sans';
   font-weight: normal;
   font-size: 18px;
-  line-height: 22px; 
+  line-height: 22px;
   color: #dc1f26;
   margin: 0px 0px 10px 0px;
 }
@@ -42,7 +42,7 @@ h3 {
   font-family: 'Arvo';
   font-weight: normal;
   font-size: 18px;
-  line-height: 22px; 
+  line-height: 22px;
   color: #dc1f26;
   margin: 10px 0px 10px 0px;
 }
@@ -203,18 +203,18 @@ div.twitter-hr {
 }
 .nav ul li a
 {
-  font-family: 'Arvo', arial, serif; 
+  font-family: 'Arvo', arial, serif;
   font-weight: bold;
   color: #fff;
   font-size: 20px;
-  line-height: 24px; 
+  line-height: 24px;
 }
 .nav ul li a:hover, .nav ul li a:active, .nav ul li .active
 {
   color: #dc1f26;
 }
 
-body#page-home li.nav-home a {color: #DC1F26;} 
+body#page-home li.nav-home a {color: #DC1F26;}
 body#page-members li.nav-members a {color: #DC1F26;}
 body#page-classifieds li.nav-classifieds a {color: #DC1F26;}
 body#page-reading li.nav-reading a {color: #DC1F26;}
@@ -237,14 +237,14 @@ body#page-tours li.nav-tours a {color: #DC1F26;}
 }
 
 div.hr.date {
-  height: 18px; 
+  height: 18px;
   float: left;
   width: 460px;
 }
 
 .publish-date {
   font-size: 16px;
-  line-height: 20px; 
+  line-height: 20px;
   color: #888;
   float: right;
 }
@@ -300,7 +300,7 @@ form {
 
 .ss-gridrow, .ss-gridnumber {
   text-align: center;
-  font-size: 13px; 
+  font-size: 13px;
   padding: 5px;
 }
 
@@ -435,7 +435,7 @@ ul.articlelist li a .articleclass {
   font-family: 'Arvo', arial;
   font-weight: normal;
   font-size: 18px;
-  line-height: 22px; 
+  line-height: 22px;
   text-align: left;
   cursor: pointer;
 }
@@ -447,7 +447,7 @@ ul.articlelist li .articledate {
 /******** EVENTS ********/
 
 .event {
-  
+
 }
 
 .event .map {
@@ -481,7 +481,7 @@ ul.articlelist li .articledate {
 
 .event ul li {
   height: 20px;
-  margin: 5px 0px 10px 0px;  
+  margin: 5px 0px 10px 0px;
   padding-left: 25px;
 }
 
@@ -520,7 +520,7 @@ ul.articlelist li .articledate {
 
 .timestamp {
   text-align: center;
-  font-size: 16px;  
+  font-size: 16px;
   margin-top: 5px;
   letter-spacing: 1px;
 }
@@ -532,7 +532,7 @@ ul.articlelist li .articledate {
 .datestamp .month {
   font-family: 'Arvo', arial, serif;
   font-size: 18px;
-  line-height: 22px; 
+  line-height: 22px;
   color: #ccc;
   font-weight: bold;
   padding: 8px 0px 0px 15px;
@@ -545,7 +545,7 @@ ul.articlelist li .articledate {
 .datestamp .day {
   font-family: 'Arvo', arial, serif;
   font-size: 28px;
-  line-height: 32px; 
+  line-height: 32px;
   color: #fff;
   font-weight: bold;
   margin: -3px 0px 0px 15px;
@@ -553,7 +553,7 @@ ul.articlelist li .articledate {
 
 h1.year {
   font-size: 24px;
-  line-height: 28px; 
+  line-height: 28px;
   color: #5b5b5b;
   margin: 20px 0px 10px 0px;
 }
@@ -578,7 +578,7 @@ h2.timeline {
 .sidebar.upcomingevents ul li {
   color: #dc1f26;
   font-size: 18px;
-  line-height: 22px; 
+  line-height: 22px;
   font-weight: 600;
   margin: 5px 0px;
 }
@@ -596,7 +596,7 @@ h2.timeline {
 
 .tour ul li {
   height: 20px;
-  margin: 5px 0px 10px 0px;  
+  margin: 5px 0px 10px 0px;
   padding-left: 25px;
 }
 
@@ -617,14 +617,14 @@ h2.timeline {
 /******** SIDEBAR ********/
 
 .sidebar {
-  margin-top: 72px; 
+  margin-top: 72px;
   color: #888;
 }
 
 
 
 .sidebar .hr.date {
-  height: 13px; 
+  height: 13px;
   float: left;
   width: 70px;
   margin-top: 24px;
@@ -632,7 +632,7 @@ h2.timeline {
 
 .sidebar .publish-date {
   font-size: 14px;
-  line-height: 14px; 
+  line-height: 14px;
   color: #3a3a3a;
   float: right;
   margin-top: 22px;
@@ -854,26 +854,34 @@ div.classified
   margin: 16px 0 0 0;
   padding: 16px 0 0 0;
 }
+
 div.classified.alpha
 {
   clear: both;
 }
+
 div.classified .inner
 {
   border-top: 1px dashed #999;
   padding: 16px 0;
 }
+
 div.classified.omega .inner
 {
   margin-left: 16px;
 }
+
 div.classified .description
 {
   margin: 16px 0 8px 0;
 }
 
+div.classified div.inner a:hover {
+    text-decoration: underline;
+}
+
 .event.permalink {
-	font-size: 60%; 
+	font-size: 60%;
 	vertical-align: middle;
 	text-decoration: underline;
 }
@@ -906,7 +914,7 @@ div.article-member {
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	border-bottom: 1px dashed #777;
-	
+
 }
 
 div.article span.permalink {

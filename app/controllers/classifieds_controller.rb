@@ -2,6 +2,7 @@ class ClassifiedsController < ApplicationController
   allow_access(:authenticated, :only => [:index, :new, :create])
   allow_access(:authenticated, :only => [:edit, :update, :destroy]) { !find_classified.nil? }
   allow_access(:all, :only => :index) { !my_classifieds? } # visitors have no `my classifieds'
+  allow_access(:all, :only => :show)
 
   def index
     if my_classifieds?
@@ -33,7 +34,7 @@ class ClassifiedsController < ApplicationController
       redirect_to classifieds_url
     else
       render :new
-    end
+   end
   end
 
   def update
@@ -47,6 +48,11 @@ class ClassifiedsController < ApplicationController
   def destroy
     @classified.destroy
     redirect_to classifieds_url
+  end
+
+  def show
+    @classified = Classified.find_by_id(params[:id])
+    redirect_to classifieds_url if @classified.nil?
   end
 
   private
