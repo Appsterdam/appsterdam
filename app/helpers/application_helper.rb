@@ -20,7 +20,7 @@ module ApplicationHelper
     <<-EOHTML
        <a href="https://twitter.com/share" class="twitter-share-button"
           data-url="#{url}"
-          data-via="appsterdam"
+          data-via="appsterdamrs"
           data-text="#{text}"
           data-count="none">Tweet</a>
     EOHTML
