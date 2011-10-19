@@ -1,7 +1,7 @@
 <div class="article">
     <h2 class="article-title"><%= link_to article.title, article %>
     	<%- if @authenticated and @authenticated == article.member -%>
-    	<%= link_to 'Edit', edit_article_url(article) %>
+    	<%= link_to 'Edit', edit_article_url(article), :class => 'edit' %>
     	<%- end -%>
     	<%= tweet_button(article.title, article_url(article)).html_safe %></span>
     </h2>

@@ -917,14 +917,11 @@ div.article-member {
 
 }
 
-div.article span.permalink {
+div.article h2.article-title a.edit {
+    text-decoration: underline;
 	font-size: 40%;
 	vertical-align: middle;
 	font-family: 'Open Sans', helvetica, arial;
-}
-
-div.article span.permalink a {
-    text-decoration: underline;
 }
 
 .twitter-share-button {
