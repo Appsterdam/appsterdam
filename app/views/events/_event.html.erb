@@ -1,5 +1,4 @@
 <% no_map = event.lat.blank?  %>
-
 <div class="grid_12 event">
     <div class="grid_1 alpha datetime">
         <div class="datestamp <%=status_class(event)%>">
@@ -21,9 +20,7 @@
     <div class="grid_7 omgega">
         <h2 class="eventitle <%=status_class(event)%>">
         	<%= link_to event.name, event_url(event.id) %>
-        	<span class="event permalink">
-        	<%= link_to 'Permalink', event_url(event.id) %>
-        	</span>
+            <%= raw tweet_button event.name, event_url(event.id) %>
         </h2>
         <ul>
             <li class="eventdate"><%= time_summary(event) %></li>
@@ -34,7 +31,7 @@
         <div class="eventdescription">
             <%= auto_link(event.description).html_safe %>
         </div>
-        
+
     </div>
 </div>
 

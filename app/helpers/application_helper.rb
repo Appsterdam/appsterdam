@@ -15,4 +15,14 @@ module ApplicationHelper
     end
     out << '</ul>'
   end
+
+  def tweet_button(text, url)
+    <<-EOHTML
+       <a href="https://twitter.com/share" class="twitter-share-button"
+          data-url="#{url}"
+          data-via="appsterdam"
+          data-text="#{text}"
+          data-count="none">Tweet</a>
+    EOHTML
+  end
 end

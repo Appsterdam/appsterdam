@@ -32,8 +32,8 @@ h1 {
 h2 {
   font-family: 'Open Sans';
   font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 22px;
+  line-height: 24px;
   color: #dc1f26;
   margin: 0px 0px 10px 0px;
 }
@@ -925,4 +925,8 @@ div.article span.permalink {
 
 div.article span.permalink a {
     text-decoration: underline;
+}
+
+.twitter-share-button {
+    vertical-align: middle;
 }
