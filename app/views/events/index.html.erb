@@ -1,6 +1,6 @@
 <h1>
 	Events in Appsterdam
-	<% if !@nex_monday.nil? %>
+	<% if !@next_monday.nil? %>
 	<span style="font-size: 18px; vertical-align: middle; font-family: 'Open Sans', helvetica, arial;">
 		<%= link_to "Current week", events_url %> |
 		<%= link_to "Week of #{@next_monday}", events_per_week_url(@next_monday) %>
