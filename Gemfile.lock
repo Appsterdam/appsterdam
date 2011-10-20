@@ -94,6 +94,7 @@ GEM
     ri_cal (0.8.8)
     riddle (1.4.0)
     test-spec (0.10.0)
+    test-unit (2.4.0)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -126,6 +127,7 @@ DEPENDENCIES
   rails (= 3.0.9)
   ri_cal
   test-spec
+  test-unit
   thin
   thinking-sphinx (~> 2.0.7)
   twitter_oauth (~> 0.4.3)
